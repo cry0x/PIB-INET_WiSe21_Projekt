@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="form_register.css" rel="stylesheet" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>ACCOUNTERSTELLUNG</h2>
+        <form action="formprocessor.html" method="get">
+            <!-- Persoenliche Informationen -->
+            <fieldset>
+                <legend>PERSOENLICHE INFORMATIONEN</legend>
+                <!-- Anrede -->
+                <datalist id="salutationlist">
+                    <option value="mrval">Mr.</option>
+                    <option value="mrsval">Mrs.</option>
+                    <option value="Ms." />
+                    <option value="Dr." />
+                </datalist>
+                <label for="salutation">Anrede</label>
+                <input
+                    id="salutation"
+                    type="text"
+                    list="salutationlist"
+                    name="salutation"
+                    autofocus
+                />
+                <br />
+                <!-- Vorname -->
+                <label for="fname">Vorname:</label>
+                <input
+                    id="fname"
+                    type="text"
+                    name="fname"
+                    placeholder="Max"
+                    maxlength="20"
+                    autofocus
+                />
+                <br />
+                <!-- Nachname -->
+                <label for="lname">Nachname:</label>
+                <input
+                    id="lname"
+                    type="text"
+                    name="lname"
+                    placeholder="Mustermann"
+                    title="Please, specify the last name"
+                    required
+                />
+                <br />
+                <label for="email">Email:</label>
+                <input
+                    id="email"
+                    type="text"
+                    name="email"
+                    placeholder="max.mustermann@mail.com"
+                    title="Please, specify your email adress"
+                    autofocus
+                />
+                <br />
+                <label for="mobile">Telefon:</label>
+                <input
+                    id="mobile"
+                    type="text"
+                    name="mobile"
+                    placeholder="0152123456"
+                    title="Please, specify your phone number"
+                    required
+                />
+                <br />
+                <!-- Geburtsdatum -->
+                <label for="birth">Geburtsdatum:</label>
+                <input id="birth" type="date" name="birth" required />
+                <br />
+            </fieldset>
+            <!-- Anschrift -->
+            <fieldset>
+                <legend>ANSCHRIFT</legend>
+                <!-- Strasse -->
+                <label for="street">Strasse</label>
+                <input
+                    id="street"
+                    type="text"
+                    name="street"
+                    placeholder="Musterstrasse"
+                    maxlength="20"
+                    autofocus
+                />
+                <br />
+                <!-- Hausnummer -->
+                <label for="snumber">Hausnummer</label>
+                <input
+                    id="snumber"
+                    type="text"
+                    name="snumber"
+                    placeholder="10"
+                    maxlength="3"
+                    autofocus
+                />
+                <br />
+                <!-- PLZ -->
+                <label for="pcode">Postleitzahl:</label>
+                <input
+                    id="pcode"
+                    type="text"
+                    name="pcode"
+                    placeholder="66111"
+                    maxlength="5"
+                    autofocus
+                />
+                <br />
+                <!-- Stadt -->
+                <label for="city">Stadt:</label>
+                <input
+                    id="city"
+                    type="text"
+                    name="city"
+                    placeholder="Musterstadt"
+                    title="Please, specify the city"
+                    required
+                />
+                <br />
+                <!-- Land -->
+                <label for="country">Land:</label>
+                <input
+                    id="country"
+                    type="text"
+                    name="country"
+                    placeholder="Musterland"
+                    title="Please, specify the city"
+                    required
+                />
+                <br />
+            </fieldset>
+            <fieldset>
+                <legend>ACCOUNTDATEN</legend>
+                <!-- Login -->
+                <label for="login">Login Name:</label>
+                <input
+                    id="login"
+                    type="text"
+                    name="login"
+                    placeholder="mmuster"
+                    title="Please, specify your login"
+                    required
+                />
+                <br />
+                <!-- PWD -->
+                <label for="pwd">Passwort:</label>
+                <input
+                    id="pwd"
+                    type="password"
+                    name="pwd"
+                    placeholder="abcdefg62!"
+                    title="Please, specify your password"
+                    required
+                />
+                <br />
+                <!-- PWD2 -->
+                <label for="pwd2">Passwort bestaetigen:</label>
+                <input
+                    id="pwd2"
+                    type="password"
+                    name="pwd2"
+                    placeholder="abcdefg62!"
+                    title="Please, confirm your password"
+                    required
+                />
+                <br />
+            </fieldset>
+            <!-- CONFIRM -->
+            <input type="submit" value="Register" />
+        </form>
+    </body>
+</html>
