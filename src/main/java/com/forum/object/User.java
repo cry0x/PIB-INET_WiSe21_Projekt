@@ -8,6 +8,10 @@ public class User {
     private String lastname;
     private String firstname;
     private String email;
+    private String street;
+    private int house_number;
+    private int postal_code;
+    private String town;
 
     public User(@JsonProperty("lastname") String lastname,
                 @JsonProperty("firstname") String firstname,
