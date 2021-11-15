@@ -13,18 +13,16 @@ public class User {
     private int postal_code;
     private String town;
 
-    public User(@JsonProperty("lastname") String lastname,
-                @JsonProperty("firstname") String firstname,
-                @JsonProperty("email") String email) {
+    public User() {
+    }
+
+    public User(String lastname, String firstname, String email) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.email = email;
     }
 
-    public User(@JsonProperty("id") int id,
-                @JsonProperty("lastname") String lastname,
-                @JsonProperty("firstname") String firstname,
-                @JsonProperty("email") String email) {
+    public User(int id, String lastname, String firstname, String email) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -40,7 +38,7 @@ public class User {
     }
 
     public String getLastname() {
-        return lastname;
+        return this.lastname;
     }
 
     public void setLastname(String lastname) {
@@ -48,7 +46,7 @@ public class User {
     }
 
     public String getFirstname() {
-        return firstname;
+        return this.firstname;
     }
 
     public void setFirstname(String firstname) {
@@ -56,7 +54,7 @@ public class User {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
