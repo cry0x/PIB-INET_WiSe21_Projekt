@@ -31,6 +31,14 @@ public class User {
         this.email = email;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getLastname() {
         return lastname;
     }
@@ -55,11 +63,12 @@ public class User {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return String.format("Id: %d Lastname: %s Firstname: %s Email: %s",
+                getId(),
+                getLastname(),
+                getFirstname(),
+                getEmail());
     }
 }
