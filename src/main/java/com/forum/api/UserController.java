@@ -1,35 +1,39 @@
 package com.forum.api;
 
-import com.forum.object.User;
+import com.forum.entities.User;
 import com.forum.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
-@RequestMapping("api/v1/user")
 @RestController
+@RequestMapping("api/v1/user")
 public class UserController {
 
     private UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
+    @PostMapping
+    public User addUser(@ModelAttribute User user) {
+        return this.userService.createUser(user);
+    }
+
     @GetMapping("/all")
-    public List<User> all() {
-        return userService.getAllUsers();
+    public Iterable<User> all() {
+        return this.userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public User userById(@PathVariable int id) {
-        return userService.getUserById(id);
+    public Optional<User> userById(@PathVariable Long id) {
+        return this.userService.readUser(id);
     }
 
-    @PostMapping
-    public void addUser(@ModelAttribute User user) {
-        this.userService.addUser(user);
+    @GetMapping("/count")
+    public Long getUserCount() {
+        return this.userService.count();
     }
+
 }

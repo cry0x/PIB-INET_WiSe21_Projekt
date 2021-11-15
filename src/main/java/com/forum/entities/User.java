@@ -1,10 +1,14 @@
-package com.forum.object;
+package com.forum.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "users")
 public class User {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String lastname;
     private String firstname;
     private String email;
@@ -22,18 +26,19 @@ public class User {
         this.email = email;
     }
 
-    public User(int id, String lastname, String firstname, String email) {
-        this.id = id;
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.email = email;
+    public User(String lastname, String firstname, String email, String street, int house_number, int postal_code, String town) {
+        this(lastname, firstname, email);
+        this.street = street;
+        this.house_number = house_number;
+        this.postal_code = postal_code;
+        this.town = town;
     }
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,6 +64,38 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getStreet() {
+        return this.street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public int getHouse_number() {
+        return this.house_number;
+    }
+
+    public void setHouse_number(int house_number) {
+        this.house_number = house_number;
+    }
+
+    public int getPostal_code() {
+        return this.postal_code;
+    }
+
+    public void setPostal_code(int postal_code) {
+        this.postal_code = postal_code;
+    }
+
+    public String getTown() {
+        return this.town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 
     @Override
