@@ -57,7 +57,10 @@ public class UserRepositoryPostgres implements UserRepository {
     @Override
     public int addUser(User user) {
         try {
-            String sql = String.format("INSERT INTO users(lastname, firstname, email) VALUES('%s', '%s', '%s')", user.getLastname(), user.getFirstname(), user.getEmail());
+            String sql = String.format("INSERT INTO users(lastname, firstname, email) VALUES('%s', '%s', '%s')",
+                    user.getLastname(),
+                    user.getFirstname(),
+                    user.getEmail());
             PreparedStatement preparedStatement = DatabaseConnection.preparedStatement(sql);
 
             return preparedStatement.executeUpdate();
