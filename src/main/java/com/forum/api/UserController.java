@@ -3,8 +3,6 @@ package com.forum.api;
 import com.forum.object.User;
 import com.forum.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping
-    public void addUser(@RequestBody User user) {
+    public void addUser(@ModelAttribute User user) {
         this.userService.addUser(user);
     }
 }
