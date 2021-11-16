@@ -1,9 +1,6 @@
 package com.forum.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "articles")
@@ -13,6 +10,7 @@ public class Article {
     @GeneratedValue
     private Long id;
     private String title;
+    @Lob
     private String content;
 
     public Article() {

@@ -42,7 +42,7 @@ public class UserController {
         this.userService.deleteUserById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<?> getAllUsers() {
         return ResponseEntity.ok(this.userService.getAllUsers());
     }

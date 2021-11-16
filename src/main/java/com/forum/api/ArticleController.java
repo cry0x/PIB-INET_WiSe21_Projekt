@@ -44,8 +44,9 @@ public class ArticleController {
         this.articleService.deleteArticleById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<?> getAllUsers() {
         return ResponseEntity.ok(this.articleService.getAllArticles());
     }
+
 }
