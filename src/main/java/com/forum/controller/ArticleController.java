@@ -1,4 +1,4 @@
-package com.forum.api;
+package com.forum.controller;
 
 import com.forum.entities.Article;
 import com.forum.service.ArticleService;

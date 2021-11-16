@@ -1,4 +1,4 @@
-package com.forum.api;
+package com.forum.controller;
 
 import com.forum.entities.User;
 import com.forum.service.UserService;
