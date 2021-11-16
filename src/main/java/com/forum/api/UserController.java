@@ -2,6 +2,7 @@ package com.forum.api;
 
 import com.forum.entities.User;
 import com.forum.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -17,23 +18,33 @@ public class UserController {
     }
 
     @PostMapping
-    public User addUser(@ModelAttribute User user) {
-        return this.userService.createUser(user);
-    }
+    public ResponseEntity<?> createUser(@ModelAttribute User user) {
+        Optional<User> newUser = Optional.of(this.userService.createOrUpdateUser(user));
 
-    @GetMapping("/all")
-    public Iterable<User> all() {
-        return this.userService.getAllUsers();
+        if (!newUser.isPresent())
+            return ResponseEntity.badRequest().body("The user could not be created.");
+
+        return ResponseEntity.ok(newUser);
     }
 
     @GetMapping("/{id}")
-    public Optional<User> userById(@PathVariable Long id) {
-        return this.userService.readUser(id);
+    public ResponseEntity<?> readUserById(@PathVariable Long id) {
+        Optional<User> user = this.userService.readUserById(id);
+
+        if (!user.isPresent())
+            return ResponseEntity.badRequest().body(String.format("There is no user with the ID: %d", id));
+
+        return ResponseEntity.ok(user);
     }
 
-    @GetMapping("/count")
-    public Long getUserCount() {
-        return this.userService.count();
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable Long id) {
+        this.userService.deleteUserById(id);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllUsers() {
+        return ResponseEntity.ok(this.userService.getAllUsers());
     }
 
 }

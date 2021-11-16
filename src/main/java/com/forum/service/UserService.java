@@ -15,28 +15,20 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(User user) {
+    public User createOrUpdateUser(User user) {
         return this.userRepository.save(user);
     }
 
-    public Optional<User> readUser(Long id) {
+    public Optional<User> readUserById(Long id) {
         return this.userRepository.findById(id);
     }
 
-    public void updateUser(User user) {
-        this.userRepository.save(user);
-    }
-
-    public void deleteUser(User user) {
-        this.userRepository.delete(user);
+    public void deleteUserById(Long id) {
+        this.userRepository.deleteById(id);
     }
 
     public Iterable<User> getAllUsers() {
         return this.userRepository.findAll();
-    }
-
-    public Long count() {
-        return this.userRepository.count();
     }
 
 }
