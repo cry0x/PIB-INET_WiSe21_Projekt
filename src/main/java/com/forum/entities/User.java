@@ -170,21 +170,4 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Id: %d Loginname: %s Lastname: %s Firstname: %s Email: %s Street: %s Housenumber: %s Postalcode: %s Town: %s Country: %s Phone: %d Birthdate: %s ",
-                getId(),
-                getLogin_name(),
-                getLastname(),
-                getFirstname(),
-                getEmail(),
-                getStreet(),
-                getHouse_number(),
-                getPostal_code(),
-                getTown(),
-                getCountry(),
-                getPhone(),
-                getBirthdate());
-    }
-
 }
