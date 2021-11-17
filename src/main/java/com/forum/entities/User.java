@@ -11,7 +11,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     @Column(unique=true)
     private String login_name;
     private String lastname;
@@ -23,7 +23,7 @@ public class User {
     private int postal_code;
     private String town;
     private String country;
-    private int phone;
+    private String phone;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date birthdate;
 
@@ -65,7 +65,7 @@ public class User {
                 int postal_code,
                 String town,
                 String country,
-                int phone,
+                String phone,
                 Date birthdate) {
         this(login_name, lastname, firstname, email, street, house_number, postal_code, town);
 
@@ -74,11 +74,11 @@ public class User {
         setBirthdate(birthdate);
     }
 
-    public Long getId() {
+    public long getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -154,11 +154,11 @@ public class User {
         this.country = country;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

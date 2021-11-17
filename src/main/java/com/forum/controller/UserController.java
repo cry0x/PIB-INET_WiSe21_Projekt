@@ -28,13 +28,14 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> readUserById(@PathVariable Long id) {
+    public ResponseEntity<User> readUserById(@PathVariable Long id) {
         Optional<User> user = this.userService.readUserById(id);
 
-        if (!user.isPresent())
-            return ResponseEntity.badRequest().body(String.format("There is no user with the ID: %d", id));
+        if (!user.isPresent()) {
+//            return new ResponseEntity<>()ResponseEntity.badRequest().body(String.format("There is no user with the ID: %d", id));
+        }
 
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(user.get());
     }
 
     @DeleteMapping("/{id}")
@@ -43,7 +44,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllUsers() {
+    public ResponseEntity<Iterable<User>> getAllUsers() {
         return ResponseEntity.ok(this.userService.getAllUsers());
     }
 
