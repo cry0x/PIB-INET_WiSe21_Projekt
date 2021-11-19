@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("api/v1/articles")
 public class ArticleController {
@@ -20,23 +18,13 @@ public class ArticleController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createArticle(@ModelAttribute Article article) {
-        Optional<Article> newArticle = Optional.of(this.articleService.createOrUpdateArticle(article));
-
-        if (!newArticle.isPresent())
-            return ResponseEntity.badRequest().body("The article could not be created.");
-
-        return ResponseEntity.ok(newArticle);
+    public ResponseEntity<Article> createArticle(@ModelAttribute Article article) {
+        return ResponseEntity.ok(this.articleService.createArticle(article));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> readArticleById(@PathVariable Long id) {
-        Optional<Article> article = this.articleService.readArticleById(id);
-
-        if (!article.isPresent())
-            return ResponseEntity.badRequest().body(String.format("There is no article with the ID: %d", id));
-
-        return ResponseEntity.ok(article);
+    public ResponseEntity<Article> readArticleById(@PathVariable Long id) {
+        return ResponseEntity.ok(this.articleService.readArticleById(id));
     }
 
     @DeleteMapping("/{id}")

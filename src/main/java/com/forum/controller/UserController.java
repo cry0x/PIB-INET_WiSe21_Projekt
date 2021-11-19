@@ -2,10 +2,9 @@ package com.forum.controller;
 
 import com.forum.entities.User;
 import com.forum.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/users")
@@ -13,29 +12,19 @@ public class UserController {
 
     private final UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @PostMapping
-    public ResponseEntity<?> createUser(@ModelAttribute User user) {
-        Optional<User> newUser = Optional.of(this.userService.createOrUpdateUser(user));
-
-        if (!newUser.isPresent())
-            return ResponseEntity.badRequest().body("The user could not be created.");
-
-        return ResponseEntity.ok(newUser);
+    public ResponseEntity<User> createUser(@ModelAttribute User user) {
+        return ResponseEntity.ok(this.userService.createUser(user));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<User> readUserById(@PathVariable Long id) {
-        Optional<User> user = this.userService.readUserById(id);
-
-        if (!user.isPresent()) {
-//            return new ResponseEntity<>()ResponseEntity.badRequest().body(String.format("There is no user with the ID: %d", id));
-        }
-
-        return ResponseEntity.ok(user.get());
+        return ResponseEntity.ok(this.userService.readUserById(id));
     }
 
     @DeleteMapping("/{id}")

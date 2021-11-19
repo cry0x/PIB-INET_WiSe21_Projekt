@@ -1,9 +1,10 @@
 package com.forum.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -25,7 +26,8 @@ public class User {
     private String country;
     private String phone;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date birthdate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate birthdate;
 
     public User() {
     }
@@ -66,7 +68,7 @@ public class User {
                 String town,
                 String country,
                 String phone,
-                Date birthdate) {
+                LocalDate birthdate) {
         this(login_name, lastname, firstname, email, street, house_number, postal_code, town);
 
         setCountry(country);
@@ -162,11 +164,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Date getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
