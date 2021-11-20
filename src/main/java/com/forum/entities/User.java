@@ -1,6 +1,8 @@
 package com.forum.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -172,4 +174,62 @@ public class User {
         this.birthdate = birthdate;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        User user = (User) o;
+
+        return new EqualsBuilder()
+                .append(getId(), user.getId())
+                .append(getHouse_number(), user.getHouse_number())
+                .append(getPostal_code(), user.getPostal_code())
+                .append(getLogin_name(), user.getLogin_name())
+                .append(getLastname(), user.getLastname())
+                .append(getFirstname(), user.getFirstname())
+                .append(getEmail(), user.getEmail())
+                .append(getStreet(), user.getStreet())
+                .append(getTown(), user.getTown())
+                .append(getCountry(), user.getCountry())
+                .append(getPhone(), user.getPhone())
+                .append(getBirthdate(), user.getBirthdate())
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(getId()).append(getLogin_name())
+                .append(getLastname()).append(getFirstname())
+                .append(getEmail()).append(getStreet())
+                .append(getHouse_number())
+                .append(getPostal_code())
+                .append(getTown())
+                .append(getCountry())
+                .append(getPhone())
+                .append(getBirthdate())
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login_name='" + login_name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", email='" + email + '\'' +
+                ", street='" + street + '\'' +
+                ", house_number=" + house_number +
+                ", postal_code=" + postal_code +
+                ", town='" + town + '\'' +
+                ", country='" + country + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birthdate=" + birthdate +
+                '}';
+    }
 }
