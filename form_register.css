@@ -6,8 +6,15 @@ body {
 
 fieldset {
     padding: 8px 12px;
-    background-color: aliceblue;
+    background-color: skyblue;
+    border: 1px solid blue;
+    margin-top: 18px;
     margin-bottom: 8px;
+}
+
+fieldset legend {
+    background-color: navy;
+    color: white;
 }
 
 fieldset label {
@@ -17,9 +24,6 @@ fieldset label {
     margin-bottom: 4px;
 }
 
-.memberoption {
-    width: 160px !important;
-}
 p {
     margin-top: 10px;
     margin-bottom: 8px;
@@ -27,11 +31,15 @@ p {
     font-size: 0.9em;
 }
 
-legend {
-    font-weight: bold;
-    font-size: 1.2em;
-    padding-left: 4px;
-    padding-right: 4px;
+input[type='submit'] {
+    padding: 8px 16px;
+    border: 1px solid blue;
+    background-color: navy;
+    color: white;
+}
+
+#salutation {
+    width: 100px;
 }
 
 #fname,
