@@ -34,50 +34,6 @@ public class User {
     public User() {
     }
 
-    public User(String login_name,
-                String lastname,
-                String firstname,
-                String email) {
-        setLogin_name(login_name);
-        setLastname(lastname);
-        setFirstname(firstname);
-        setEmail(email);
-    }
-
-    public User(String login_name,
-                String lastname,
-                String firstname,
-                String email,
-                String street,
-                int house_number,
-                int postal_code,
-                String town) {
-        this(login_name, lastname, firstname, email);
-
-        setStreet(street);
-        setHouse_number(house_number);
-        setPostal_code(postal_code);
-        setTown(town);
-    }
-
-    public User(String login_name,
-                String lastname,
-                String firstname,
-                String email,
-                String street,
-                int house_number,
-                int postal_code,
-                String town,
-                String country,
-                String phone,
-                LocalDate birthdate) {
-        this(login_name, lastname, firstname, email, street, house_number, postal_code, town);
-
-        setCountry(country);
-        setPhone(phone);
-        setBirthdate(birthdate);
-    }
-
     public long getId() {
         return this.id;
     }
