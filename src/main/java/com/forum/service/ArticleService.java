@@ -24,12 +24,12 @@ public class ArticleService {
         return this.articleRepository.findById(id).orElseThrow(ArticleNotFoundException::new);
     }
 
-    public void deleteArticleById(Long id) {
-        this.articleRepository.deleteById(id);
-    }
-
     public Iterable<Article> getAllArticles() {
         return this.articleRepository.findAll();
+    }
+
+    public void deleteArticleById(Long id) {
+        this.articleRepository.deleteById(id);
     }
 
 }

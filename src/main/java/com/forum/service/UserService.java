@@ -24,12 +24,12 @@ public class UserService {
         return this.userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
-    public void deleteUserById(Long id) {
-        this.userRepository.deleteById(id);
-    }
-
     public Iterable<User> getAllUsers() {
         return this.userRepository.findAll();
+    }
+
+    public void deleteUserById(Long id) {
+        this.userRepository.deleteById(id);
     }
 
 }
