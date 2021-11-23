@@ -1,9 +1,12 @@
 package com.forum.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -11,7 +14,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     @Column(unique=true)
     private String login_name;
     private String lastname;
@@ -23,62 +26,19 @@ public class User {
     private int postal_code;
     private String town;
     private String country;
-    private int phone;
+    private String phone;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date birthdate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate birthdate;
 
     public User() {
     }
 
-    public User(String login_name,
-                String lastname,
-                String firstname,
-                String email) {
-        setLogin_name(login_name);
-        setLastname(lastname);
-        setFirstname(firstname);
-        setEmail(email);
-    }
-
-    public User(String login_name,
-                String lastname,
-                String firstname,
-                String email,
-                String street,
-                int house_number,
-                int postal_code,
-                String town) {
-        this(login_name, lastname, firstname, email);
-
-        setStreet(street);
-        setHouse_number(house_number);
-        setPostal_code(postal_code);
-        setTown(town);
-    }
-
-    public User(String login_name,
-                String lastname,
-                String firstname,
-                String email,
-                String street,
-                int house_number,
-                int postal_code,
-                String town,
-                String country,
-                int phone,
-                Date birthdate) {
-        this(login_name, lastname, firstname, email, street, house_number, postal_code, town);
-
-        setCountry(country);
-        setPhone(phone);
-        setBirthdate(birthdate);
-    }
-
-    public Long getId() {
+    public long getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -154,20 +114,78 @@ public class User {
         this.country = country;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public Date getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        User user = (User) o;
+
+        return new EqualsBuilder()
+                .append(getId(), user.getId())
+                .append(getHouse_number(), user.getHouse_number())
+                .append(getPostal_code(), user.getPostal_code())
+                .append(getLogin_name(), user.getLogin_name())
+                .append(getLastname(), user.getLastname())
+                .append(getFirstname(), user.getFirstname())
+                .append(getEmail(), user.getEmail())
+                .append(getStreet(), user.getStreet())
+                .append(getTown(), user.getTown())
+                .append(getCountry(), user.getCountry())
+                .append(getPhone(), user.getPhone())
+                .append(getBirthdate(), user.getBirthdate())
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(getId()).append(getLogin_name())
+                .append(getLastname()).append(getFirstname())
+                .append(getEmail()).append(getStreet())
+                .append(getHouse_number())
+                .append(getPostal_code())
+                .append(getTown())
+                .append(getCountry())
+                .append(getPhone())
+                .append(getBirthdate())
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login_name='" + login_name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", email='" + email + '\'' +
+                ", street='" + street + '\'' +
+                ", house_number=" + house_number +
+                ", postal_code=" + postal_code +
+                ", town='" + town + '\'' +
+                ", country='" + country + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birthdate=" + birthdate +
+                '}';
+    }
 }
