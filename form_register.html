@@ -98,7 +98,8 @@
                     type="number"
                     name="snumber"
                     placeholder="10"
-                    maxlength="3"
+                    min="1"
+                    max="999"
                     required
                 />
                 <br />
@@ -109,7 +110,8 @@
                     type="number"
                     name="pcode"
                     placeholder="66111"
-                    maxlength="5"
+                    min="10000"
+                    max="99999"
                     required
                 />
                 <br />
@@ -157,20 +159,28 @@
                     name="pwd"
                     placeholder="abcdefg62!"
                     title="Please, specify your password"
+                    autocomplete="new-password"
+                    minlength="4"
+                    maxlength="20"
                     required
                 />
                 <br />
                 <!-- PWD2 -->
-                <label for="pwd2">Passwort bestaetigen:</label>
+                <label for="pwd_confirm">Passwort bestaetigen:</label>
                 <input
-                    id="pwd2"
+                    id="pwd_confirm"
                     type="password"
-                    name="pwd2"
+                    name="pwd_confirm"
                     placeholder="abcdefg62!"
                     title="Please, confirm your password"
+                    autocomplete="new-password"
+                    minlength="4"
+                    maxlength="20"
                     required
                 />
                 <br />
+                <!-- Script to validate if the passwords match -->
+                <script src="scripts/passwordValidation.js"></script>
             </fieldset>
             <!-- Hidden Field to get back to the Form after Submitting -->
             <input type="hidden" name="caller" value="index.html" />
