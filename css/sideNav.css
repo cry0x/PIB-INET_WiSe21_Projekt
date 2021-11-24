@@ -6,7 +6,7 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #22212c; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -16,15 +16,16 @@
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
+    font-family: 'montserrat';
     font-size: 25px;
-    color: #818181;
+    color: #7970a9;
     display: block;
     transition: 0.3s;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-    color: #f1f1f1;
+    color: #f8f8f2;
 }
 
 /* Position and style the close button (top right corner) */
@@ -44,4 +45,38 @@
     .sidenav a {
         font-size: 18px;
     }
+}
+
+/* Buttons */
+.btn {
+    position: relative;
+    display: block;
+    margin: 30px 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 2px solid #9580ff;
+    padding: 14px 60px;
+    text-transform: uppercase;
+    text-align: center;
+    overflow: hidden;
+    transition: 1s all ease;
+}
+.btn::before {
+    background: #9580ff;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+}
+
+.btn1::before {
+    width: 0%;
+    height: 100%;
+}
+
+.btn1:hover::before {
+    width: 100%;
 }
