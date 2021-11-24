@@ -2,27 +2,7 @@
 <html>
     <head>
         <title>Form Processor</title>
-        <style>
-            body {
-                font-family: Verdana, Arial, sans-serif;
-                margin-left: 24px;
-            }
-            table {
-                border: 2px solid dimgray;
-                border-collapse: collapse;
-            }
-
-            td,
-            th {
-                padding: 4px 8px;
-                border: 1px dotted dimgray;
-            }
-
-            th {
-                background-color: dimgray;
-                color: white;
-            }
-        </style>
+        <link rel="stylesheet" href="/css/formProcessor.css" />
     </head>
     <body>
         <h1>Form Data</h1>
@@ -40,10 +20,10 @@
 
         <br />
 
-        <a id="back" href="form_register.html">Back to the Form</a>
+        <a id="back" href="formRegister.html">Back to the Form</a>
 
         <!-- Script to visualize what the server recives-->
-        <script src="scripts/jquery.min.js"></script>
+        <script src="/scripts/jquery.min.js"></script>
         <script>
             // Adds the extracted parameters to the 'Form Data' table
             $(function () {

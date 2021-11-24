@@ -4,10 +4,25 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Forum</title>
+        <link rel="stylesheet" href="/css/sideNav.css" />
+        <script src="/scripts/sideNav.js"></script>
     </head>
     <body>
-        <a href="form_register.html">Registrieren</a>
+        <!-- Side Navigation -->
+        <div id="sideNav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+                >&times;</a
+            >
+            <a href="/html/formRegister.html">Registrieren</a>
+            <a href="#">Login</a>
+            <a href="#">Benutzerprofil</a>
+            <a href="#">Impressum</a>
+        </div>
+
+        <!-- Side Navigation Button -->
+        <span onclick="openNav()">
+            <img src="/resources/images/sideNav.png" alt="Placeholder" />
+        </span>
     </body>
 </html>
-˜

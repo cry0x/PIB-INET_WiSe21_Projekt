@@ -4,12 +4,14 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="css/form_register.css" rel="stylesheet" />
+        <link href="/css/formRegister.css" rel="stylesheet" />
+        <!-- Script to validate if the passwords match -->
+        <script src="/scripts/formValidation.js"></script>
         <title>Document</title>
     </head>
     <body>
         <h2>ACCOUNTERSTELLUNG</h2>
-        <form action="formprocessor.html" method="get">
+        <form action="formProcessor.html" method="get">
             <!-- Persoenliche Informationen -->
             <fieldset>
                 <legend>PERSOENLICHE INFORMATIONEN</legend>
@@ -179,11 +181,9 @@
                     required
                 />
                 <br />
-                <!-- Script to validate if the passwords match -->
-                <script src="scripts/passwordValidation.js"></script>
             </fieldset>
             <!-- Hidden Field to get back to the Form after Submitting -->
-            <input type="hidden" name="caller" value="index.html" />
+            <input type="hidden" name="caller" value="formRegister.html" />
             <!-- CONFIRM -->
             <input type="submit" value="Register" />
         </form>
