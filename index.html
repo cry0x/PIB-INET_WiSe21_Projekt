@@ -5,23 +5,35 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Forum</title>
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="/css/index.css" />
-        <link rel="stylesheet" href="/css/sideNav.css" />
-        <script src="/scripts/sideNav.js"></script>
     </head>
-    <body>
-        <!-- Side Navigation -->
-        <div id="sideNav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-                >&times;</a
-            >
-            <a href="/html/formRegister.html" class="btn btn1">Registrieren</a>
-            <a href="/html/formLogin.html" class="btn btn1">Login</a>
-            <a href="" class="btn btn1">Benutzerprofil</a>
-            <a href="" class="btn btn1">Impressum</a>
-        </div>
 
-        <!-- Side Navigation Button -->
-        <span onclick="openNav()"> MENU </span>
+    <body>
+        <div class="background">
+            <div class="header">
+                <span class="logo">CODE.</span>
+                <div class="main_menu">
+                    <span class="main_menu_home">
+                        <a href="/html/formRegister.html">Home</a>
+                    </span>
+                    <span class="main_menu_about">About</span>
+                    <span class="main_menu_contact">Contact</span>
+                </div>
+                <div class="register_button">
+                    <div class="register_button_background"></div>
+                    <span class="register_button_text">Register</span>
+                </div>
+                <div class="login_button">
+                    <div class="login_button_background"></div>
+                    <span class="login_button_text">
+                        <a href="/html/formLogin.html">Login</a>
+                    </span>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

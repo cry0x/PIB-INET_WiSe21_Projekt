@@ -1,27 +1,148 @@
-/* 
-Palette      | Hex       | RGB             | HSL             | ANSI 256
----          | ---       | ---             | ---             | ---
-Foreground   | `#F8F8F2` | `248, 248, 242` | `60°  30% 96%`  | `231`
-Cyan         | `#80FFEA` | `128, 255, 234` | `170° 100% 75%` | `159`
-Green        | `#8AFF80` | `138, 255, 128` | `115° 100% 75%` | `157`
-Orange       | `#FFCA80` | `255, 202, 128` | `35°  100% 75%` | `223`
-Pink         | `#FF80BF` | `255, 128, 191` | `330° 100% 75%` | `218`
-Purple       | `#9580FF` | `149, 128, 255` | `250° 100% 75%` | `147`
-Red          | `#FF9580` | `255, 149, 128` | `10°  100% 75%` | `217`
-Yellow       | `#FFFF80` | `255, 255, 128` | `60°  100% 75%` | `229`
-Background   | `#22212C` | `34, 33, 44`    | `250° 15% 15%`  | `59`
-Comment      | `#7970A9` | `121, 112, 169` | `250° 25% 55%`  | `103`
-Selection    | `#454158` | `69, 65, 88`    | `250° 15% 30%`  | `60`
-*/
-
-html {
-    height: 100%;
+.background {
+    background-color: rgba(
+        222.00000196695328,
+        232.00000137090683,
+        235.0000011920929,
+        1
+    );
+    width: 1440px;
+    height: 1024px;
+    position: absolute;
 }
-
-body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    display: grid;
-    background-color: #22212c;
+.header {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 1);
+    width: 1340px;
+    height: 100px;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
+.logo {
+    color: rgba(0, 0, 0, 1);
+    width: 114px;
+    height: 47px;
+    position: absolute;
+    left: 52px;
+    top: 26px;
+    font-family: Roboto;
+    text-align: left;
+    font-size: 40px;
+    letter-spacing: 0;
+}
+.main_menu {
+    width: 378px;
+    height: 30px;
+    position: absolute;
+    left: 481px;
+    top: 35px;
+}
+.main_menu_home {
+    color: rgba(0, 0, 0, 1);
+    width: 68px;
+    height: 29px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-family: Roboto;
+    text-align: left;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+.main_menu_about {
+    color: rgba(0, 0, 0, 1);
+    width: 67px;
+    height: 29px;
+    position: absolute;
+    left: 140px;
+    top: 1px;
+    font-family: Roboto;
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+.main_menu_contact {
+    color: rgba(0, 0, 0, 1);
+    width: 88px;
+    height: 29px;
+    position: absolute;
+    left: 290px;
+    top: 1px;
+    font-family: Roboto;
+    text-align: right;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+.register_button {
+    width: 120px;
+    height: 45px;
+    position: absolute;
+    left: 1168px;
+    top: 27px;
+}
+.register_button_background {
+    background-color: rgba(
+        207.00000286102295,
+        183.00000429153442,
+        174.00000482797623,
+        1
+    );
+    width: 120px;
+    height: 45px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.register_button_text {
+    color: rgba(0, 0, 0, 1);
+    width: 95px;
+    height: 29px;
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    font-family: Roboto;
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+.login_button {
+    width: 92px;
+    height: 45px;
+    position: absolute;
+    left: 1068px;
+    top: 27px;
+}
+.login_button_background {
+    background-color: rgba(
+        174.00000482797623,
+        198.00000339746475,
+        207.00000286102295,
+        1
+    );
+    width: 92px;
+    height: 45px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.login_button_text {
+    color: rgba(0, 0, 0, 1);
+    width: 62.65945816040039px;
+    height: 29px;
+    position: absolute;
+    left: 13.92431640625px;
+    top: 8px;
+    font-family: Roboto;
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+.content {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 1);
+    width: 1340px;
+    height: 774px;
+    position: absolute;
+    left: 50px;
+    top: 200px;
 }
