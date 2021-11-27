@@ -44,7 +44,7 @@ input {
     font-size: 40px;
     letter-spacing: 0;
 }
-#userName {
+#login {
     width: 500px;
     height: 60px;
     position: absolute;
@@ -52,7 +52,7 @@ input {
     top: 67px;
     z-index: 9999;
 }
-#pwdField {
+#pwd {
     width: 500px;
     height: 60px;
     position: absolute;
