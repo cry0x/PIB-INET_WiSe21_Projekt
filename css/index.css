@@ -14,6 +14,11 @@ header {
     right: 0;
     margin: 50px auto;
 }
+button {
+    position: inherit;
+    text-align: center;
+    height: 45px;
+}
 a,
 a:hover,
 a:focus,
@@ -21,81 +26,50 @@ a:active {
     text-decoration: none;
     color: inherit;
 }
-.logo {
-    width: 148.8px;
-    height: 44.4px;
-    position: absolute;
-    left: 52px;
-    top: 26px;
+.menu,
+#logo,
+#menuHome,
+#menuAbout,
+#menuContact {
+    position: inherit;
 }
-.main_menu {
-    width: 378px;
-    height: 30px;
-    position: absolute;
+.textBasic {
+    font-family: Roboto;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+.menu {
     left: 481px;
     top: 35px;
 }
-.main_menu_home {
-    color: #000000;
-    width: 68px;
-    height: 29px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    font-family: Roboto;
+#logo {
+    width: 148.8px;
+    height: 44.4px;
+    left: 52px;
+    top: 26px;
+}
+#menuHome {
     text-align: left;
-    font-size: 25px;
-    letter-spacing: 0;
 }
-.main_menu_about {
-    color: #000000;
-    width: 67px;
-    height: 29px;
-    position: absolute;
-    left: 140px;
-    top: 1px;
-    font-family: Roboto;
+#menuAbout {
     text-align: center;
-    font-size: 25px;
-    letter-spacing: 0;
+    left: 140px;
 }
-.main_menu_contact {
-    color: #000000;
-    width: 88px;
-    height: 29px;
-    position: absolute;
-    left: 290px;
-    top: 1px;
-    font-family: Roboto;
+#menuContact {
     text-align: right;
-    font-size: 25px;
-    letter-spacing: 0;
+    left: 290px;
 }
-.register_button {
+#registerButton {
     background-color: #cfb7ae;
-    width: 120px;
-    height: 45px;
-    position: absolute;
     left: 1168px;
     top: 27px;
-    font-family: Roboto;
-    text-align: center;
-    font-size: 25px;
-    letter-spacing: 0;
 }
-.login_button {
+#loginButton {
     background-color: #aec6cf;
-    width: 92px;
-    height: 45px;
-    position: absolute;
     left: 1068px;
     top: 27px;
-    font-family: Roboto;
-    text-align: center;
-    font-size: 25px;
-    letter-spacing: 0;
 }
-.content {
+/* .content {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: #ffffff;
     width: 1340px;
@@ -103,4 +77,4 @@ a:active {
     position: absolute;
     left: 50px;
     top: 200px;
-}
+} */

@@ -17,17 +17,13 @@
         <main id="mainHolder">
             <form id="loginForm">
                 <!-- Logo -->
-                <img
-                    src="/resources/images/logo.png"
-                    alt="code."
-                    class="logo"
-                />
+                <img src="/resources/images/logo.png" alt="code." id="logo" />
                 <!-- Login -->
                 <input
                     type="text"
                     name="username"
                     id="login"
-                    class="textField"
+                    class="textField textBasic"
                     placeholder="Username"
                     autofocus
                     required
@@ -37,12 +33,14 @@
                     type="password"
                     name="password"
                     id="pwd"
-                    class="textField"
+                    class="textField textBasic"
                     placeholder="Password"
                     required
                 />
                 <!-- Submit -->
-                <button type="submit" id="submitButton">Login</button>
+                <button type="submit" id="submitButton" class="textBasic">
+                    Login
+                </button>
             </form>
             <!-- Error Field -->
             <div id="loginErrorMessageHolder">

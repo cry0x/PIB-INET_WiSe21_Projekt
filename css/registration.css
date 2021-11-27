@@ -18,6 +18,7 @@ input {
     background: transparent;
     border: none;
     border-bottom: 1px solid #000000;
+    position: absolute;
 }
 main,
 form,
@@ -28,67 +29,71 @@ form,
     left: 0;
     right: 0;
 }
-.logo {
+#logo,
+#salutationField,
+#fname,
+#lname,
+#email,
+#birth,
+#login,
+#pwd,
+#pwd_confirm {
+    position: inherit;
+}
+.textBasic {
+    font-family: Roboto;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+.textField::placeholder {
+    color: #3a3a3a;
+}
+#logo {
     width: 297.6px;
     height: 88.8px;
-    position: absolute;
     left: 425px;
     top: 0px;
 }
 #salutationField {
     width: 200px;
     height: 60px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
 }
 #fname {
     width: 375px;
     height: 60px;
-    position: absolute;
-    left: 0px;
     top: 100px;
 }
 #lname {
     width: 375px;
     height: 60px;
-    position: absolute;
     left: 425px;
     top: 100px;
 }
 #email {
     width: 800px;
     height: 60px;
-    position: absolute;
-    left: 0px;
     top: 200px;
 }
 #login {
     width: 375px;
     height: 60px;
-    position: absolute;
-    left: 0px;
     top: 300px;
 }
 #birth {
     width: 375px;
     height: 60px;
-    position: absolute;
     left: 425px;
     top: 300px;
 }
 #pwd {
     width: 375px;
     height: 60px;
-    position: absolute;
     left: 425px;
     top: 400px;
 }
 #pwd_confirm {
     width: 375px;
     height: 60px;
-    position: absolute;
-    left: 0px;
     top: 400px;
 }
 #submitButton {
@@ -96,11 +101,6 @@ form,
     width: 120px;
     height: 45px;
     margin: 500px auto;
-    font-family: Roboto;
     text-align: center;
-    font-size: 25px;
-    letter-spacing: 0;
-    color: #000000;
-    font-weight: bold;
     cursor: pointer;
 }

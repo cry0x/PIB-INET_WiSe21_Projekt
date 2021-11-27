@@ -24,6 +24,7 @@
                     </datalist>
                     <input
                         id="salutationField"
+                        class="textBasic"
                         type="text"
                         list="salutationlist"
                         name="salutation"
@@ -32,14 +33,11 @@
                     />
                 </div>
                 <!-- Logo -->
-                <img
-                    src="/resources/images/logo.png"
-                    alt="code."
-                    class="logo"
-                />
+                <img src="/resources/images/logo.png" alt="code." id="logo" />
                 <!-- Vorname -->
                 <input
                     id="fname"
+                    class="textBasic"
                     type="text"
                     name="fname"
                     placeholder="First Name"
@@ -49,6 +47,7 @@
                 <!-- Nachname -->
                 <input
                     id="lname"
+                    class="textBasic"
                     type="text"
                     name="lname"
                     placeholder="Last Name"
@@ -58,6 +57,7 @@
                 <!-- Email -->
                 <input
                     id="email"
+                    class="textBasic"
                     type="email"
                     name="email"
                     placeholder="Email"
@@ -65,10 +65,17 @@
                     required
                 />
                 <!-- Geburtsdatum -->
-                <input id="birth" type="date" name="birth" required />
+                <input
+                    id="birth"
+                    class="textBasic"
+                    type="date"
+                    name="birth"
+                    required
+                />
                 <!-- Login -->
                 <input
                     id="login"
+                    class="textBasic"
                     type="text"
                     name="login"
                     placeholder="Username"
@@ -78,6 +85,7 @@
                 <!-- PWD -->
                 <input
                     id="pwd"
+                    class="textBasic"
                     type="password"
                     name="pwd"
                     placeholder="Password"
@@ -90,6 +98,7 @@
                 <!-- Confirm PWD -->
                 <input
                     id="pwd_confirm"
+                    class="textBasic"
                     type="password"
                     name="pwd_confirm"
                     placeholder="Confirm Password"
@@ -104,7 +113,9 @@
                 <!-- Hidden Field to get back to the Form after Submitting -->
                 <input type="hidden" name="caller" value="registration.html" />
                 <!-- Submit -->
-                <button type="submit" id="submitButton">Register</button>
+                <button type="submit" id="submitButton" class="textBasic">
+                    Register
+                </button>
             </form>
         </main>
     </body>
