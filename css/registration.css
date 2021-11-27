@@ -4,18 +4,15 @@ body {
 }
 main {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: rgba(
-        222.00000196695328,
-        232.00000137090683,
-        235.0000011920929,
-        0.2
-    );
+    background-color: #ffffff;
     width: 840px;
     height: 600px;
+    margin: auto;
 }
 form {
     width: 800px;
     height: 560px;
+    margin: auto;
 }
 input {
     background: transparent;
@@ -23,91 +20,27 @@ input {
     border-bottom: 1px solid #000000;
 }
 main,
-form {
+form,
+#submitButton {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    margin: auto;
 }
-.header {
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    width: 554px;
-    height: 60px;
+.logo {
+    width: 297.6px;
+    height: 88.8px;
     position: absolute;
-    left: 250px;
+    left: 425px;
     top: 0px;
 }
-.header_background {
-    background-color: #cfb7ae;
-    width: 554px;
-    height: 60px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
-.header_text {
-    color: #000000;
-    width: 374.5946044921875px;
-    height: 38.66666793823242px;
-    position: absolute;
-    left: 83.24322509765625px;
-    top: 10.66668701171875px;
-    font-family: Roboto;
-    text-align: center;
-    font-size: 25px;
-    letter-spacing: 0;
-}
-
-#city {
-    width: 550px;
-    height: 60px;
-    position: absolute;
-    left: 250px;
-    top: 500px;
-}
-#pcode {
+#salutationField {
     width: 200px;
     height: 60px;
     position: absolute;
     left: 0px;
-    top: 500px;
-}
-#snumber {
-    width: 100px;
-    height: 60px;
-    position: absolute;
-    left: 700px;
-    top: 400px;
-}
-#street {
-    width: 650px;
-    height: 60px;
-    position: absolute;
-    left: 0px;
-    top: 400px;
-}
-#phone {
-    width: 375px;
-    height: 60px;
-    position: absolute;
-    left: 0px;
-    top: 300px;
-}
-#email {
-    width: 800px;
-    height: 60px;
-    position: absolute;
-    left: 0px;
-    top: 200px;
-}
-#lname {
-    width: 375px;
-    height: 60px;
-    position: absolute;
-    left: 425px;
-    top: 100px;
+    top: 0px;
 }
 #fname {
     width: 375px;
@@ -116,19 +49,19 @@ form {
     left: 0px;
     top: 100px;
 }
-.salutation {
-    width: 200px;
+#lname {
+    width: 375px;
     height: 60px;
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 425px;
+    top: 100px;
 }
-#salutation {
-    width: 200px;
+#email {
+    width: 800px;
     height: 60px;
     position: absolute;
     left: 0px;
-    top: 0px;
+    top: 200px;
 }
 #login {
     width: 375px;
@@ -159,12 +92,10 @@ form {
     top: 400px;
 }
 #submitButton {
-    width: 375px;
-    height: 60px;
-    position: absolute;
-    left: 182px;
-    top: 500px;
-    background-color: #aec6cf;
+    background-color: #cfb7ae;
+    width: 120px;
+    height: 45px;
+    margin: 500px auto;
     font-family: Roboto;
     text-align: center;
     font-size: 25px;

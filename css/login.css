@@ -10,12 +10,7 @@ input {
 }
 #mainHolder {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: rgba(
-        222.00000196695328,
-        232.00000137090683,
-        235.0000011920929,
-        0.2
-    );
+    background-color: #ffffff;
     width: 670px;
     height: 387px;
 }
@@ -32,17 +27,12 @@ input {
     right: 0;
     margin: auto;
 }
-.heading {
-    color: #000000;
-    width: 114px;
-    height: 47px;
+.logo {
+    width: 148.8px;
+    height: 44.4px;
     position: absolute;
     left: 193px;
     top: 0px;
-    font-family: Roboto;
-    text-align: left;
-    font-size: 40px;
-    letter-spacing: 0;
 }
 #login {
     width: 500px;
@@ -77,6 +67,7 @@ input {
     color: rgba(0, 0, 0, 1);
     font-weight: bold;
     cursor: pointer;
+    z-index: 9999;
 }
 #loginErrorMessageHolder {
     width: 400px;

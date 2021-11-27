@@ -14,17 +14,19 @@ header {
     right: 0;
     margin: 50px auto;
 }
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
 .logo {
-    color: #000000;
-    width: 114px;
-    height: 47px;
+    width: 148.8px;
+    height: 44.4px;
     position: absolute;
     left: 52px;
     top: 26px;
-    font-family: Roboto;
-    text-align: left;
-    font-size: 40px;
-    letter-spacing: 0;
 }
 .main_menu {
     width: 378px;
@@ -70,54 +72,24 @@ header {
     letter-spacing: 0;
 }
 .register_button {
+    background-color: #cfb7ae;
     width: 120px;
     height: 45px;
     position: absolute;
     left: 1168px;
     top: 27px;
-}
-.register_button_background {
-    background-color: #cfb7ae;
-    width: 120px;
-    height: 45px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
-.register_button_text {
-    color: #000000;
-    width: 95px;
-    height: 29px;
-    position: absolute;
-    left: 12px;
-    top: 8px;
     font-family: Roboto;
     text-align: center;
     font-size: 25px;
     letter-spacing: 0;
 }
 .login_button {
+    background-color: #aec6cf;
     width: 92px;
     height: 45px;
     position: absolute;
     left: 1068px;
     top: 27px;
-}
-.login_button_background {
-    background-color: #aec6cf;
-    width: 92px;
-    height: 45px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
-.login_button_text {
-    color: #000000;
-    width: 62.65945816040039px;
-    height: 29px;
-    position: absolute;
-    left: 13.92431640625px;
-    top: 8px;
     font-family: Roboto;
     text-align: center;
     font-size: 25px;

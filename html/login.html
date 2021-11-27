@@ -16,7 +16,13 @@
     <body>
         <main id="mainHolder">
             <form id="loginForm">
-                <span class="heading">CODE.</span>
+                <!-- Logo -->
+                <img
+                    src="/resources/images/logo.png"
+                    alt="code."
+                    class="logo"
+                />
+                <!-- Login -->
                 <input
                     type="text"
                     name="username"
@@ -26,6 +32,7 @@
                     autofocus
                     required
                 />
+                <!-- Login -->
                 <input
                     type="password"
                     name="password"
@@ -34,8 +41,10 @@
                     placeholder="Password"
                     required
                 />
-                <input type="submit" value="Login" id="submitButton" />
+                <!-- Submit -->
+                <button type="submit" id="submitButton">Login</button>
             </form>
+            <!-- Error Field -->
             <div id="loginErrorMessageHolder">
                 <p id="loginErrorMessage">
                     Invalid username
