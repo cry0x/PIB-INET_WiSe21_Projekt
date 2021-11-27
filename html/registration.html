@@ -4,46 +4,46 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="/css/formRegister.css" rel="stylesheet" />
-        <!-- Script to validate if the passwords match -->
-        <script src="/scripts/formValidation.js"></script>
-        <title>Document</title>
+        <title>Registration Page</title>
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/css/registration.css" />
     </head>
+
     <body>
-        <h2>ACCOUNTERSTELLUNG</h2>
-        <form action="formProcessor.html" method="get">
-            <!-- Persoenliche Informationen -->
-            <fieldset>
-                <legend>PERSOENLICHE INFORMATIONEN</legend>
+        <main id="mainHolder">
+            <form action="formProcessor.html" method="get">
                 <!-- Anrede -->
-                <datalist id="salutationlist">
-                    <option value="Mr" />
-                    <option value="Ms." />
-                    <option value="Dr." />
-                </datalist>
-                <label for="salutation">Anrede</label>
-                <input
-                    id="salutation"
-                    type="text"
-                    list="salutationlist"
-                    name="salutation"
-                    autofocus
-                />
-                <br />
+                <div class="salutation">
+                    <datalist id="salutationlist">
+                        <option value="Mr" />
+                        <option value="Ms." />
+                        <option value="Dr." />
+                    </datalist>
+                    <input
+                        id="salutation"
+                        type="text"
+                        list="salutationlist"
+                        name="salutation"
+                        autofocus
+                    />
+                </div>
+                <div class="header">
+                    <div class="header_background"></div>
+                    <span class="header_text">Accounterstellung</span>
+                </div>
                 <!-- Vorname -->
-                <label for="fname">Vorname:</label>
                 <input
                     id="fname"
                     type="text"
                     name="fname"
                     placeholder="Max"
                     maxlength="20"
-                    autofocus
                     required
                 />
-                <br />
                 <!-- Nachname -->
-                <label for="lname">Nachname:</label>
                 <input
                     id="lname"
                     type="text"
@@ -52,9 +52,7 @@
                     title="Please, specify the last name"
                     required
                 />
-                <br />
                 <!-- Email -->
-                <label for="email">Email:</label>
                 <input
                     id="email"
                     type="email"
@@ -63,9 +61,7 @@
                     title="Please, specify your email adress"
                     required
                 />
-                <br />
                 <!-- Telefon -->
-                <label for="phone">Telefon:</label>
                 <input
                     id="phone"
                     type="tel"
@@ -73,17 +69,9 @@
                     placeholder="0152123456"
                     title="Please, specify your phone number"
                 />
-                <br />
                 <!-- Geburtsdatum -->
-                <label for="birth">Geburtsdatum:</label>
                 <input id="birth" type="date" name="birth" required />
-                <br />
-            </fieldset>
-            <!-- Anschrift -->
-            <fieldset>
-                <legend>ANSCHRIFT</legend>
                 <!-- Strasse -->
-                <label for="street">Strasse</label>
                 <input
                     id="street"
                     type="text"
@@ -92,9 +80,7 @@
                     maxlength="20"
                     required
                 />
-                <br />
                 <!-- Hausnummer -->
-                <label for="snumber">Hausnummer</label>
                 <input
                     id="snumber"
                     type="number"
@@ -104,9 +90,7 @@
                     max="999"
                     required
                 />
-                <br />
                 <!-- PLZ -->
-                <label for="pcode">Postleitzahl:</label>
                 <input
                     id="pcode"
                     type="number"
@@ -116,9 +100,7 @@
                     max="99999"
                     required
                 />
-                <br />
                 <!-- Stadt -->
-                <label for="city">Stadt:</label>
                 <input
                     id="city"
                     type="text"
@@ -127,23 +109,16 @@
                     title="Please, specify the city"
                     required
                 />
-                <br />
                 <!-- Land -->
-                <label for="country">Land:</label>
-                <input
+                <!-- <input
                     id="country"
                     type="text"
                     name="country"
                     placeholder="Musterland"
                     title="Please, specify the country"
                     required
-                />
-                <br />
-            </fieldset>
-            <fieldset>
-                <legend>ACCOUNTDATEN</legend>
+                /> -->
                 <!-- Login -->
-                <label for="login">Login Name:</label>
                 <input
                     id="login"
                     type="text"
@@ -152,9 +127,7 @@
                     title="Please, specify your login"
                     required
                 />
-                <br />
                 <!-- PWD -->
-                <label for="pwd">Passwort:</label>
                 <input
                     id="pwd"
                     type="password"
@@ -166,9 +139,7 @@
                     maxlength="20"
                     required
                 />
-                <br />
-                <!-- PWD2 -->
-                <label for="pwd_confirm">Passwort bestaetigen:</label>
+                <!-- Confirm PWD -->
                 <input
                     id="pwd_confirm"
                     type="password"
@@ -180,12 +151,13 @@
                     maxlength="20"
                     required
                 />
-                <br />
-            </fieldset>
-            <!-- Hidden Field to get back to the Form after Submitting -->
-            <input type="hidden" name="caller" value="formRegister.html" />
-            <!-- CONFIRM -->
-            <input type="submit" value="Register" />
-        </form>
+                <!-- Script to validate if the passwords match -->
+                <script src="/scripts/formValidation.js"></script>
+                <!-- Hidden Field to get back to the Form after Submitting -->
+                <input type="hidden" name="caller" value="registration.html" />
+                <!-- Submit -->
+                <input type="submit" value="Login" id="submitButton" />
+            </form>
+        </main>
     </body>
 </html>

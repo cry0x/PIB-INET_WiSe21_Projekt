@@ -1,0 +1,105 @@
+body {
+    background-color: #dee8eb;
+    /* position: absolute; */
+    display: flex;
+}
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+#mainHolder {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: rgba(
+        222.00000196695328,
+        232.00000137090683,
+        235.0000011920929,
+        0.2
+    );
+    width: 670px;
+    height: 387px;
+}
+#loginForm {
+    width: 500px;
+    height: 287px;
+}
+#mainHolder,
+#loginForm {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.heading {
+    color: #000000;
+    width: 114px;
+    height: 47px;
+    position: absolute;
+    left: 193px;
+    top: 0px;
+    font-family: Roboto;
+    text-align: left;
+    font-size: 40px;
+    letter-spacing: 0;
+}
+#userName {
+    width: 500px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 67px;
+    z-index: 9999;
+}
+#pwdField {
+    width: 500px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 147px;
+    z-index: 9999;
+}
+.textField::placeholder {
+    color: #3a3a3a;
+}
+#submitButton {
+    width: 92px;
+    height: 45px;
+    position: absolute;
+    left: 205px;
+    top: 242px;
+    background-color: #aec6cf;
+    font-family: Roboto;
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 1);
+    font-weight: bold;
+    cursor: pointer;
+}
+#loginErrorMessageHolder {
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding-top: 266px;
+    padding-left: 285px;
+}
+#loginErrorMessage {
+    width: 23%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+    border: 1px solid #000000;
+    background-color: #cfb7ae;
+    opacity: 0;
+}
+#errorMessageSecondLine {
+    display: block;
+}

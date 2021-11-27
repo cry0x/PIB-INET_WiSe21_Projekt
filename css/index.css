@@ -1,25 +1,21 @@
-.background {
-    background-color: rgba(
-        222.00000196695328,
-        232.00000137090683,
-        235.0000011920929,
-        1
-    );
-    width: 1440px;
-    height: 1024px;
-    position: absolute;
+body {
+    background-color: #dee8eb;
+    display: flex;
 }
-.header {
+header {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, 1);
+    background-color: #ffffff;
     width: 1340px;
     height: 100px;
     position: absolute;
-    left: 50px;
-    top: 50px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 50px auto;
 }
 .logo {
-    color: rgba(0, 0, 0, 1);
+    color: #000000;
     width: 114px;
     height: 47px;
     position: absolute;
@@ -38,7 +34,7 @@
     top: 35px;
 }
 .main_menu_home {
-    color: rgba(0, 0, 0, 1);
+    color: #000000;
     width: 68px;
     height: 29px;
     position: absolute;
@@ -50,7 +46,7 @@
     letter-spacing: 0;
 }
 .main_menu_about {
-    color: rgba(0, 0, 0, 1);
+    color: #000000;
     width: 67px;
     height: 29px;
     position: absolute;
@@ -62,7 +58,7 @@
     letter-spacing: 0;
 }
 .main_menu_contact {
-    color: rgba(0, 0, 0, 1);
+    color: #000000;
     width: 88px;
     height: 29px;
     position: absolute;
@@ -81,12 +77,7 @@
     top: 27px;
 }
 .register_button_background {
-    background-color: rgba(
-        207.00000286102295,
-        183.00000429153442,
-        174.00000482797623,
-        1
-    );
+    background-color: #cfb7ae;
     width: 120px;
     height: 45px;
     position: absolute;
@@ -94,7 +85,7 @@
     top: 0px;
 }
 .register_button_text {
-    color: rgba(0, 0, 0, 1);
+    color: #000000;
     width: 95px;
     height: 29px;
     position: absolute;
@@ -113,12 +104,7 @@
     top: 27px;
 }
 .login_button_background {
-    background-color: rgba(
-        174.00000482797623,
-        198.00000339746475,
-        207.00000286102295,
-        1
-    );
+    background-color: #aec6cf;
     width: 92px;
     height: 45px;
     position: absolute;
@@ -126,7 +112,7 @@
     top: 0px;
 }
 .login_button_text {
-    color: rgba(0, 0, 0, 1);
+    color: #000000;
     width: 62.65945816040039px;
     height: 29px;
     position: absolute;
@@ -139,7 +125,7 @@
 }
 .content {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, 1);
+    background-color: #ffffff;
     width: 1340px;
     height: 774px;
     position: absolute;

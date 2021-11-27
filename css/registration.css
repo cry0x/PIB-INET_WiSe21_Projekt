@@ -1,0 +1,178 @@
+body {
+    background-color: #dee8eb;
+    display: flex;
+}
+main {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: rgba(
+        222.00000196695328,
+        232.00000137090683,
+        235.0000011920929,
+        0.2
+    );
+    width: 840px;
+    height: 900px;
+}
+form {
+    width: 800px;
+    height: 860px;
+}
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+main,
+form {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.header {
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    width: 554px;
+    height: 60px;
+    position: absolute;
+    left: 250px;
+    top: 0px;
+}
+.header_background {
+    background-color: #cfb7ae;
+    width: 554px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.header_text {
+    color: #000000;
+    width: 374.5946044921875px;
+    height: 38.66666793823242px;
+    position: absolute;
+    left: 83.24322509765625px;
+    top: 10.66668701171875px;
+    font-family: Roboto;
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+
+#city {
+    width: 550px;
+    height: 60px;
+    position: absolute;
+    left: 250px;
+    top: 500px;
+}
+#pcode {
+    width: 200px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 500px;
+}
+#snumber {
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    left: 700px;
+    top: 400px;
+}
+#street {
+    width: 650px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 400px;
+}
+#phone {
+    width: 375px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 300px;
+}
+#birth {
+    width: 375px;
+    height: 60px;
+    position: absolute;
+    left: 425px;
+    top: 300px;
+}
+#email {
+    width: 800px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 200px;
+}
+#lname {
+    width: 375px;
+    height: 60px;
+    position: absolute;
+    left: 425px;
+    top: 100px;
+}
+#fname {
+    width: 375px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 100px;
+}
+.salutation {
+    width: 200px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+#salutation {
+    width: 200px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+#login {
+    width: 375px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 600px;
+}
+#pwd {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    width: 375px;
+    height: 60px;
+    position: absolute;
+    left: 425px;
+    top: 600px;
+}
+#pwd_confirm {
+    width: 375px;
+    height: 60px;
+    position: absolute;
+    left: 425px;
+    top: 700px;
+}
+#submitButton {
+    width: 375px;
+    height: 60px;
+    position: absolute;
+    left: 182px;
+    top: 800px;
+    background-color: #aec6cf;
+    font-family: Roboto;
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 0;
+    color: #000000;
+    font-weight: bold;
+    cursor: pointer;
+}
