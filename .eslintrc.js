@@ -3,7 +3,7 @@ module.exports = {
         browser: true,
         es2021: true,
     },
-    extends: ['airbnb-base'],
+    extends: ['airbnb-base', 'prettier'],
     parserOptions: {
         ecmaVersion: 13,
         sourceType: 'module',
@@ -13,4 +13,4 @@ module.exports = {
     rules: {
         indent: ['error', 4],
     },
-};
+}
