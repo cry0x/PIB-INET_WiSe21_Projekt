@@ -8,13 +8,6 @@ header {
 button {
     height: 45px;
 }
-a,
-a:hover,
-a:focus,
-a:active {
-    text-decoration: none;
-    color: inherit;
-}
 #loginButton:hover,
 #registerButton:hover {
     outline: none;
