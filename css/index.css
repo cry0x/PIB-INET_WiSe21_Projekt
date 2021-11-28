@@ -53,12 +53,13 @@ button {
     left: 1168px;
     top: 27px;
 }
-/* .content {
+.mainWindow {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: #ffffff;
     width: 1340px;
-    height: 774px;
-    position: absolute;
+    height: 1070px;
+    position: inherit;
     left: 50px;
     top: 200px;
-} */
+    margin: 200px auto;
+}
