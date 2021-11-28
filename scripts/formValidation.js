@@ -1,13 +1,13 @@
-var pwd = document.getElementById('pwd'),
-    pwd_confirm = document.getElementById('pwd_confirm');
+const pwd = document.getElementById('pwd');
+const pwdConfirm = document.getElementById('pwd_confirm');
 
 function validatePassword() {
-    if (pwd.value != pwd_confirm.value) {
-        pwd_confirm.setCustomValidity("Passwords Don't Match");
+    if (pwd.value !== pwdConfirm.value) {
+        pwdConfirm.setCustomValidity("Passwords Don't Match");
     } else {
-        pwd_confirm.setCustomValidity('');
+        pwdConfirm.setCustomValidity('');
     }
 }
 
 pwd.onchange = validatePassword;
-pwd_confirm.onkeyup = validatePassword;
+pwdConfirm.onkeyup = validatePassword;

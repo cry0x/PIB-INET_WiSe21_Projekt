@@ -1,22 +1,11 @@
-body {
-    background-color: #dee8eb;
-    display: flex;
-}
 header {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: #ffffff;
     width: 1340px;
     height: 100px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     margin: 50px auto;
 }
 button {
-    position: inherit;
-    text-align: center;
     height: 45px;
 }
 a,
@@ -26,17 +15,18 @@ a:active {
     text-decoration: none;
     color: inherit;
 }
+#loginButton:hover,
+#registerButton:hover {
+    outline: none;
+    color: #000000;
+    background-color: #64d79d;
+}
 .menu,
 #logo,
 #menuHome,
 #menuAbout,
 #menuContact {
     position: inherit;
-}
-.textBasic {
-    font-family: Roboto;
-    font-size: 25px;
-    letter-spacing: 0;
 }
 .menu {
     left: 481px;
@@ -59,14 +49,15 @@ a:active {
     text-align: right;
     left: 290px;
 }
-#registerButton {
-    background-color: #cfb7ae;
-    left: 1168px;
+#loginButton {
+    color: #000000;
+    background-color: #64d7d6;
+    left: 1068px;
     top: 27px;
 }
-#loginButton {
-    background-color: #aec6cf;
-    left: 1068px;
+#registerButton {
+    background-color: #649fd7;
+    left: 1168px;
     top: 27px;
 }
 /* .content {

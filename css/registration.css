@@ -1,33 +1,19 @@
-body {
-    background-color: #dee8eb;
-    display: flex;
-}
+/* DEFINE SELECTORS */
 main {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: #ffffff;
     width: 840px;
     height: 600px;
-    margin: auto;
 }
 form {
     width: 800px;
     height: 560px;
-    margin: auto;
 }
-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #000000;
-    position: absolute;
-}
-main,
-form,
-#submitButton {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+button {
+    background-color: #649fd7;
+    width: 140px;
+    height: 45px;
+    margin: 500px auto;
 }
 #logo,
 #salutationField,
@@ -39,14 +25,6 @@ form,
 #pwd,
 #pwd_confirm {
     position: inherit;
-}
-.textBasic {
-    font-family: Roboto;
-    font-size: 25px;
-    letter-spacing: 0;
-}
-.textField::placeholder {
-    color: #3a3a3a;
 }
 #logo {
     width: 297.6px;
@@ -88,19 +66,11 @@ form,
 #pwd {
     width: 375px;
     height: 60px;
-    left: 425px;
     top: 400px;
 }
 #pwd_confirm {
     width: 375px;
     height: 60px;
+    left: 425px;
     top: 400px;
-}
-#submitButton {
-    background-color: #cfb7ae;
-    width: 120px;
-    height: 45px;
-    margin: 500px auto;
-    text-align: center;
-    cursor: pointer;
 }

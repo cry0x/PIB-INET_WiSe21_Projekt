@@ -1,42 +1,19 @@
-body {
-    background-color: #dee8eb;
-    /* position: absolute; */
-    display: flex;
+/* REMOVE BROWSER BASE OUTLINES */
+textarea,
+select,
+input,
+button {
+    outline: none;
 }
-main,
-form {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #000000;
-}
+/* DEFINE SELECTORS */
 button {
     width: 92px;
     height: 45px;
     left: 205px;
     top: 242px;
-    background-color: #aec6cf;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
+    background-color: #64d7d6;
     z-index: 9999;
 }
-.textBasic {
-    font-family: Roboto;
-    font-size: 25px;
-    letter-spacing: 0;
-}
-.textField::placeholder {
-    color: #3a3a3a;
-}
-button,
 #loginForm,
 #logo,
 #login,
