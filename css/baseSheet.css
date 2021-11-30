@@ -1,3 +1,4 @@
+@import url(/css/colors.css);
 /* REMOVE BROWSER BASE OUTLINES */
 textarea,
 select,
@@ -21,7 +22,7 @@ form {
     margin: auto;
 }
 body {
-    background-color: #8de1e1;
+    background-color: var(--background);
     display: flex;
 }
 button {
@@ -32,11 +33,11 @@ button {
 }
 button:hover {
     outline: none;
-    background-color: #64d79d;
+    background-color: var(--green);
     color: #000000;
 }
 button:active {
-    background-color: #64d79d;
+    background-color: var(--green);
     box-shadow: 2px 2px #666;
     transform: translateY(4px);
 }
@@ -47,7 +48,7 @@ input {
     position: absolute;
 }
 input:focus {
-    border-bottom: 0.125rem solid #64d7d6;
+    border-bottom: 0.125rem solid var(--cyan);
 }
 a,
 a:hover,
@@ -59,7 +60,7 @@ a:active {
 a:hover {
     background: transparent;
     border: none;
-    border-bottom: 0.125rem solid #64d7d6;
+    border-bottom: 0.125rem solid var(--cyan);
 }
 .textBasic {
     font-family: 'Cousine', monospace;
@@ -67,5 +68,5 @@ a:hover {
     letter-spacing: 0;
 }
 .textField::placeholder {
-    color: #3a3a3a;
+    color: var(--placeholder);
 }

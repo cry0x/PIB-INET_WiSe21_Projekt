@@ -1,7 +1,7 @@
 @import url(/css/baseSheet.css);
 header {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #ffffff;
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: var(--foreground);
     width: 1340px;
     height: 100px;
     margin: 50px auto;
@@ -17,7 +17,7 @@ button {
 #registerButton:hover {
     outline: none;
     color: #000000;
-    background-color: #64d79d;
+    background-color: var(--green);
 }
 nav,
 #logo {
@@ -35,18 +35,18 @@ nav {
 }
 #loginButton {
     color: #000000;
-    background-color: #64d7d6;
+    background-color: var(--cyan);
     left: 1068px;
     top: 27px;
 }
 #registerButton {
-    background-color: #649fd7;
+    background-color: var(--blue);
     left: 1168px;
     top: 27px;
 }
 #content {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #ffffff;
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: var(--foreground);
     width: 1340px;
     height: 1070px;
     position: inherit;
