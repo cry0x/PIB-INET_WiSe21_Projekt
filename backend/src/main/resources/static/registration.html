@@ -11,7 +11,7 @@
 
     <body>
         <main id="mainHolder">
-            <form action="formProcessor.html" method="get">
+            <form action="api/v1/users" method="post">
                 <!-- Anrede -->
                 <div class="salutation">
                     <datalist id="salutationlist">
@@ -33,20 +33,20 @@
                 <img src="/images/logo.png" alt="code." id="logo" />
                 <!-- Vorname -->
                 <input
-                    id="fname"
+                    id="firstname"
                     class="textBasic"
                     type="text"
-                    name="fname"
+                    name="firstname"
                     placeholder="First Name"
                     maxlength="20"
                     required
                 />
                 <!-- Nachname -->
                 <input
-                    id="lname"
+                    id="lastname"
                     class="textBasic"
                     type="text"
-                    name="lname"
+                    name="lastname"
                     placeholder="Last Name"
                     title="Please, specify the last name"
                     required
@@ -63,20 +63,20 @@
                 />
                 <!-- Login -->
                 <input
-                    id="login"
+                    id="login_name"
                     class="textBasic"
                     type="text"
-                    name="login"
+                    name="login_name"
                     placeholder="Username"
                     title="Please, specify your login"
                     required
                 />
                 <!-- Geburtsdatum -->
                 <input
-                    id="birth"
+                    id="birthdate"
                     class="textBasic"
                     type="date"
-                    name="birth"
+                    name="birthdate"
                     required
                 />
                 <!-- PWD -->
