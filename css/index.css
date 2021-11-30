@@ -6,6 +6,10 @@ header {
     height: 100px;
     margin: 50px auto;
 }
+li {
+    display: inline;
+    margin-right: 50px;
+}
 button {
     height: 45px;
 }
@@ -16,32 +20,18 @@ button {
     background-color: #64d79d;
 }
 .menu,
-#logo,
-#menuHome,
-#menuAbout,
-#menuContact {
+#logo {
     position: inherit;
 }
 .menu {
-    left: 481px;
-    top: 35px;
+    left: 400px;
+    top: 10px;
 }
 #logo {
     width: 148.8px;
     height: 44.4px;
     left: 52px;
     top: 26px;
-}
-#menuHome {
-    text-align: left;
-}
-#menuAbout {
-    text-align: center;
-    left: 140px;
-}
-#menuContact {
-    text-align: right;
-    left: 290px;
 }
 #loginButton {
     color: #000000;
