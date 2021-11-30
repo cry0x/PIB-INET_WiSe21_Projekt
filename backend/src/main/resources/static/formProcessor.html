@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Processor</title>
+        <link rel="stylesheet" href="/css/formProcessor.css" />
+    </head>
+    <body>
+        <h1>Form Data</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filled up by JavaScript -->
+            </tbody>
+        </table>
+
+        <br />
+
+        <a id="back" href="/html/registration.html">Back to the Form</a>
+
+        <!-- Script to visualize what the server recives-->
+        <script src="/scripts/jquery.min.js"></script>
+        <script>
+            // Adds the extracted parameters to the 'Form Data' table
+            $(function () {
+                var params = getFormParameters();
+                for (var parName in params) {
+                    var row = $('<tr>')
+                        .append($('<td>').html(parName))
+                        .append($('<td>').html(params[parName]));
+                    $('tbody').append(row);
+                }
+                $('#back').attr('href', getFormParameters()['caller']);
+            });
+
+            // Handles the extraction of form parameters
+            // A short jQuery code snippet turns the form parameter
+            // key-value pairs into an HTML table.
+            function getFormParameters() {
+                var uri = window.location.search;
+                var result = {};
+                if (uri.indexOf('?') === -1) {
+                    return {};
+                }
+                var query = uri.slice(1);
+                var params = query.split('&');
+                var i = 0;
+                while (i < params.length) {
+                    var parameter = params[i].split('=');
+                    result[parameter[0]] = parameter[1];
+                    i++;
+                }
+                return result;
+            }
+        </script>
+    </body>
+</html>

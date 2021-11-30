@@ -1,0 +1,76 @@
+/* DEFINE SELECTORS */
+main {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    width: 840px;
+    height: 600px;
+}
+form {
+    width: 800px;
+    height: 560px;
+}
+button {
+    background-color: #649fd7;
+    width: 140px;
+    height: 45px;
+    margin: 500px auto;
+}
+#logo,
+#salutationField,
+#fname,
+#lname,
+#email,
+#birth,
+#login,
+#pwd,
+#pwd_confirm {
+    position: inherit;
+}
+#logo {
+    width: 297.6px;
+    height: 88.8px;
+    left: 425px;
+    top: 0px;
+}
+#salutationField {
+    width: 200px;
+    height: 60px;
+}
+#fname {
+    width: 375px;
+    height: 60px;
+    top: 100px;
+}
+#lname {
+    width: 375px;
+    height: 60px;
+    left: 425px;
+    top: 100px;
+}
+#email {
+    width: 800px;
+    height: 60px;
+    top: 200px;
+}
+#login {
+    width: 375px;
+    height: 60px;
+    top: 300px;
+}
+#birth {
+    width: 375px;
+    height: 60px;
+    left: 425px;
+    top: 300px;
+}
+#pwd {
+    width: 375px;
+    height: 60px;
+    top: 400px;
+}
+#pwd_confirm {
+    width: 375px;
+    height: 60px;
+    left: 425px;
+    top: 400px;
+}

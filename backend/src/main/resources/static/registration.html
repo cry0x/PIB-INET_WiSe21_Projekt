@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Registration Page</title>
+        <link rel="stylesheet" href="/css/baseSheet.css" />
+        <link rel="stylesheet" href="/css/registration.css" />
+    </head>
+
+    <body>
+        <main id="mainHolder">
+            <form action="formProcessor.html" method="get">
+                <!-- Anrede -->
+                <div class="salutation">
+                    <datalist id="salutationlist">
+                        <option value="Mr" />
+                        <option value="Ms." />
+                        <option value="Dr." />
+                    </datalist>
+                    <input
+                        id="salutationField"
+                        class="textBasic"
+                        type="text"
+                        list="salutationlist"
+                        name="salutation"
+                        placeholder="Salutation"
+                        autofocus
+                    />
+                </div>
+                <!-- Logo -->
+                <img src="/images/logo.png" alt="code." id="logo" />
+                <!-- Vorname -->
+                <input
+                    id="fname"
+                    class="textBasic"
+                    type="text"
+                    name="fname"
+                    placeholder="First Name"
+                    maxlength="20"
+                    required
+                />
+                <!-- Nachname -->
+                <input
+                    id="lname"
+                    class="textBasic"
+                    type="text"
+                    name="lname"
+                    placeholder="Last Name"
+                    title="Please, specify the last name"
+                    required
+                />
+                <!-- Email -->
+                <input
+                    id="email"
+                    class="textBasic"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    title="Please, specify your email adress"
+                    required
+                />
+                <!-- Login -->
+                <input
+                    id="login"
+                    class="textBasic"
+                    type="text"
+                    name="login"
+                    placeholder="Username"
+                    title="Please, specify your login"
+                    required
+                />
+                <!-- Geburtsdatum -->
+                <input
+                    id="birth"
+                    class="textBasic"
+                    type="date"
+                    name="birth"
+                    required
+                />
+                <!-- PWD -->
+                <input
+                    id="pwd"
+                    class="textBasic"
+                    type="password"
+                    name="pwd"
+                    placeholder="Password"
+                    title="Please, specify your password"
+                    autocomplete="new-password"
+                    minlength="4"
+                    maxlength="20"
+                    required
+                />
+                <!-- Confirm PWD -->
+                <input
+                    id="pwd_confirm"
+                    class="textBasic"
+                    type="password"
+                    name="pwd_confirm"
+                    placeholder="Confirm Password"
+                    title="Please, confirm your password"
+                    autocomplete="new-password"
+                    minlength="4"
+                    maxlength="20"
+                    required
+                />
+                <!-- Script to validate if the passwords match -->
+                <script src="/scripts/formValidation.js"></script>
+                <!-- Hidden Field to get back to the Form after Submitting -->
+                <input type="hidden" name="caller" value="registration.html" />
+                <!-- Submit -->
+                <button type="submit" id="submitButton" class="textBasic">
+                    Register
+                </button>
+            </form>
+        </main>
+    </body>
+</html>

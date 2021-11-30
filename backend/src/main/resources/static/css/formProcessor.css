@@ -1,0 +1,19 @@
+body {
+    font-family: Verdana, Arial, sans-serif;
+    margin-left: 24px;
+}
+table {
+    border: 2px solid dimgray;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 4px 8px;
+    border: 1px dotted dimgray;
+}
+
+th {
+    background-color: dimgray;
+    color: white;
+}

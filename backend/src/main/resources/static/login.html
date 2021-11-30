@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login Screen</title>
+        <link rel="stylesheet" href="/css/baseSheet.css" />
+        <link rel="stylesheet" href="/css/login.css" />
+    </head>
+
+    <body>
+        <main id="mainHolder">
+            <form id="loginForm" action="http://localhost:8080/login" method="post">
+                <!-- Logo -->
+                <img src="/images/logo.png" alt="code." id="logo" />
+                <!-- Login -->
+                <input
+                    type="text"
+                    name="username"
+                    id="login"
+                    class="textField textBasic"
+                    placeholder="Username"
+                    autofocus
+                    required
+                />
+                <!-- Login -->
+                <input
+                    type="password"
+                    name="password"
+                    id="pwd"
+                    class="textField textBasic"
+                    placeholder="Password"
+                    required
+                />
+                <!-- Submit -->
+                <button type="submit" id="submitButton" class="textBasic">
+                    Login
+                </button>
+            </form>
+            <!-- Error Field -->
+            <div id="loginErrorMessageHolder">
+                <p id="loginErrorMessage">
+                    Invalid username
+                    <span id="errorMessageSecondLine">and/or password</span>
+                </p>
+            </div>
+        </main>
+    </body>
+</html>

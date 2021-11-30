@@ -1,0 +1,71 @@
+/* REMOVE BROWSER BASE OUTLINES */
+textarea,
+select,
+input,
+button {
+    outline: none;
+}
+/* DEFINE SELECTORS */
+main,
+header,
+form,
+button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+main,
+form {
+    margin: auto;
+}
+body {
+    background-color: #8de1e1;
+    display: flex;
+}
+button {
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+button:hover {
+    outline: none;
+    background-color: #64d79d;
+    color: #000000;
+}
+button:active {
+    background-color: #64d79d;
+    box-shadow: 2px 2px #666;
+    transform: translateY(4px);
+}
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 0.1rem solid #000000;
+    position: absolute;
+}
+input:focus {
+    border-bottom: 0.125rem solid #64d7d6;
+}
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    background: transparent;
+    border: none;
+    border-bottom: 0.125rem solid #64d7d6;
+}
+.textBasic {
+    font-family: 'Cousine', monospace;
+    font-size: 25px;
+    letter-spacing: 0;
+}
+.textField::placeholder {
+    color: #3a3a3a;
+}
