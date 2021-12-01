@@ -1,56 +1,47 @@
+/* IMPORT CUSTOMIZED BASE CONFIGURATION OF MULTIPLE ELEMENTS */
 @import url(/css/baseSheet.css);
+
+/* DECLARATION OF FLEX PARENT */
 header {
-    box-shadow: 0px 4px 4px var(--shadow);
     background-color: var(--foreground);
-    width: 1340px;
-    height: 100px;
-    margin: 50px auto;
+    box-shadow: 0px 4px 4px var(--shadow);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+/* MAKE THE LIST INLINE */
 li {
     display: inline;
-    margin-right: 50px;
+    margin-right: 2rem;
 }
-button {
-    height: 45px;
+
+/* DEFINE LOGO SIZE */
+#logo {
+    width: 148.8px;
+    height: 44.4px;
 }
+
+/* SET CUSTOM COLORS FOR THE BUTTONS */
+#loginButton {
+    background-color: var(--cyan);
+}
+#registerButton {
+    background-color: var(--blue);
+}
+
+/* HOVER ANIMATION FOR BUTTONS */
 #loginButton:hover,
 #registerButton:hover {
     outline: none;
     color: #000000;
     background-color: var(--green);
 }
-nav,
-#logo {
-    position: inherit;
-}
-nav {
-    left: 400px;
-    top: 10px;
-}
-#logo {
-    width: 148.8px;
-    height: 44.4px;
-    left: 52px;
-    top: 26px;
-}
-#loginButton {
-    color: #000000;
-    background-color: var(--cyan);
-    left: 1068px;
-    top: 27px;
-}
-#registerButton {
-    background-color: var(--blue);
-    left: 1168px;
-    top: 27px;
-}
+
+/* MAIN CONTENT COMES HERE */
 #content {
-    box-shadow: 0px 4px 4px var(--shadow);
     background-color: var(--foreground);
-    width: 1340px;
-    height: 1070px;
-    position: inherit;
-    left: 50px;
-    top: 200px;
-    margin: 200px auto;
+    box-shadow: 0px 4px 4px var(--shadow);
+    margin-top: 2rem;
 }
