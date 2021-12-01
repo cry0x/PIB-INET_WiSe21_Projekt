@@ -3,75 +3,58 @@
 main {
     box-shadow: 0px 4px 4px var(--shadow);
     background-color: var(--foreground);
-    width: 840px;
-    height: 600px;
+    min-width: 50rem;
+    max-width: 60rem;
 }
 form {
-    width: 800px;
-    height: 560px;
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: var(--foreground);
+    display: grid;
+    padding: 3rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 6fr;
+    grid-template-areas:
+        'salutation logo'
+        'fName lName'
+        'email email'
+        'login birth'
+        'pwd pwdConfirm'
+        'register register';
+    gap: 2rem;
 }
 button {
+    grid-area: register;
     background-color: var(--blue);
-    width: 140px;
-    height: 45px;
-    margin: 500px auto;
-}
-#logo,
-#salutationField,
-#fname,
-#lname,
-#email,
-#birth,
-#login,
-#pwd,
-#pwd_confirm {
-    position: inherit;
 }
 #logo {
+    grid-area: logo;
+    justify-self: end;
     width: 297.6px;
     height: 88.8px;
-    left: 425px;
-    top: 0px;
 }
 #salutationField {
-    width: 200px;
-    height: 60px;
+    grid-area: salutation;
+    /* doesn't work for some reason? */
+    align-self: end;
 }
-#fname {
-    width: 375px;
-    height: 60px;
-    top: 100px;
+#fName {
+    grid-area: fName;
 }
-#lname {
-    width: 375px;
-    height: 60px;
-    left: 425px;
-    top: 100px;
+#lName {
+    grid-area: lName;
 }
 #email {
-    width: 800px;
-    height: 60px;
-    top: 200px;
+    grid-area: email;
 }
 #login {
-    width: 375px;
-    height: 60px;
-    top: 300px;
+    grid-area: login;
 }
 #birth {
-    width: 375px;
-    height: 60px;
-    left: 425px;
-    top: 300px;
+    grid-area: birth;
 }
 #pwd {
-    width: 375px;
-    height: 60px;
-    top: 400px;
+    grid-area: pwd;
 }
-#pwd_confirm {
-    width: 375px;
-    height: 60px;
-    left: 425px;
-    top: 400px;
+#pwdConfirm {
+    grid-area: pwdConfirm;
 }
