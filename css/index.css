@@ -12,27 +12,21 @@ header {
     align-items: center;
 }
 
-/* MAKE THE LIST INLINE */
+/* DEFINITION OF FLEX CHILDREN */
 li {
     display: inline;
     margin-right: 2rem;
 }
-
-/* DEFINE LOGO SIZE */
 #logo {
     width: 148.8px;
     height: 44.4px;
 }
-
-/* SET CUSTOM COLORS FOR THE BUTTONS */
 #loginButton {
     background-color: var(--cyan);
 }
 #registerButton {
     background-color: var(--blue);
 }
-
-/* HOVER ANIMATION FOR BUTTONS */
 #loginButton:hover,
 #registerButton:hover {
     outline: none;
@@ -40,7 +34,7 @@ li {
     background-color: var(--green);
 }
 
-/* MAIN CONTENT COMES HERE */
+/* MAIN CONTENT (TBI) */
 #content {
     background-color: var(--foreground);
     box-shadow: 0px 4px 4px var(--shadow);
