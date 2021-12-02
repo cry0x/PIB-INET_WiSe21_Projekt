@@ -1,7 +1,7 @@
-package com.forum.backend.controller;
+package com.forum.backend.controllers;
 
 import com.forum.backend.entities.Article;
-import com.forum.backend.service.ArticleService;
+import com.forum.backend.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

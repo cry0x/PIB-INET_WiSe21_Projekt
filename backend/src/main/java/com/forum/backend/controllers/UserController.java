@@ -1,8 +1,8 @@
-package com.forum.backend.controller;
+package com.forum.backend.controllers;
 
 import com.forum.backend.entities.User;
 import com.forum.backend.entities.UserDto;
-import com.forum.backend.service.UserService;
+import com.forum.backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

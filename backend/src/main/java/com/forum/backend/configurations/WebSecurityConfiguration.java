@@ -1,6 +1,6 @@
-package com.forum.backend;
+package com.forum.backend.configurations;
 
-import com.forum.backend.service.AuthService;
+import com.forum.backend.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,13 +11,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     public AuthService authService;
     public BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public WebSecurityConfig(AuthService authService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public WebSecurityConfiguration(AuthService authService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.authService = authService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }

@@ -1,4 +1,4 @@
-package com.forum.backend.service;
+package com.forum.backend.services;
 
 import com.forum.backend.entities.Article;
 import com.forum.backend.excpetions.ArticleNotFoundException;

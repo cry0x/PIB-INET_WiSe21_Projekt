@@ -1,4 +1,4 @@
-package com.forum.backend;
+package com.forum.backend.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

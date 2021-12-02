@@ -1,4 +1,4 @@
-package com.forum.backend.service;
+package com.forum.backend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
