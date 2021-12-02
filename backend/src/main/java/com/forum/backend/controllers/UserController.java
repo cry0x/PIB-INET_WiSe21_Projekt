@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute UserDto userDto) {
+    public ResponseEntity<User> createUser(@ModelAttribute UserDto userDto) {
         userDto.setPwd(bCryptPasswordEncoder.encode(userDto.getPwd()));
 
         return new ResponseEntity<>(this.userService.createUser(userDto.getUser()), HttpStatus.CREATED);
