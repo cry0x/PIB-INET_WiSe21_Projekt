@@ -1,20 +1,43 @@
 package com.forum.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Configurable
 public class UserDto {
 
+    @Autowired
+    public BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @NotNull
+    @NotEmpty
     private String salutation;
+    @NotNull
+    @NotEmpty
     private String fName;
+    @NotNull
+    @NotEmpty
     private String lName;
+    @NotNull
+    @NotEmpty
     private String email;
+    @NotNull
+    @NotEmpty
     private String login;
+    @NotNull
+    @NotEmpty
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birth;
+    @NotNull
+    @NotEmpty
     private String pwd;
 
     public UserDto() {
@@ -28,6 +51,7 @@ public class UserDto {
         user.setEmail(getEmail());
         user.setLogin_name(getLogin());
         user.setBirthdate(getBirth());
+        user.setPassword(getPwd());
 
         return user;
     }

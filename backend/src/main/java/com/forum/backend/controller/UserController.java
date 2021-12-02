@@ -6,6 +6,7 @@ import com.forum.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,15 +14,18 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+    public final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @PostMapping
     public ResponseEntity<User> createUser(@ModelAttribute UserDto userDto) {
-        System.out.println(userDto.getBirth());
+        userDto.setPwd(bCryptPasswordEncoder.encode(userDto.getPwd()));
+
         return new ResponseEntity<>(this.userService.createUser(userDto.getUser()), HttpStatus.CREATED);
     }
 

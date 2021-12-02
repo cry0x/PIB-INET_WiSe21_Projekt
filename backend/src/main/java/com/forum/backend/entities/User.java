@@ -24,6 +24,7 @@ public class User {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
+    private String password;
 
     public User() {
     }
@@ -116,5 +117,13 @@ public class User {
                 ", email='" + email + '\'' +
                 ", birthdate=" + birthdate +
                 '}';
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
