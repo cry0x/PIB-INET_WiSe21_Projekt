@@ -32,4 +32,13 @@ public class UserService {
         this.userRepository.deleteById(id);
     }
 
+    public User findUserByName(String username) {
+        User user = this.userRepository.findUserByName(username);
+
+        if (user == null)
+            throw new UserNotFoundException();
+
+        return user;
+    }
+
 }

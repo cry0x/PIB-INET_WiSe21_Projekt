@@ -2,9 +2,7 @@ package com.forum.backend;
 
 import com.forum.backend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -34,7 +32,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/**")
+                    .antMatchers("/html/about.html").hasRole("USER")
+                    .antMatchers("/", "/**", "/api/v1/users").permitAll()
+                    .anyRequest().permitAll()
+                .and()
+                    .formLogin()
                     .permitAll()
                 .and()
                     .csrf()
