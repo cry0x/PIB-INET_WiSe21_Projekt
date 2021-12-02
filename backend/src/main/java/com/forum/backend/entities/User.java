@@ -1,30 +1,33 @@
 package com.forum.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue
     private long id;
     @Column(unique=true)
     private String login_name;
-    private String lastname;
+    private String password;
     private String firstname;
+    private String lastname;
     @Column(unique=true)
     private String email;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
-    private String password;
 
     public User() {
     }
@@ -70,60 +73,49 @@ public class User {
     }
 
     public LocalDate getBirthdate() {
-        return birthdate;
+        return this.birthdate;
     }
 
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-
-        if (o == null || getClass() != o.getClass())
-            return false;
-
-        User user = (User) o;
-
-        return new EqualsBuilder()
-                .append(getId(), user.getId())
-                .append(getLogin_name(), user.getLogin_name())
-                .append(getLastname(), user.getLastname())
-                .append(getFirstname(), user.getFirstname())
-                .append(getEmail(), user.getEmail())
-                .append(getBirthdate(), user.getBirthdate())
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(getId()).append(getLogin_name())
-                .append(getLastname()).append(getFirstname())
-                .append(getEmail())
-                .append(getBirthdate())
-                .toHashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login_name='" + login_name + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", email='" + email + '\'' +
-                ", birthdate=" + birthdate +
-                '}';
-    }
-
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getUsername() {
+        return getLogin_name();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }
