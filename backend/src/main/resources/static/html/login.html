@@ -5,13 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Login Screen</title>
-        <link rel="stylesheet" href="/css/baseSheet.css" />
         <link rel="stylesheet" href="/css/login.css" />
+        <script defer src="/scripts/login.js"></script>
     </head>
 
     <body>
         <main id="mainHolder">
-            <form id="loginForm" action="http://localhost:8080/login" method="post">
+            <form id="loginForm">
                 <!-- Logo -->
                 <img src="/images/logo.png" alt="code." id="logo" />
                 <!-- Login -->
@@ -39,12 +39,12 @@
                 </button>
             </form>
             <!-- Error Field -->
-            <div id="loginErrorMessageHolder">
+            <!-- <div id="loginErrorMessageHolder">
                 <p id="loginErrorMessage">
                     Invalid username
                     <span id="errorMessageSecondLine">and/or password</span>
                 </p>
-            </div>
+            </div> -->
         </main>
     </body>
 </html>

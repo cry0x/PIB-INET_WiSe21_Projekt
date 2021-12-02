@@ -1,54 +1,38 @@
-/* REMOVE BROWSER BASE OUTLINES */
-textarea,
-select,
-input,
+/* IMPORT CUSTOMIZED BASE CONFIGURATION OF MULTIPLE ELEMENTS */
+@import url(/css/baseSheet.css);
+
+/* DECLARATION OF GRID PARENT */
+form {
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: var(--foreground);
+    padding: 3rem;
+    display: grid;
+    min-width: 25rem;
+    max-width: 35rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr;
+    grid-template-areas:
+        'logo'
+        'username'
+        'password'
+        'login';
+    gap: 2rem;
+}
+
+/* DEFINITION OF GRID CHILDREN */
 button {
-    outline: none;
-}
-/* DEFINE SELECTORS */
-button {
-    width: 92px;
-    height: 45px;
-    left: 205px;
-    top: 242px;
-    background-color: #64d7d6;
-    z-index: 9999;
-}
-#loginForm,
-#logo,
-#login,
-#pwd,
-#loginErrorMessageHolder {
-    position: inherit;
-}
-#mainHolder {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #ffffff;
-    width: 670px;
-    height: 387px;
-}
-#loginForm {
-    width: 500px;
-    height: 287px;
+    background-color: var(--cyan);
+    justify-self: center;
+    width: 10rem;
 }
 #logo {
+    justify-self: center;
     width: 148.8px;
     height: 44.4px;
-    left: 193px;
 }
-#login {
-    width: 500px;
-    height: 60px;
-    top: 67px;
-    z-index: 9999;
-}
-#pwd {
-    width: 500px;
-    height: 60px;
-    top: 147px;
-    z-index: 9999;
-}
-#loginErrorMessageHolder {
+
+/* ERROR MESSAGES (TBI) */
+/* #loginErrorMessageHolder {
     width: 400px;
     height: 100px;
     display: grid;
@@ -66,9 +50,9 @@ button {
     font-weight: bold;
     color: #000000;
     border: 1px solid #000000;
-    background-color: #cfb7ae;
+    background-color: var(--red);
     opacity: 0;
 }
 #errorMessageSecondLine {
     display: block;
-}
+} */

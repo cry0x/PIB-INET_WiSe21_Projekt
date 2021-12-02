@@ -1,65 +1,42 @@
+/* IMPORT CUSTOMIZED BASE CONFIGURATION OF MULTIPLE ELEMENTS */
+@import url(/css/baseSheet.css);
+
+/* DECLARATION OF FLEX PARENT */
 header {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #ffffff;
-    width: 1340px;
-    height: 100px;
-    margin: 50px auto;
+    background-color: var(--foreground);
+    box-shadow: 0px 4px 4px var(--shadow);
+    padding: 1rem;
+    min-width: 50rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-button {
-    height: 45px;
+
+/* DEFINITION OF FLEX CHILDREN */
+li {
+    display: inline;
+    margin-right: 2rem;
+}
+#logo {
+    width: 148.8px;
+    height: 44.4px;
+}
+#loginButton {
+    background-color: var(--cyan);
+}
+#registerButton {
+    background-color: var(--blue);
 }
 #loginButton:hover,
 #registerButton:hover {
     outline: none;
     color: #000000;
-    background-color: #64d79d;
+    background-color: var(--green);
 }
-.menu,
-#logo,
-#menuHome,
-#menuAbout,
-#menuContact {
-    position: inherit;
-}
-.menu {
-    left: 481px;
-    top: 35px;
-}
-#logo {
-    width: 148.8px;
-    height: 44.4px;
-    left: 52px;
-    top: 26px;
-}
-#menuHome {
-    text-align: left;
-}
-#menuAbout {
-    text-align: center;
-    left: 140px;
-}
-#menuContact {
-    text-align: right;
-    left: 290px;
-}
-#loginButton {
-    color: #000000;
-    background-color: #64d7d6;
-    left: 1068px;
-    top: 27px;
-}
-#registerButton {
-    background-color: #649fd7;
-    left: 1168px;
-    top: 27px;
-}
-.mainWindow {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #ffffff;
-    width: 1340px;
-    height: 1070px;
-    position: inherit;
-    left: 50px;
-    top: 200px;
-    margin: 200px auto;
+
+/* MAIN CONTENT (TBI) */
+#content {
+    background-color: var(--foreground);
+    box-shadow: 0px 4px 4px var(--shadow);
+    margin-top: 2rem;
 }

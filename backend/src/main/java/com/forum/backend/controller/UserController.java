@@ -1,6 +1,7 @@
 package com.forum.backend.controller;
 
 import com.forum.backend.entities.User;
+import com.forum.backend.entities.UserDto;
 import com.forum.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,9 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@ModelAttribute User user) {
-        return new ResponseEntity<>(this.userService.createUser(user), HttpStatus.CREATED);
+    public ResponseEntity<User> createUser(@ModelAttribute UserDto userDto) {
+        System.out.println(userDto.getBirth());
+        return new ResponseEntity<>(this.userService.createUser(userDto.getUser()), HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{id}")

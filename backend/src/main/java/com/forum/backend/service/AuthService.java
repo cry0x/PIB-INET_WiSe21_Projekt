@@ -1,4 +1,4 @@
-package com.forum.backend;
+package com.forum.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -12,8 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthService implements UserDetailsService {
 
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Autowired
-    public BCryptPasswordEncoder bCryptPasswordEncoder;
+    public AuthService(BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

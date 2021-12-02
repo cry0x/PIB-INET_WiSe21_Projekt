@@ -1,76 +1,68 @@
+/* IMPORT CUSTOMIZED BASE CONFIGURATION OF MULTIPLE ELEMENTS */
+@import url(/css/baseSheet.css);
+
 /* DEFINE SELECTORS */
 main {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #ffffff;
-    width: 840px;
-    height: 600px;
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: var(--foreground);
+    min-width: 50rem;
+    max-width: 60rem;
 }
+
+/* DECLARATION OF GRID PARENT */
 form {
-    width: 800px;
-    height: 560px;
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: var(--foreground);
+    display: grid;
+    padding: 3rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 6fr;
+    grid-template-areas:
+        'salutation logo'
+        'fName lName'
+        'email email'
+        'login birth'
+        'pwd pwdConfirm'
+        'register register';
+    gap: 2rem;
 }
+
+/* DEFINITION OF GRID CHILDREN */
 button {
-    background-color: #649fd7;
-    width: 140px;
-    height: 45px;
-    margin: 500px auto;
-}
-#logo,
-#salutationField,
-#fname,
-#lname,
-#email,
-#birth,
-#login,
-#pwd,
-#pwd_confirm {
-    position: inherit;
+    background-color: var(--blue);
+    grid-area: register;
+    justify-self: center;
+    width: 10rem;
 }
 #logo {
+    grid-area: logo;
+    justify-self: end;
     width: 297.6px;
     height: 88.8px;
-    left: 425px;
-    top: 0px;
 }
 #salutationField {
-    width: 200px;
-    height: 60px;
+    grid-area: salutation;
+    /* doesn't work for some reason? */
+    align-self: end;
 }
-#fname {
-    width: 375px;
-    height: 60px;
-    top: 100px;
+#fName {
+    grid-area: fName;
 }
-#lname {
-    width: 375px;
-    height: 60px;
-    left: 425px;
-    top: 100px;
+#lName {
+    grid-area: lName;
 }
 #email {
-    width: 800px;
-    height: 60px;
-    top: 200px;
+    grid-area: email;
 }
 #login {
-    width: 375px;
-    height: 60px;
-    top: 300px;
+    grid-area: login;
 }
 #birth {
-    width: 375px;
-    height: 60px;
-    left: 425px;
-    top: 300px;
+    grid-area: birth;
 }
 #pwd {
-    width: 375px;
-    height: 60px;
-    top: 400px;
+    grid-area: pwd;
 }
-#pwd_confirm {
-    width: 375px;
-    height: 60px;
-    left: 425px;
-    top: 400px;
+#pwdConfirm {
+    grid-area: pwdConfirm;
 }

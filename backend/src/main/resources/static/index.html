@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Forum</title>
-        <link rel="stylesheet" href="/css/baseSheet.css" />
         <link rel="stylesheet" href="/css/index.css" />
     </head>
 
@@ -13,26 +12,30 @@
         <header>
             <img src="/images/logo.png" alt="code." id="logo" />
             <!-- Main Menu -->
-            <div class="menu textBasic">
-                <span id="menuHome">
-                    <a href="/index.html">Home</a>
-                </span>
-                <span id="menuAbout">
-                    <a href="/about.html">About</a>
-                </span>
-                <span id="menuContact">
-                    <a href="/contact.html">Contact</a>
-                </span>
+            <nav class="textBasic">
+                <ul>
+                    <li>
+                        <a href="/index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="/html/about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="/html/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="buttons textBasic">
+                <!-- Login Button -->
+                <button class="textBasic" id="loginButton">
+                    <a href="/html/login.html">Login</a>
+                </button>
+                <!-- Register Button -->
+                <button class="textBasic" id="registerButton">
+                    <a href="/html/registration.html">Register</a>
+                </button>
             </div>
-            <!-- Register Button -->
-            <button class="textBasic" id="registerButton">
-                <a href="/registration.html">Register</a>
-            </button>
-            <!-- Login Button -->
-            <button class="textBasic" id="loginButton">
-                <a href="/login.html">Login</a>
-            </button>
         </header>
-        <section class="mainWindow">FORUMPOSTS</section>
+        <div id="content">FORUMPOSTS</div>
     </body>
 </html>
