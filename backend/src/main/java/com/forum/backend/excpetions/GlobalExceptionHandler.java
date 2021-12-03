@@ -14,11 +14,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(userNotFoundException.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(value = ArticleNotFoundException.class)
-    public ResponseEntity<String> handleArticleNotFoundException(ArticleNotFoundException articleNotFoundException) {
-        return new ResponseEntity<>(articleNotFoundException.getMessage(), HttpStatus.NOT_FOUND);
-    }
-
     @ExceptionHandler(value = PSQLException.class)
     public ResponseEntity<String> handlePSQLException(PSQLException psqlException) {
         if (psqlException.getSQLState().equals("23505")) {
