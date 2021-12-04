@@ -32,7 +32,7 @@ button {
 }
 
 /* ERROR MESSAGES (TBI) */
-/* #loginErrorMessageHolder {
+#loginErrorMessageHolder {
     width: 400px;
     height: 100px;
     display: grid;
@@ -55,4 +55,4 @@ button {
 }
 #errorMessageSecondLine {
     display: block;
-} */
+}
