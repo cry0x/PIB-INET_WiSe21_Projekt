@@ -1,4 +1,4 @@
-package com.forum.backend.service;
+package com.forum.backend.services;
 
 import com.forum.backend.entities.User;
 import com.forum.backend.excpetions.UserNotFoundException;
@@ -30,6 +30,10 @@ public class UserService {
 
     public void deleteUserById(Long id) {
         this.userRepository.deleteById(id);
+    }
+
+    public User findUserByName(String username) {
+        return this.userRepository.findUserByName(username);
     }
 
 }
