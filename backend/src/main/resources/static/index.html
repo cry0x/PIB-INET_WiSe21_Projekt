@@ -6,36 +6,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Forum</title>
         <link rel="stylesheet" href="/css/index.css" />
+        <script src="/scripts/jquery.min.js"></script>
     </head>
 
     <body>
         <header>
-            <img src="/images/logo.png" alt="code." id="logo" />
+            <img src="/resources/images/logo.png" alt="code." id="logo" />
             <!-- Main Menu -->
-            <nav class="textBasic">
+            <nav id="headerNav" class="textBasic">
                 <ul>
                     <li>
-                        <a href="/">Home</a>
+                        <button onclick="contentSwitch(home)">HOME</button>
                     </li>
                     <li>
-                        <a href="/about">About</a>
+                        <button onclick="contentSwitch(about)">ABOUT</button>
                     </li>
                     <li>
-                        <a href="/contact">Contact</a>
+                        <button onclick="contentSwitch(contact)">
+                            CONTACT
+                        </button>
                     </li>
                 </ul>
             </nav>
             <div class="buttons textBasic">
                 <!-- Login Button -->
                 <button class="textBasic" id="loginButton">
-                    <a href="/login">Login</a>
+                    <a href="/html/login.html">Login</a>
                 </button>
                 <!-- Register Button -->
                 <button class="textBasic" id="registerButton">
-                    <a href="/registration">Register</a>
+                    <a href="/html/registration.html">Register</a>
                 </button>
             </div>
         </header>
-        <div id="content">FORUMPOSTS</div>
+        <div id="content">
+            <div id="main">FORUMPOSTS</div>
+            <div id="about" hidden>ABOUT</div>
+            <div id="contact" hidden>CONTACT</div>
+        </div>
+        <!-- Import script to switch between content pages -->
+        <script src="/scripts/contentSwitch.js"></script>
     </body>
 </html>
