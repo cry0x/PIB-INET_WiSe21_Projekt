@@ -1,5 +1,7 @@
 /* IMPORT CUSTOM COLORS */
 @import url(/css/colors.css);
+/* IMPORT FONT FACES */
+@import url(/css/fonts.css);
 
 /* REMOVAL OF BROWSER BASE STYLE SHEET OUTLINES */
 textarea,
@@ -22,6 +24,9 @@ button {
     text-align: center;
     text-transform: uppercase;
     cursor: pointer;
+    border-width: 0.15rem;
+    border-color: #000000;
+    border-style: solid;
 }
 button:hover {
     outline: none;
@@ -52,6 +57,7 @@ a:focus,
 a:active {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
 }
 a:hover {
     background: transparent;
@@ -61,7 +67,7 @@ a:hover {
 
 /* TEXT */
 .textBasic {
-    font-family: 'Cousine', monospace;
+    font-family: 'SourceSerifPro-Regular', monospace;
     font-size: 25px;
     letter-spacing: 0;
 }

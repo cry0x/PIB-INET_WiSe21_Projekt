@@ -1,0 +1,37 @@
+/* SOURCE SERIF PRO */
+@font-face {
+    font-family: SourceSerifPro-Black;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-Black.otf');
+}
+@font-face {
+    font-family: SourceSerifPro-BlackIt;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-BlackIt.otf');
+}
+@font-face {
+    font-family: SourceSerifPro-Bold;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-Bold.otf');
+}
+@font-face {
+    font-family: SourceSerifPro-BoldIt;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-BoldIt.otf');
+}
+@font-face {
+    font-family: SourceSerifPro-ExtraLight;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-ExtraLight.otf');
+}
+@font-face {
+    font-family: SourceSerifPro-ExtraLightIt;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-ExtraLightIt.otf');
+}
+@font-face {
+    font-family: SourceSerifPro-Regular;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-Regular.otf');
+}
+@font-face {
+    font-family: SourceSerifPro-Semibold;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-Semibold.otf');
+}
+@font-face {
+    font-family: SourceSerifPro-SemiboldIt;
+    src: url('/resources/fonts/source-serif-pro/SourceSerifPro-SemiboldIt.otf');
+}
