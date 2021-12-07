@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
@@ -34,7 +35,7 @@ public class UserController {
         return new ResponseEntity<>(this.userService.readUserById(id), HttpStatus.FOUND);
     }
 
-    @GetMapping
+    @GetMapping(produces = "application/json;charset=UTF-8")
     public ResponseEntity<Iterable<User>> getAllUsers() {
         return new ResponseEntity<>(this.userService.getAllUsers(), HttpStatus.FOUND);
     }
