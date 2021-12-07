@@ -16,7 +16,7 @@ import java.util.Collection;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     private long id;
     @Column(unique=true)
     private String login_name;
