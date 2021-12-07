@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style>
+        fieldset {
+            border: 0;
+        }
+        .userForm {
+            border: 2px solid darkgray;
+            border-radius: 25px;
+            background: lightgray;
+            margin: 10px;
+        }
+        .userForm[type=input] {
+            width: 100%;
+        }
+        .userFormSubmitButton {
+            width: 10%;
+        }
+        .userFormSubmitCancel {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="/images/logo.png" alt="code." id="logo" />
+        <!-- Main Menu -->
+        <nav class="textBasic">
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/about">About</a>
+                </li>
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
+                <li>
+                    <a href="/profile">Profile</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="buttons textBasic">
+            <!-- Login Button -->
+            <button class="textBasic" id="loginButton">
+                <a href="/login">Login</a>
+            </button>
+            <!-- Register Button -->
+            <button class="textBasic" id="registerButton">
+                <a href="/registration">Register</a>
+            </button>
+        </div>
+    </header>
+    <div id="content">CONTACT</div>
+    <form id="userForm" class="userForm">
+        <fieldset id="userFormFieldSet" disabled="disabled">
+            <label for="loginName">Username:</label>
+            <input type="text" id="loginName" name="loginName">
+            <label for="firstName">Firstname:</label>
+            <input type="text" id="firstName" name="firstName">
+            <label for="lastName">Lastname:</label>
+            <input type="text" id="lastName" name="lastName">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            <label for="birthdate">Birthdate:</label>
+            <input type="text" id="birthdate" name="birthdate">
+        </fieldset>
+    </form>
+    <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="myFunction()">change data</button>
+    <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelChangeData()">cancel</button>
+    <script src="/scripts/profil.js"></script>
+</body>
+</html>

@@ -32,7 +32,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/about").hasRole("USER")
+                    .antMatchers("/profile").hasRole("USER")
                     .antMatchers("/", "/**", "/**/**/**").permitAll()
                     .anyRequest().permitAll()
                 .and()
