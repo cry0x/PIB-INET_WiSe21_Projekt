@@ -4,23 +4,39 @@
     <meta charset="UTF-8">
     <title>Profil</title>
     <style>
-        .user {
+        fieldset {
+            border: 0;
+        }
+        .userForm {
             border: 2px solid darkgray;
+            border-radius: 25px;
             background: lightgray;
             margin: 10px;
+        }
+        .userForm[type=input] {
+            width: 100%;
+        }
+        .userFormSubmitButton {
+            width: 10%;
         }
     </style>
 </head>
 <body>
-    <h1>Profil works</h1>
-    <div class="user">
-        <p id="loginName"></p>
-        <p id="firstName"></p>
-        <p id="lastName"></p>
-        <p id="email"></p>
-        <p id="birthdate"></p>
-    </div>
-    <div id="app"></div>
+    <form id="userForm" class="userForm">
+        <fieldset id="userFormFieldSet" disabled="disabled">
+            <label for="loginName">Username:</label>
+            <input type="text" id="loginName" name="loginName">
+            <label for="firstName">Firstname:</label>
+            <input type="text" id="firstName" name="firstName">
+            <label for="lastName">Lastname:</label>
+            <input type="text" id="lastName" name="lastName">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            <label for="birthdate">Birthdate:</label>
+            <input type="text" id="birthdate" name="birthdate">
+        </fieldset>
+    </form>
+    <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="myFunction()">change data</button>
+    <script src="/scripts/profil.js"></script>
 </body>
-<script src="/scripts/profil.js"></script>
 </html>

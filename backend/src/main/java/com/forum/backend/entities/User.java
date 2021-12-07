@@ -16,7 +16,7 @@ import java.util.Collection;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(unique=true)
     private String login_name;
@@ -86,6 +86,17 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserProfilDto getUserProfilDto() {
+        UserProfilDto userProfilDto = new UserProfilDto();
+        userProfilDto.setLoginName(getLogin_name());
+        userProfilDto.setFirstName(getFirstname());
+        userProfilDto.setLastName(getLastname());
+        userProfilDto.setEmail(getEmail());
+        userProfilDto.setBirthdate(getBirthdate());
+
+        return userProfilDto;
     }
 
     @Override
