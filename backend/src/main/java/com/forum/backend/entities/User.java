@@ -88,17 +88,6 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public UserProfilDto getUserProfilDto() {
-        UserProfilDto userProfilDto = new UserProfilDto();
-        userProfilDto.setLoginName(getLogin_name());
-        userProfilDto.setFirstName(getFirstname());
-        userProfilDto.setLastName(getLastname());
-        userProfilDto.setEmail(getEmail());
-        userProfilDto.setBirthdate(getBirthdate());
-
-        return userProfilDto;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
@@ -107,6 +96,10 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return getLogin_name();
+    }
+
+    public void setUsername(String username) {
+        setLogin_name(username);
     }
 
     @Override

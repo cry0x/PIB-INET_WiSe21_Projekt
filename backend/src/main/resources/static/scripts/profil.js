@@ -28,7 +28,7 @@ function cancelChangeData() {
 }
 
 function putData() {
-    fetch("http://localhost:8080/api/v1/users/1", {
+    fetch("http://localhost:8080/api/profile/currentUser", {
         method: 'PUT',
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify(updateCurrentUserData())
@@ -40,7 +40,7 @@ function putData() {
 }
 
 function fetchData() {
-    fetch("http://localhost:8080/logintest").then(res => {
+    fetch("http://localhost:8080/api/profile/currentUser").then(res => {
         if (!res.ok)
             throw Error('Userdata couldn\'t be fetched!')
 

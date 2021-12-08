@@ -13,6 +13,9 @@ public class UserProfilDto {
 
     @NotNull
     @NotEmpty
+    private Long id;
+    @NotNull
+    @NotEmpty
     private String loginName;
     @NotNull
     @NotEmpty
@@ -30,6 +33,14 @@ public class UserProfilDto {
     private LocalDate birthdate;
 
     public UserProfilDto() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLoginName() {

@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
@@ -25,7 +24,7 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json")
-    public UserProfilDto updateUser(@PathVariable Long id, @RequestBody UserProfilDto userProfilDto) {
+    public User updateUser(@PathVariable Long id, @RequestBody UserProfilDto userProfilDto) {
         User user = this.userService.readUserById(id);
 
         user.setLogin_name(userProfilDto.getLoginName());
@@ -34,12 +33,12 @@ public class UserController {
         user.setEmail(userProfilDto.getEmail());
         user.setBirthdate(userProfilDto.getBirthdate());
 
-        return this.userService.createUser(user).getUserProfilDto();
+        return this.userService.createUser(user);
     }
 
     @GetMapping(value = "/{id}")
-    public UserProfilDto readUserById(@PathVariable Long id) {
-        return this.userService.readUserById(id).getUserProfilDto();
+    public User readUserById(@PathVariable Long id) {
+        return this.userService.readUserById(id);
     }
 
     @PostMapping
