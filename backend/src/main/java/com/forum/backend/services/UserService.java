@@ -1,7 +1,6 @@
 package com.forum.backend.services;
 
 import com.forum.backend.entities.User;
-import com.forum.backend.entities.UserProfilDto;
 import com.forum.backend.excpetions.UserNotFoundException;
 import com.forum.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
