@@ -16,13 +16,30 @@
             background: lightgray;
             margin: 10px;
         }
+        .passwordForm {
+            border: 2px solid darkgray;
+            border-radius: 25px;
+            background: lightgray;
+            margin: 10px;
+        }
         .userForm[type=input] {
             width: 100%;
         }
         .userFormSubmitButton {
-            width: 10%;
+            width: 15%;
         }
         .userFormSubmitCancel {
+            visibility: hidden;
+            width: 15%;
+        }
+        .userFormPasswordCancel {
+            visibility: hidden;
+            width: 15%;
+        }
+        .userFormPasswordChange {
+             width: 15%;
+        }
+        .passwordForm {
             visibility: hidden;
         }
     </style>
@@ -59,23 +76,39 @@
             </button>
         </div>
     </header>
-    <div id="content">CONTACT</div>
-    <form id="userForm" class="userForm">
-        <fieldset id="userFormFieldSet" disabled="disabled">
-            <label for="loginName">Username:</label>
-            <input type="text" id="loginName" name="loginName">
-            <label for="firstName">Firstname:</label>
-            <input type="text" id="firstName" name="firstName">
-            <label for="lastName">Lastname:</label>
-            <input type="text" id="lastName" name="lastName">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email">
-            <label for="birthdate">Birthdate:</label>
-            <input type="text" id="birthdate" name="birthdate">
+
+    <div>
+        <form id="userForm" class="userForm">
+            <fieldset id="userFormFieldSet" disabled="disabled">
+                <label for="loginName">Username:</label><br>
+                <input type="text" id="loginName" name="loginName"><br>
+                <label for="firstName">Firstname:</label><br>
+                <input type="text" id="firstName" name="firstName"><br>
+                <label for="lastName">Lastname:</label><br>
+                <input type="text" id="lastName" name="lastName"><br>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email"><br>
+                <label for="birthdate">Birthdate:</label><br>
+                <input type="text" id="birthdate" name="birthdate">
+            </fieldset>
+        </form>
+        <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()">change data</button>
+        <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()">cancel</button>
+    </div>
+
+    <div>
+        <fieldset id="passwordForm" class="passwordForm">
+            <label for="currentPassword">current password:</label><br>
+            <input type="password" id="currentPassword" name="currentPassword"><br>
+            <label for="newPassword">new password:</label><br>
+            <input type="password" id="newPassword" name="newPassword"><br>
+            <label for="repeatNewPassword">repeat new password:</label><br>
+            <input type="password" id="repeatNewPassword" name="repeatNewPassword">
         </fieldset>
-    </form>
-    <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()">change data</button>
-    <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()">cancel</button>
+        <button id="userFormPasswordChange" class="userFormPasswordChange" onclick="handleUserPasswordChange()">change password</button>
+        <button id="userFormPasswordCancel" class="userFormPasswordCancel" onclick="cancelUserPasswordChange()">cancel</button>
+    </div>
+
     <script src="/scripts/profil.js"></script>
 </body>
 </html>

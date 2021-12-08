@@ -3,6 +3,9 @@ let currentUserData;
 const userFormFieldSet = document.getElementById('userFormFieldSet');
 const userFormSubmitButton = document.getElementById('userFormSubmitButton')
 const userFormSubmitCancel = document.getElementById('userFormSubmitCancel')
+const userFormPasswordChange = document.getElementById('userFormPasswordChange')
+const userFormPasswordCancel = document.getElementById('userFormPasswordCancel')
+const passwordForm = document.getElementById('passwordForm')
 
 function handleUserProfileChange() {
     if (userFormFieldSet.hasAttribute('disabled')) {
@@ -29,6 +32,24 @@ function cancelUserProfileChange() {
         userFormSubmitButton.innerHTML = 'change data'
         userFormSubmitCancel.style.visibility = 'hidden';
     }
+}
+
+function handleUserPasswordChange() {
+    if (userFormPasswordCancel.style.visibility === 'visible') {
+        userFormPasswordCancel.style.visibility = 'hidden';
+        userFormPasswordChange.innerHTML = 'change password';
+        passwordForm.style.visibility = 'hidden';
+    } else {
+        userFormPasswordCancel.style.visibility = 'visible';
+        userFormPasswordChange.innerHTML = 'save password';
+        passwordForm.style.visibility = 'visible';
+    }
+}
+
+function cancelUserPasswordChange() {
+    userFormPasswordCancel.style.visibility = 'hidden';
+    userFormPasswordChange.innerHTML = 'change password';
+    passwordForm.style.visibility = 'hidden';
 }
 
 function putUserProfileData() {
