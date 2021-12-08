@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Forum</title>
         <link rel="stylesheet" href="/css/index.css" />
-        <script src="/scripts/jquery.min.js"></script>
+        <!-- <link rel="stylesheet" type="text/css" media="screen and (min-width: 1024px)" href="/css/index.css> -->
+        <script src="/js/jquery.min.js"></script>
+        <script src="js/sideNav.js"></script>
     </head>
 
     <body>
@@ -28,7 +30,7 @@
                     </li>
                 </ul>
             </nav>
-            <div class="buttons textBasic">
+            <div id="headerNavButtons" class="textBasic">
                 <!-- Login Button -->
                 <button class="textBasic" id="loginButton">
                     <a href="/html/login.html">Login</a>
@@ -38,13 +40,57 @@
                     <a href="/html/registration.html">Register</a>
                 </button>
             </div>
+            <!-- IF SCREEN IS SMALLER THAN 1200px(width)-->
+            <!-- SideNav Button -->
+            <button
+                class="textBasic"
+                id="sideNavButton"
+                onclick="openNav()"
+                hidden
+            >
+                &#9776;
+            </button>
         </header>
+        <!-- USE THIS MENU -->
+        <div id="sideNav" hidden>
+            <nav>
+                <ul id="sideNavItems" class="textBasic">
+                    <a
+                        href="javascript:void(0)"
+                        id="closeButton"
+                        onclick="closeNav()"
+                        >&times;</a
+                    >
+                    <li>
+                        <a onclick="javascript:contentSwitch(home);">HOME</a>
+                    </li>
+                    <li>
+                        <a onclick="javascript:contentSwitch(about);">ABOUT</a>
+                    </li>
+                    <li>
+                        <a onclick="javascript:contentSwitch(contact);">
+                            CONTACT
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Login Button -->
+            <button class="textBasic" id="loginButton">
+                <a href="/html/login.html">Login</a>
+            </button>
+            <br />
+            <!-- Register Button -->
+            <button class="textBasic" id="registerButton">
+                <a href="/html/registration.html">Register</a>
+            </button>
+        </div>
+        <!-- MAIN CONTENT -->
         <div id="content">
             <div id="main">FORUMPOSTS</div>
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
         </div>
         <!-- Import script to switch between content pages -->
-        <script src="/scripts/contentSwitch.js"></script>
+        <script src="/js/contentSwitch.js"></script>
     </body>
 </html>
