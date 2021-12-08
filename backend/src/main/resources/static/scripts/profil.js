@@ -77,7 +77,7 @@ function loadCurrentUserData() {
 function updateForm(userData) {
     currentUserData = userData;
 
-    loadCurrentUserData()
+    loadCurrentUserData();
 }
 
 fetchCurrentUserProfile();
