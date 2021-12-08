@@ -18,7 +18,7 @@ public class ProfileController {
         this.userService = userService;
     }
 
-    @GetMapping("/currentUser")
+    @GetMapping("/current")
     public UserProfilDto getCurrentUser() {
         String username = "";
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -29,7 +29,7 @@ public class ProfileController {
         return getUserProfilDto(this.userService.findUserByName(username));
     }
 
-    @PutMapping(value = "/currentUser", consumes = "application/json")
+    @PutMapping(value = "/current", consumes = "application/json")
     public UserProfilDto updateCurrentUser(@RequestBody UserProfilDto userProfilDto) {
         UserProfilDto newUserProfilDto = updateUserFromUserProfileDto(userProfilDto);
 

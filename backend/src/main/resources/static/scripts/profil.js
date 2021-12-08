@@ -1,34 +1,38 @@
 let currentUserData;
 
-function myFunction() {
-    if (document.getElementById('userFormFieldSet').hasAttribute('disabled')) {
-        document.getElementById('userFormFieldSet').removeAttribute('disabled')
-        document.getElementById('userFormSubmitButton').innerHTML = 'save'
-        document.getElementById('userFormSubmitCancel').style.visibility = 'visible';
-    } else {
-        putData()
+const userFormFieldSet = document.getElementById('userFormFieldSet');
+const userFormSubmitButton = document.getElementById('userFormSubmitButton')
+const userFormSubmitCancel = document.getElementById('userFormSubmitCancel')
 
-        document.getElementById('userFormSubmitCancel').style.visibility = 'hidden';
-        document.getElementById('userFormFieldSet').setAttribute('disabled','disabled')
-        document.getElementById('userFormSubmitButton').innerHTML = 'change data'
+function handleUserProfileChange() {
+    if (userFormFieldSet.hasAttribute('disabled')) {
+        userFormFieldSet.removeAttribute('disabled')
+        userFormSubmitButton.innerHTML = 'save'
+        userFormSubmitCancel.style.visibility = 'visible';
+    } else {
+        putUserProfileData()
+
+        userFormFieldSet.setAttribute('disabled','disabled')
+        userFormSubmitButton.innerHTML = 'change data'
+        userFormSubmitCancel.style.visibility = 'hidden';
     }
 }
 
-function cancelChangeData() {
-    if (document.getElementById('userFormFieldSet').hasAttribute('disabled')) {
-        document.getElementById('userFormFieldSet').removeAttribute('disabled')
-        document.getElementById('userFormSubmitButton').innerHTML = 'save'
+function cancelUserProfileChange() {
+    if (userFormFieldSet.hasAttribute('disabled')) {
+        userFormFieldSet.removeAttribute('disabled')
+        userFormSubmitButton.innerHTML = 'save'
     } else {
         loadCurrentUserData()
 
-        document.getElementById('userFormSubmitCancel').style.visibility = 'hidden';
-        document.getElementById('userFormFieldSet').setAttribute('disabled','disabled')
-        document.getElementById('userFormSubmitButton').innerHTML = 'change data'
+        userFormFieldSet.setAttribute('disabled','disabled')
+        userFormSubmitButton.innerHTML = 'change data'
+        userFormSubmitCancel.style.visibility = 'hidden';
     }
 }
 
-function putData() {
-    fetch("http://localhost:8080/api/profile/currentUser", {
+function putUserProfileData() {
+    fetch("http://localhost:8080/api/profile/current", {
         method: 'PUT',
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify(updateCurrentUserData())
@@ -39,8 +43,8 @@ function putData() {
     });
 }
 
-function fetchData() {
-    fetch("http://localhost:8080/api/profile/currentUser").then(res => {
+function fetchCurrentUserProfile() {
+    fetch("http://localhost:8080/api/profile/current").then(res => {
         if (!res.ok)
             throw Error('Userdata couldn\'t be fetched!')
 
@@ -76,4 +80,4 @@ function updateForm(userData) {
     loadCurrentUserData()
 }
 
-fetchData();
+fetchCurrentUserProfile();
