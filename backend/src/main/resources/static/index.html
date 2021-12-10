@@ -17,16 +17,14 @@
             <!-- Main Menu -->
             <nav id="headerNav" class="textBasic">
                 <ul>
-                    <li>
-                        <a onclick="javascript:contentSwitch(home);">HOME</a>
+                    <li class="inlineList">
+                        <a onclick="contentSwitch('#main');">HOME</a>
                     </li>
-                    <li>
-                        <a onclick="javascript:contentSwitch(about);">ABOUT</a>
+                    <li class="inlineList">
+                        <a onclick="contentSwitch('#about');">ABOUT</a>
                     </li>
-                    <li>
-                        <a onclick="javascript:contentSwitch(contact);">
-                            CONTACT
-                        </a>
+                    <li class="inlineList">
+                        <a onclick="contentSwitch('#contact');"> CONTACT </a>
                     </li>
                 </ul>
             </nav>
@@ -42,53 +40,51 @@
             </div>
             <!-- IF SCREEN IS SMALLER THAN 1200px(width)-->
             <!-- SideNav Button -->
-            <button
-                class="textBasic"
-                id="sideNavButton"
-                onclick="openNav()"
-                hidden
-            >
-                &#9776;
-            </button>
+            <button class="textBasic" id="sideNavButton" hidden>&#9776;</button>
         </header>
-        <!-- USE THIS MENU -->
-        <div id="sideNav" hidden>
-            <nav>
-                <ul id="sideNavItems" class="textBasic">
-                    <a
-                        href="javascript:void(0)"
-                        id="closeButton"
-                        onclick="closeNav()"
-                        >&times;</a
-                    >
-                    <li>
-                        <a onclick="javascript:contentSwitch(home);">HOME</a>
-                    </li>
-                    <li>
-                        <a onclick="javascript:contentSwitch(about);">ABOUT</a>
-                    </li>
-                    <li>
-                        <a onclick="javascript:contentSwitch(contact);">
-                            CONTACT
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- Login Button -->
-            <button class="textBasic" id="loginButton">
-                <a href="/html/login.html">Login</a>
-            </button>
-            <br />
-            <!-- Register Button -->
-            <button class="textBasic" id="registerButton">
-                <a href="/html/registration.html">Register</a>
-            </button>
-        </div>
         <!-- MAIN CONTENT -->
         <div id="content">
             <div id="main">FORUMPOSTS</div>
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
+            <!-- USE THIS MENU -->
+            <div id="sideNav" hidden>
+                <div
+                    id="sideHome"
+                    class="textBasic sideNavItem"
+                    onclick="javascript:contentSwitch(home);"
+                >
+                    HOME
+                </div>
+
+                <div
+                    id="sideAbout"
+                    class="textBasic sideNavItem"
+                    onclick="javascript:contentSwitch(about);"
+                >
+                    ABOUT
+                </div>
+
+                <div
+                    id="sideContact"
+                    class="textBasic sideNavItem"
+                    onclick="javascript:contentSwitch(contact);"
+                >
+                    CONTACT
+                </div>
+                <!-- Login Button -->
+                <button
+                    class="textBasic sideNavItem sideNavButton"
+                    id="loginButton"
+                >
+                    <a href="/html/login.html">Login</a>
+                </button>
+                <br />
+                <!-- Register Button -->
+                <button class="textBasic sideNavItem" id="registerButton">
+                    <a href="/html/registration.html">Register</a>
+                </button>
+            </div>
         </div>
         <!-- Import script to switch between content pages -->
         <script src="/js/contentSwitch.js"></script>

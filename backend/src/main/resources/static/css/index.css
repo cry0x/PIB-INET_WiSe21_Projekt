@@ -13,20 +13,9 @@ header {
 }
 
 /* DEFINITION OF FLEX CHILDREN */
-li {
+.inlineList {
     display: inline;
     margin-right: 2rem;
-}
-
-#sideNav {
-    width: 0;
-    background-color: var(--foreground);
-    box-shadow: 0px 4px 4px var(--shadow);
-    padding-top: 1rem;
-    z-index: 9999;
-    overflow-x: hidden;
-    transition: 0.5s;
-    justify-self: right;
 }
 
 #logo {
@@ -47,24 +36,61 @@ li {
 }
 
 /* MAIN CONTENT (TBI) */
+
+#content {
+    display: grid;
+    padding: 0;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'mainContent sideBar';
+    gap: 2rem;
+    margin-top: 2rem;
+}
 #main,
 #about,
 #contact {
     background-color: var(--foreground);
     box-shadow: 0px 4px 4px var(--shadow);
-    margin-top: 2rem;
+    grid-area: mainContent;
+    justify-self: start;
 }
 
 /* CHANGE ELEMENTS DEPENDANT ON SCREEN SIZE */
 @media only screen and (max-width: 1200px) {
-    body {
-        background-color: black;
-    }
     #headerNav,
     #headerNavButtons {
         display: none;
     }
     #sideNavButton {
         display: block;
+        background-color: var(--cyan);
+    }
+    #sideHome:hover,
+    #sideAbout:hover,
+    #sideContact:hover {
+        cursor: pointer;
+        border-bottom: 0.125rem solid var(--cyan);
+    }
+
+    #sideNav {
+        background-color: var(--foreground);
+        box-shadow: 0px 4px 4px var(--shadow);
+        grid-area: sideBar;
+        width: 10rem;
+        justify-self: end;
+        overflow-x: hidden;
+        transition: 0.5s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .sideNavItem {
+        margin: 0.2rem;
+    }
+
+    .sideNavButton {
+        margin-top: 2rem;
     }
 }
