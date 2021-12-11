@@ -1,7 +1,18 @@
 /* IMPORT CUSTOMIZED BASE CONFIGURATION OF MULTIPLE ELEMENTS */
 @import url(/css/baseSheet.css);
 
-/* DECLARATION OF GRID PARENT */
+/* MAIN GRID */
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+main {
+    align-self: center;
+    justify-self: center;
+}
+
+/* DECLARATION OF FORM GRID PARENT */
 form {
     box-shadow: 0px 4px 4px var(--shadow);
     background-color: var(--foreground);
@@ -19,7 +30,7 @@ form {
     gap: 2rem;
 }
 
-/* DEFINITION OF GRID CHILDREN */
+/* DEFINITION OF FORM GRID CHILDREN */
 button {
     background-color: var(--cyan);
     justify-self: center;

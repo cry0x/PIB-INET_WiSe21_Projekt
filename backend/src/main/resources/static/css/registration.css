@@ -1,15 +1,22 @@
 /* IMPORT CUSTOMIZED BASE CONFIGURATION OF MULTIPLE ELEMENTS */
 @import url(/css/baseSheet.css);
 
-/* DEFINE SELECTORS */
+/* MAIN GRID */
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
 main {
     box-shadow: 0px 4px 4px var(--shadow);
     background-color: var(--foreground);
     min-width: 50rem;
     max-width: 60rem;
+    align-self: center;
+    justify-self: center;
 }
 
-/* DECLARATION OF GRID PARENT */
+/* FORM GRID */
 form {
     box-shadow: 0px 4px 4px var(--shadow);
     background-color: var(--foreground);
@@ -27,7 +34,7 @@ form {
     gap: 2rem;
 }
 
-/* DEFINITION OF GRID CHILDREN */
+/* DEFINITION OF FORM GRID CHILDREN */
 button {
     background-color: var(--blue);
     grid-area: register;
