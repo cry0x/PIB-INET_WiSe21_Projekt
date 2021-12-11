@@ -73,3 +73,28 @@ button {
 #pwdConfirm {
     grid-area: pwdConfirm;
 }
+
+/* CHANGE ELEMENTS DEPENDANT ON SCREEN SIZE */
+@media only screen and (max-width: 1200px) {
+    main {
+        min-width: 15rem;
+    }
+    /* FORM GRID */
+    form {
+        padding: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: 10fr;
+        grid-template-areas:
+            'logo'
+            'salutation '
+            'fName '
+            'lName'
+            'email'
+            'login '
+            'birth'
+            'pwd '
+            'pwdConfirm'
+            'register ';
+        gap: 0.5rem;
+    }
+}

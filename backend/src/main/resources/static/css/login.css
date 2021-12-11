@@ -67,3 +67,14 @@ button {
 #errorMessageSecondLine {
     display: block;
 }
+
+/* CHANGE ELEMENTS DEPENDANT ON SCREEN SIZE */
+@media only screen and (max-width: 1200px) {
+    main {
+        min-width: 10rem;
+    }
+    /* FORM GRID */
+    form {
+        padding: 1rem;
+        gap: 0.5rem;
+    }
