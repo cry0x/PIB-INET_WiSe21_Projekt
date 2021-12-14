@@ -1,55 +1,36 @@
 let currentUserData;
 
-const userFormFieldSet = document.getElementById('userFormFieldSet');
-const userFormSubmitButton = document.getElementById('userFormSubmitButton')
-const userFormSubmitCancel = document.getElementById('userFormSubmitCancel')
-const userFormPasswordChange = document.getElementById('userFormPasswordChange')
-const userFormPasswordCancel = document.getElementById('userFormPasswordCancel')
-const passwordForm = document.getElementById('passwordForm')
+let isProfileFormDisabled = true;
 
 function handleUserProfileChange() {
-    if (userFormFieldSet.hasAttribute('disabled')) {
-        userFormFieldSet.removeAttribute('disabled')
-        userFormSubmitButton.innerHTML = 'save'
-        userFormSubmitCancel.style.visibility = 'visible';
+    if (isProfileFormDisabled) {
+        isProfileFormDisabled = false
+
+        document.getElementById('userFormFieldSet').removeAttribute('disabled')
+        document.getElementById('userFormSubmitButton').innerHTML = 'save'
+        document.getElementById('userFormSubmitCancel').style.visibility = 'visible';
     } else {
+        isProfileFormDisabled = true
+
         putUserProfileData()
 
-        userFormFieldSet.setAttribute('disabled','disabled')
-        userFormSubmitButton.innerHTML = 'change data'
-        userFormSubmitCancel.style.visibility = 'hidden';
+        document.getElementById('userFormFieldSet').setAttribute('disabled','disabled')
+        document.getElementById('userFormSubmitButton').innerHTML = 'change data'
+        document.getElementById('userFormSubmitCancel').style.visibility = 'hidden';
     }
 }
 
 function cancelUserProfileChange() {
-    if (userFormFieldSet.hasAttribute('disabled')) {
-        userFormFieldSet.removeAttribute('disabled')
-        userFormSubmitButton.innerHTML = 'save'
+    if (isProfileFormDisabled) {
+        document.getElementById('userFormFieldSet').removeAttribute('disabled')
+        document.getElementById('userFormSubmitButton').innerHTML = 'save'
     } else {
         loadCurrentUserData()
 
-        userFormFieldSet.setAttribute('disabled','disabled')
-        userFormSubmitButton.innerHTML = 'change data'
-        userFormSubmitCancel.style.visibility = 'hidden';
+        document.getElementById('userFormFieldSet').setAttribute('disabled','disabled')
+        document.getElementById('userFormSubmitButton').innerHTML = 'change data'
+        document.getElementById('userFormSubmitCancel').style.visibility = 'hidden';
     }
-}
-
-function handleUserPasswordChange() {
-    if (userFormPasswordCancel.style.visibility === 'visible') {
-        userFormPasswordCancel.style.visibility = 'hidden';
-        userFormPasswordChange.innerHTML = 'change password';
-        passwordForm.style.visibility = 'hidden';
-    } else {
-        userFormPasswordCancel.style.visibility = 'visible';
-        userFormPasswordChange.innerHTML = 'save password';
-        passwordForm.style.visibility = 'visible';
-    }
-}
-
-function cancelUserPasswordChange() {
-    userFormPasswordCancel.style.visibility = 'hidden';
-    userFormPasswordChange.innerHTML = 'change password';
-    passwordForm.style.visibility = 'hidden';
 }
 
 function putUserProfileData() {
@@ -83,6 +64,7 @@ function updateCurrentUserData() {
     currentUserData.lastName = document.querySelector('#lastName').value
     currentUserData.email = document.querySelector('#email').value
     currentUserData.birthdate = document.querySelector('#birthdate').value
+    currentUserData.pictureUrl = document.querySelector('#pictureUrl').value
 
     return currentUserData;
 }
@@ -93,6 +75,12 @@ function loadCurrentUserData() {
     document.querySelector('#lastName').value = `${currentUserData.lastName}`;
     document.querySelector('#email').value = `${currentUserData.email}`;
     document.querySelector('#birthdate').value = `${currentUserData.birthdate}`;
+    document.querySelector('#pictureUrl').value = `${currentUserData.pictureUrl}`;
+    if (currentUserData.pictureUrl === "") {
+        document.querySelector('#profilepicture').src = '/resources/images/default-profile-picture.png';
+    } else {
+        document.querySelector('#profilepicture').src = `${currentUserData.pictureUrl}`;
+    }
 }
 
 function updateForm(userData) {

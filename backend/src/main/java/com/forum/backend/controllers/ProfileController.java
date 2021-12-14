@@ -41,6 +41,16 @@ public class ProfileController {
         return newUserProfilDto;
     }
 
+    @PutMapping(value = "/current/password")
+    public void updateCurrentUserPassword(@RequestBody String userPassword) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof User) {
+            ((User)principal).setPassword(userPassword);
+            this.userService.createUser((User)principal);
+        }
+    }
+
     private UserProfilDto updateUserFromUserProfileDto(UserProfilDto userProfilDto) {
         User user = this.userService.readUserById(userProfilDto.getId());
 
@@ -49,6 +59,7 @@ public class ProfileController {
         user.setLastname(userProfilDto.getLastName());
         user.setEmail(userProfilDto.getEmail());
         user.setBirthdate(userProfilDto.getBirthdate());
+        user.setPictureUrl(userProfilDto.getPictureUrl());
 
         return getUserProfilDto(this.userService.createUser(user));
     }
@@ -62,6 +73,7 @@ public class ProfileController {
         userProfilDto.setLastName(user.getLastname());
         userProfilDto.setEmail(user.getEmail());
         userProfilDto.setBirthdate(user.getBirthdate());
+        userProfilDto.setPictureUrl(user.getPictureUrl());
 
         return userProfilDto;
     }

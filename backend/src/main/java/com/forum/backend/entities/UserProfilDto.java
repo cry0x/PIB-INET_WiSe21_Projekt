@@ -31,6 +31,9 @@ public class UserProfilDto {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
+    @NotNull
+    @NotEmpty
+    private String pictureUrl;
 
     public UserProfilDto() {
     }
@@ -83,4 +86,11 @@ public class UserProfilDto {
         this.birthdate = birthdate;
     }
 
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
 }
