@@ -28,7 +28,8 @@ public class User implements UserDetails {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
-    private String pictureUrl;
+    @Column(columnDefinition="TEXT")
+    private String base64Picture;
 
     public User() {
     }
@@ -89,12 +90,12 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public String getPictureUrl() {
-        return pictureUrl;
+    public String getBase64Picture() {
+        return base64Picture;
     }
 
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
+    public void setBase64Picture(String pictureUrl) {
+        this.base64Picture = pictureUrl;
     }
 
     @Override

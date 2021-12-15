@@ -19,11 +19,14 @@
                 <input type="text" id="lastName" name="lastName" placeholder="Lastname">
                 <input type="text" id="email" name="email" placeholder="Email">
                 <input type="text" id="birthdate" name="birthdate" placeholder="Birthdate">
-                <input type="text" id="pictureUrl" name="pictureUrl" placeholder="Picture URL">
             </fieldset>
         </form>
         <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()">change data</button>
         <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()">cancel</button>
+        <form method="post" action="/api/profile/current/picture" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/png, image/jpeg" />
+            <input type="submit" value="Submit">
+        </form>
     </div>
 </body>
 </html>
