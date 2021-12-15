@@ -13,8 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    public AuthService authService;
-    public BCryptPasswordEncoder bCryptPasswordEncoder;
+    private AuthService authService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public WebSecurityConfiguration(AuthService authService, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -32,8 +32,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/about").hasRole("USER")
-                    .antMatchers("/", "/**").permitAll()
+                    .antMatchers("/profile").hasRole("USER")
+                    .antMatchers("/", "/**", "/**/**", "/**/**/**").permitAll()
                     .anyRequest().permitAll()
                 .and()
                     .formLogin()

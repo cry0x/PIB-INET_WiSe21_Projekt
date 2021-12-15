@@ -16,7 +16,7 @@ import java.util.Collection;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(unique=true)
     private String login_name;
@@ -28,6 +28,7 @@ public class User implements UserDetails {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
+    private String pictureUrl;
 
     public User() {
     }
@@ -88,6 +89,14 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
@@ -96,6 +105,10 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return getLogin_name();
+    }
+
+    public void setUsername(String username) {
+        setLogin_name(username);
     }
 
     @Override

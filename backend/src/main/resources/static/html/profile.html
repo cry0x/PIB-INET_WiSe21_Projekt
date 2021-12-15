@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil</title>
+    <link rel="stylesheet" href="/css/profile.css" />
+</head>
+
+<body>
+    <script type="text/javascript" src="js/profile.js" ></script>
+    <div>
+        <form id="userForm" class="userForm" >
+            <fieldset id="userFormFieldSet" disabled="disabled">
+                <img id="profilepicture">
+                <input type="text" id="loginName" name="loginName" placeholder="Username">
+                <input type="text" id="firstName" name="firstName" placeholder="Firstname">
+                <input type="text" id="lastName" name="lastName" placeholder="Lastname">
+                <input type="text" id="email" name="email" placeholder="Email">
+                <input type="text" id="birthdate" name="birthdate" placeholder="Birthdate">
+                <input type="text" id="pictureUrl" name="pictureUrl" placeholder="Picture URL">
+            </fieldset>
+        </form>
+        <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()">change data</button>
+        <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()">cancel</button>
+    </div>
+</body>
+</html>
