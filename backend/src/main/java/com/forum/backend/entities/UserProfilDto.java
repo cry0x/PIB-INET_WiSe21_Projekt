@@ -33,7 +33,7 @@ public class UserProfilDto {
     private LocalDate birthdate;
     @NotNull
     @NotEmpty
-    private String pictureUrl;
+    private String base64Picture;
 
     public UserProfilDto() {
     }
@@ -86,11 +86,11 @@ public class UserProfilDto {
         this.birthdate = birthdate;
     }
 
-    public String getPictureUrl() {
-        return pictureUrl;
+    public String getBase64Picture() {
+        return base64Picture;
     }
 
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
+    public void setBase64Picture(String base64Picture) {
+        this.base64Picture = base64Picture;
     }
 }

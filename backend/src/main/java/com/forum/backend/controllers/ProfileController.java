@@ -6,6 +6,10 @@ import com.forum.backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Base64;
 
 @RestController
 @RequestMapping("api/profile")
@@ -51,6 +55,22 @@ public class ProfileController {
         }
     }
 
+    @PostMapping(value = "/current/picture")
+    public void updateProfilePicture(@RequestParam("image") MultipartFile multipartFile) {
+        try {
+            String base64EncodedPicture = Base64.getEncoder().encodeToString(multipartFile.getBytes());
+
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+            if (principal instanceof User) {
+                ((User)principal).setBase64Picture(base64EncodedPicture);
+                this.userService.createUser((User)principal);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private UserProfilDto updateUserFromUserProfileDto(UserProfilDto userProfilDto) {
         User user = this.userService.readUserById(userProfilDto.getId());
 
@@ -59,7 +79,7 @@ public class ProfileController {
         user.setLastname(userProfilDto.getLastName());
         user.setEmail(userProfilDto.getEmail());
         user.setBirthdate(userProfilDto.getBirthdate());
-        user.setPictureUrl(userProfilDto.getPictureUrl());
+        user.setBase64Picture(userProfilDto.getBase64Picture());
 
         return getUserProfilDto(this.userService.createUser(user));
     }
@@ -73,7 +93,7 @@ public class ProfileController {
         userProfilDto.setLastName(user.getLastname());
         userProfilDto.setEmail(user.getEmail());
         userProfilDto.setBirthdate(user.getBirthdate());
-        userProfilDto.setPictureUrl(user.getPictureUrl());
+        userProfilDto.setBase64Picture(user.getBase64Picture());
 
         return userProfilDto;
     }

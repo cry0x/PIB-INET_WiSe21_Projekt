@@ -64,7 +64,6 @@ function updateCurrentUserData() {
     currentUserData.lastName = document.querySelector('#lastName').value
     currentUserData.email = document.querySelector('#email').value
     currentUserData.birthdate = document.querySelector('#birthdate').value
-    currentUserData.pictureUrl = document.querySelector('#pictureUrl').value
 
     return currentUserData;
 }
@@ -75,12 +74,7 @@ function loadCurrentUserData() {
     document.querySelector('#lastName').value = `${currentUserData.lastName}`;
     document.querySelector('#email').value = `${currentUserData.email}`;
     document.querySelector('#birthdate').value = `${currentUserData.birthdate}`;
-    document.querySelector('#pictureUrl').value = `${currentUserData.pictureUrl}`;
-    if (currentUserData.pictureUrl === "") {
-        document.querySelector('#profilepicture').src = '/resources/images/default-profile-picture.png';
-    } else {
-        document.querySelector('#profilepicture').src = `${currentUserData.pictureUrl}`;
-    }
+    document.querySelector('#profilepicture').src = `data:image/png;base64,${currentUserData.base64Picture}`;
 }
 
 function updateForm(userData) {
