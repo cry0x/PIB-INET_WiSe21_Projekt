@@ -10,14 +10,3 @@ services:
       POSTGRES_DB: forum
     ports:
       - 5432:5432
-        
-  minio:
-    image: quay.io/minio/minio:latest
-    restart: always
-    ports:
-      - 9000:9000
-      - 9001:9001
-    environment:
-      MINIO_ROOT_USER: minio
-      MINIO_ROOT_PASSWORD: miniostorage
-    command: server /data --console-address ":9001"
