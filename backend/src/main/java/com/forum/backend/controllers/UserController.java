@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/users")
 public class UserController {
 
-    private final UserService userService;
-    public final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private UserService userService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserController(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {
