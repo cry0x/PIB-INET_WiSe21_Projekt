@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
@@ -48,6 +50,8 @@ public class UserController {
 
         User user = userDto.getUser();
         user.setBase64Picture(base64DefaultPicture);
+        user.setRegistrationdate(LocalDate.now());
+
         return new ResponseEntity<>(this.userService.createUser(user), HttpStatus.CREATED);
     }
 

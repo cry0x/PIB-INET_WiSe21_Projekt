@@ -30,6 +30,9 @@ public class User implements UserDetails {
     private LocalDate birthdate;
     @Column(columnDefinition="TEXT")
     private String base64Picture;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate registrationdate;
 
     public User() {
     }
@@ -96,6 +99,14 @@ public class User implements UserDetails {
 
     public void setBase64Picture(String pictureUrl) {
         this.base64Picture = pictureUrl;
+    }
+
+    public LocalDate getRegistrationdate() {
+        return registrationdate;
+    }
+
+    public void setRegistrationdate(LocalDate registrationdate) {
+        this.registrationdate = registrationdate;
     }
 
     @Override
