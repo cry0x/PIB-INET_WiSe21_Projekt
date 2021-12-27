@@ -76,6 +76,7 @@ function loadCurrentUserData() {
     document.querySelector('#email').value = `${currentUserData.email}`;
     document.querySelector('#birthdate').value = `${currentUserData.birthdate}`;
     document.querySelector('#pictureUrl').value = `${currentUserData.pictureUrl}`;
+    document.querySelector('#memberSince').innerHTML = `Mitglied seit: ${currentUserData.registrationdate}`;
     if (currentUserData.pictureUrl === "") {
         document.querySelector('#profilepicture').src = '/resources/images/default-profile-picture.png';
     } else {

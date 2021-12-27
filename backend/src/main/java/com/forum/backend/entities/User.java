@@ -29,6 +29,9 @@ public class User implements UserDetails {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
     private String pictureUrl;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate registrationdate;
 
     public User() {
     }
@@ -95,6 +98,14 @@ public class User implements UserDetails {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public LocalDate getRegistrationdate() {
+        return registrationdate;
+    }
+
+    public void setRegistrationdate(LocalDate registrationdate) {
+        this.registrationdate = registrationdate;
     }
 
     @Override

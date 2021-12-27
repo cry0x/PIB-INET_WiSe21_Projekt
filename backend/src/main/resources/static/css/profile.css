@@ -31,6 +31,7 @@ fieldset {
         'profilepicture email'
         'profilepicture birthdate'
         'profilepicture pictureUrl'
+        'profilepicture memberSince'
         'userFormSubmitButton userFormSubmitCancel';
     gap: 2rem;
 }
@@ -64,6 +65,9 @@ button {
 }
 #pictureUrl {
     grid-area: pictureUrl;
+}
+#memberSince {
+    grid-area: memberSince;
 }
 #userFormSubmitButton {
     grid-area: userFormSubmitButton;

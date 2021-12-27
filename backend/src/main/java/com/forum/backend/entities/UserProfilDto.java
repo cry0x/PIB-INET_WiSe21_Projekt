@@ -34,6 +34,11 @@ public class UserProfilDto {
     @NotNull
     @NotEmpty
     private String pictureUrl;
+    @NotNull
+    @NotEmpty
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate registrationdate;
 
     public UserProfilDto() {
     }
@@ -92,5 +97,13 @@ public class UserProfilDto {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public LocalDate getRegistrationdate() {
+        return registrationdate;
+    }
+
+    public void setRegistrationdate(LocalDate registrationdate) {
+        this.registrationdate = registrationdate;
     }
 }
