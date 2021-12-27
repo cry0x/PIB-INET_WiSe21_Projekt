@@ -51,6 +51,7 @@ public class UserController {
         User newUser = userDto.getUser();
         newUser.setRegistrationdate(LocalDate.now());
         newUser.setBase64Picture(base64DefaultPicture);
+
         return new ResponseEntity<>(this.userService.createUser(newUser), HttpStatus.CREATED);
     }
 
