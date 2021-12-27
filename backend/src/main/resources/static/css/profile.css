@@ -23,13 +23,15 @@ fieldset {
     display: grid;
     padding: 3rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 6fr;
+    grid-template-rows: 8fr;
     grid-template-areas:
         'profilepicture loginName'
         'profilepicture firstName'
         'profilepicture lastName'
         'profilepicture email'
         'profilepicture birthdate'
+        'profilepicture pictureUrl'
+        'profilepicture memberSince'
         'userFormSubmitButton userFormSubmitCancel';
     gap: 2rem;
 }
@@ -60,6 +62,12 @@ button {
 }
 #birthdate {
     grid-area: birthdate;
+}
+#pictureUrl {
+    grid-area: pictureUrl;
+}
+#memberSince {
+    grid-area: memberSince;
 }
 #userFormSubmitButton {
     grid-area: userFormSubmitButton;

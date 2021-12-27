@@ -94,6 +94,7 @@ public class ProfileController {
         userProfilDto.setEmail(user.getEmail());
         userProfilDto.setBirthdate(user.getBirthdate());
         userProfilDto.setBase64Picture(user.getBase64Picture());
+        userProfilDto.setRegistrationdate(user.getRegistrationdate());
 
         return userProfilDto;
     }

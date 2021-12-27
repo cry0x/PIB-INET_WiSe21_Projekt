@@ -75,6 +75,7 @@ function loadCurrentUserData() {
     document.querySelector('#email').value = `${currentUserData.email}`;
     document.querySelector('#birthdate').value = `${currentUserData.birthdate}`;
     document.querySelector('#profilepicture').src = `data:image/png;base64,${currentUserData.base64Picture}`;
+    document.querySelector('#memberSince').innerHTML = `Mitglied seit: ${currentUserData.registrationdate}`;
 }
 
 function updateForm(userData) {

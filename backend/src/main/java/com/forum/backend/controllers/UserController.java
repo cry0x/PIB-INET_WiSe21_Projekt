@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
@@ -46,9 +48,10 @@ public class UserController {
     public ResponseEntity<User> createUser(@ModelAttribute UserDto userDto) {
         userDto.setPwd(bCryptPasswordEncoder.encode(userDto.getPwd()));
 
-        User user = userDto.getUser();
-        user.setBase64Picture(base64DefaultPicture);
-        return new ResponseEntity<>(this.userService.createUser(user), HttpStatus.CREATED);
+        User newUser = userDto.getUser();
+        newUser.setRegistrationdate(LocalDate.now());
+        newUser.setBase64Picture(base64DefaultPicture);
+        return new ResponseEntity<>(this.userService.createUser(newUser), HttpStatus.CREATED);
     }
 
     @GetMapping(produces = "application/json;charset=UTF-8")
