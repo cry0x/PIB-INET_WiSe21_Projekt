@@ -74,6 +74,7 @@ public class ProfileController {
         userProfilDto.setEmail(user.getEmail());
         userProfilDto.setBirthdate(user.getBirthdate());
         userProfilDto.setPictureUrl(user.getPictureUrl());
+        userProfilDto.setRegistrationdate(user.getRegistrationdate());
 
         return userProfilDto;
     }
