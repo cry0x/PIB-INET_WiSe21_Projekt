@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Registration Page</title>
+        <link rel="stylesheet" href="/css/addPost.css" />
+        <script src="/js/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <main id="mainHolder">
+            <form action="/api/v1/posts" method="post">
+           
+                <!--Titel vom Beitrag-->
+                <div>
+                    <input id="post_title"
+                    class="textBasic"
+                    type="text"
+                    name="title"
+                    placeholder="Titel"
+                    maxlength="55"
+                    required>
+                </div>
+                <!--Text des Beitrags-->
+                <div>
+                    <textarea id="post"
+                    class="textBasic"
+                    name="post"
+                    placeholder="Es war einmal ..."
+                    maxlength="255"
+                    required></textarea>
+                </div>
+                <!-- Hidden Field to get back to the Form after Submitting -->
+                <input type="hidden" name="destination" value="addPost.html" />
+                <!-- Submit -->
+                <button type="submit" id="submitButton" class="textBasic">
+            </form>
+        
+            <h2>Beiträge</h2>
+            <ul id="posts"></ul>
+            <script src="js/displayPosts.js"></script>></script>
+        </main>   
+    
+    </body>
+</html>
