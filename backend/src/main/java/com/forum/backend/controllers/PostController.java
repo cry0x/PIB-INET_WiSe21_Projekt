@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 public class PostController {
 
+    @Autowired 
     private final PostService postService;
 
     @Autowired
@@ -30,7 +31,7 @@ public class PostController {
         return new ResponseEntity<>(this.postService.readPostById(id), HttpStatus.FOUND);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<Iterable<Post>> getAllPosts() {
         return new ResponseEntity<>(this.postService.getAllPosts(), HttpStatus.FOUND);
     }

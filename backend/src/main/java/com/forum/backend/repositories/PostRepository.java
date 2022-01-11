@@ -11,6 +11,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("SELECT p from Post p where p.title = ?1")
     Post findPostbyTitle(String title);
 
-    //@Query("SELECT * from Post p")
+    //@Query("SELECT p from Post p")
     //Iterable<Post> getAllPosts();
 }
