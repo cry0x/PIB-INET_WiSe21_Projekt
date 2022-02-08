@@ -6,15 +6,14 @@ fetch("http://localhost:8080/api/v1/posts")
     .then(json => {
   
         // Create a variable to store HTML
-        let li = `<tr><th>ID</th><th>Titel</th><th>Inhalt</th></tr>`;
-       
+        let li = ``;
+      
         // Loop through each data and add a table row
         json.forEach(p => {
-            li += `<div>
-                <p>${p.id}</p>
-                <p>${p.title}</p>
-                <p>${p.post}</p>        
-            </div>`;
+            li +=   `<div class="title_box" id="post">
+                        <div id="title">${p.title}</div>
+                        <div id="content">${p.post}</div>  
+                    </div>`;
         });
   
         // Display result

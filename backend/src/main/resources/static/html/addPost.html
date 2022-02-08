@@ -12,7 +12,8 @@
     <body>
         <main id="mainHolder">
             <form action="/api/v1/posts" method="post">
-           
+                 <!-- Logo -->
+                 <img src="/resources/images/logo.png" alt="code." id="logo" />
                 <!--Titel vom Beitrag-->
                 <div>
                     <input id="post_title"
@@ -29,7 +30,7 @@
                     class="textBasic"
                     name="post"
                     placeholder="Es war einmal ..."
-                    maxlength="255"
+                    maxlength="1500"
                     required></textarea>
                 </div>
                 <!-- Hidden Field to get back to the Form after Submitting -->

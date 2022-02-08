@@ -51,10 +51,41 @@ header {
 #contact {
     background-color: var(--foreground);
     box-shadow: 0px 4px 4px var(--shadow);
-    grid-area: mainContent;
+    height: 100%;
+    width: 100%;
+    align-items: center;
     justify-self: start;
 }
 
+
+
+  
+.title_box {
+    margin-top: 1em;
+    border: var(--cyan) 3px solid;
+    box-shadow: 0px 4px 4px var(--shadow);
+  }
+  
+  .title_box #title {
+    position: relative;
+    top: -0.5em;
+    margin-left: 1em;
+    display: inline-flex;
+    background-color: var(--foreground);
+  }
+  
+  .title_box #content {
+    background-color: var(--foreground);
+  }
+
+/*    #post {
+        background-color: var(--foreground);
+        box-shadow: 0px 4px 4px var(--shadow);
+        align-items: center;   
+        border: solid;
+        border-color: rgb(206, 206, 206);
+    }
+*/
 /* CHANGE ELEMENTS DEPENDANT ON SCREEN SIZE */
 @media only screen and (max-width: 1200px) {
     #headerNav,
