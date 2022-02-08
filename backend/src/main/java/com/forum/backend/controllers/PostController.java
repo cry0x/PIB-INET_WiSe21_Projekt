@@ -31,7 +31,7 @@ public class PostController {
         return new ResponseEntity<>(this.postService.readPostById(id), HttpStatus.FOUND);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<Iterable<Post>> getAllPosts() {
         return new ResponseEntity<>(this.postService.getAllPosts(), HttpStatus.FOUND);
     }

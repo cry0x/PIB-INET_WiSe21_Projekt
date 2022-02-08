@@ -1,5 +1,5 @@
 //  GET request using fetch()
-fetch("http://localhost:8080/api/v1/posts/all")
+fetch("http://localhost:8080/api/v1/posts")
    
     // Converting received data to JSON
     .then(response => response.json())
@@ -10,11 +10,11 @@ fetch("http://localhost:8080/api/v1/posts/all")
        
         // Loop through each data and add a table row
         json.forEach(p => {
-            li += `<tr>
-                <td>${p.id}</td>
-                <td>${p.title}</td>
-                <td>${p.post}</td>        
-            </tr>`;
+            li += `<div>
+                <p>${p.id}</p>
+                <p>${p.title}</p>
+                <p>${p.post}</p>        
+            </div>`;
         });
   
         // Display result
