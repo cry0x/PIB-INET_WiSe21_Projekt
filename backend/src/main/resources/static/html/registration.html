@@ -10,7 +10,7 @@
 
     <body>
         <main id="mainHolder">
-            <form action="/api/v1/users" method="post">
+            <form id="registrationForm" onsubmit="handleTest(event)">
                 <!-- Anrede -->
                 <div class="salutation">
                     <datalist id="salutationlist">
@@ -38,7 +38,7 @@
                     name="fName"
                     placeholder="First Name"
                     maxlength="20"
-                    required
+
                 />
                 <!-- Nachname -->
                 <input
@@ -48,7 +48,7 @@
                     name="lName"
                     placeholder="Last Name"
                     title="Please, specify the last name"
-                    required
+
                 />
                 <!-- Email -->
                 <input
@@ -58,7 +58,7 @@
                     name="email"
                     placeholder="Email"
                     title="Please, specify your email adress"
-                    required
+
                 />
                 <!-- Login -->
                 <input
@@ -68,7 +68,7 @@
                     name="login"
                     placeholder="Username"
                     title="Please, specify your login"
-                    required
+
                 />
                 <!-- Geburtsdatum -->
                 <input
@@ -76,7 +76,7 @@
                     class="textBasic"
                     type="date"
                     name="birth"
-                    required
+
                 />
                 <!-- PWD -->
                 <input
@@ -89,7 +89,7 @@
                     autocomplete="new-password"
                     minlength="4"
                     maxlength="20"
-                    required
+
                 />
                 <!-- Confirm PWD -->
                 <input
@@ -102,10 +102,10 @@
                     autocomplete="new-password"
                     minlength="4"
                     maxlength="20"
-                    required
+
                 />
                 <!-- Script to validate if the passwords match -->
-                <script src="/js/formValidation.js"></script>
+<!--                <script src="/js/formValidation.js"></script>-->
                 <!-- Hidden Field to get back to the Form after Submitting -->
                 <input type="hidden" name="caller" value="registration.html" />
                 <!-- Submit -->
@@ -114,5 +114,43 @@
                 </button>
             </form>
         </main>
+        <script>
+            async function handleTest(event) {
+                event.preventDefault()
+
+                const form = document.getElementById('registrationForm');
+                const loginname = form.elements['login'].value;
+                const firstname = form.elements['fName'].value;
+                const lastname = form.elements['lName'].value;
+                const email = form.elements['email'].value;
+                const birthdate = form.elements['birth'].value;
+                const password = form.elements['pwd'].value;
+
+                const userData = {
+                    firstname,
+                    lastname,
+                    email,
+                    loginname,
+                    birthdate,
+                    password
+                }
+
+                await fetch('http://localhost:8080/api/users', {
+                    method: 'POST',
+                    body: JSON.stringify(userData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(json => console.log(json))
+
+                window.location.replace("http://localhost:8080/")
+            }
+            fetch('http://localhost:8080/api/users')
+                .then(response => response.json())
+                .then(json => console.log(json))
+                .catch(error => console.log(error))
+        </script>
     </body>
 </html>

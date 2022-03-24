@@ -23,8 +23,6 @@ public class ProfileController {
         String username = "";
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if (principal instanceof User)
-            username = ((User)principal).getUsername();
 
         return getUserProfilDto(this.userService.findUserByName(username));
     }
@@ -35,8 +33,6 @@ public class ProfileController {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if (principal instanceof User)
-            ((User)principal).setUsername(newUserProfilDto.getLoginName());
 
         return newUserProfilDto;
     }
@@ -45,36 +41,17 @@ public class ProfileController {
     public void updateCurrentUserPassword(@RequestBody String userPassword) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if (principal instanceof User) {
-            ((User)principal).setPassword(userPassword);
-            this.userService.createUser((User)principal);
-        }
     }
 
     private UserProfilDto updateUserFromUserProfileDto(UserProfilDto userProfilDto) {
         User user = this.userService.readUserById(userProfilDto.getId());
 
-        user.setLogin_name(userProfilDto.getLoginName());
-        user.setFirstname(userProfilDto.getFirstName());
-        user.setLastname(userProfilDto.getLastName());
-        user.setEmail(userProfilDto.getEmail());
-        user.setBirthdate(userProfilDto.getBirthdate());
-        user.setPictureUrl(userProfilDto.getPictureUrl());
-
-        return getUserProfilDto(this.userService.createUser(user));
+        return getUserProfilDto(this.userService.saveUser(user));
     }
 
     public UserProfilDto getUserProfilDto(User user) {
         UserProfilDto userProfilDto = new UserProfilDto();
 
-        userProfilDto.setId(user.getId());
-        userProfilDto.setLoginName(user.getLogin_name());
-        userProfilDto.setFirstName(user.getFirstname());
-        userProfilDto.setLastName(user.getLastname());
-        userProfilDto.setEmail(user.getEmail());
-        userProfilDto.setBirthdate(user.getBirthdate());
-        userProfilDto.setPictureUrl(user.getPictureUrl());
-        userProfilDto.setRegistrationdate(user.getRegistrationdate());
 
         return userProfilDto;
     }

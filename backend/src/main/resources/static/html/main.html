@@ -28,12 +28,12 @@
                 </ul>
             </nav>
             <div id="headerNavButtons" class="textBasic">
-                <!-- Login Button -->
-                <button class="textBasic" id="loginButton">
-                    <a href="/html/userProfile.html">Profile</a>
+                <!-- Profile Button -->
+                <button class="textBasic" id="profileButton">
+                    <a onclick="contentSwitch('#profile');"> PROFILE </a>
                 </button>
-                <!-- Register Button -->
-                <button class="textBasic" id="registerButton">
+                <!-- Logout Button -->
+                <button class="textBasic" id="logoutButton">
                     <a href="/index.html">Logout</a>
                 </button>
             </div>
@@ -46,6 +46,7 @@
             <div id="main">FORUMPOSTS</div>
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
+            <div id="profile" hidden>PROFILE</div>
             <!-- USE THIS MENU -->
             <div id="sideNav" hidden>
                 <div
@@ -71,17 +72,13 @@
                 >
                     CONTACT
                 </div>
-                <!-- Login Button -->
-                <button
-                    class="textBasic sideNavItem sideNavButton"
-                    id="loginButton"
-                >
-                    <a href="/html/login.html">Login</a>
+                <!-- Profile Button -->
+                <button class="textBasic" id="profileButton">
+                    <a onclick="contentSwitch('#profile');"> PROFILE </a>
                 </button>
-                <br />
-                <!-- Register Button -->
-                <button class="textBasic sideNavItem" id="registerButton">
-                    <a href="/html/registration.html">Register</a>
+                <!-- Logout Button -->
+                <button class="textBasic" id="logoutButton">
+                    <a href="/index.html">Logout</a>
                 </button>
             </div>
         </div>

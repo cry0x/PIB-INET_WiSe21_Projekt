@@ -1,5 +1,6 @@
 package com.forum.backend.services;
 
+import com.forum.backend.entities.AuthenticatedUser;
 import com.forum.backend.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,7 +18,9 @@ public class AuthService implements UserDetailsService {
     }
 
     @Override
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        return this.userService.findUserByName(username);
+    public AuthenticatedUser loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = this.userService.findUserByName(username);
+
+        return new AuthenticatedUser(user);
     }
 }
