@@ -23,7 +23,7 @@ public class ProfileController {
     }
 
     @GetMapping("/current")
-    public User getCurrentUser() throws Exception {
+    public User getCurrentUser() {
         String userLoginname = "";
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -31,6 +31,17 @@ public class ProfileController {
             userLoginname = ((User) principal).getLoginname();
 
         return this.userService.findUserByName(userLoginname);
+    }
+
+    @GetMapping("/admin")
+    public boolean getIsCurrentUserAdmin() {
+        String userLoginname = "";
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof User)
+            userLoginname = ((User) principal).getLoginname();
+
+        return userLoginname.equals("admin");
     }
 
     @PutMapping(value = "/current", consumes = "application/json")
