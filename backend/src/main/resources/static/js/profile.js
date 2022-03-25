@@ -1,5 +1,3 @@
-let currentUserData;
-
 let isProfileFormDisabled = true;
 
 function handleUserProfileChange() {
@@ -9,14 +7,14 @@ function handleUserProfileChange() {
         document.getElementById('userFormFieldSet').removeAttribute('disabled')
         document.getElementById('userFormSubmitButton').innerHTML = 'save'
         document.getElementById('userFormSubmitCancel').style.visibility = 'visible';
+        document.getElementById('userFormSubmitButton').addEventListener("click", putUserProfileData)
     } else {
         isProfileFormDisabled = true
-
-        putUserProfileData()
 
         document.getElementById('userFormFieldSet').setAttribute('disabled','disabled')
         document.getElementById('userFormSubmitButton').innerHTML = 'change data'
         document.getElementById('userFormSubmitCancel').style.visibility = 'hidden';
+        document.getElementById('userFormSubmitButton').removeEventListener("click", putUserProfileData)
     }
 }
 
@@ -34,34 +32,29 @@ function cancelUserProfileChange() {
 }
 
 function putUserProfileData() {
-    console.log(currentUserData)
-
-    fetch("http://localhost:8080/api/profile/current", {
+    const url = "http://localhost:8080/api/profile/current";
+    const body = {
         method: 'PUT',
         headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify(updateCurrentUserData())
-    }).then(res => {
-        return res.json()
-    }).then(userData => {
-        updateForm(userData)
-    });
+        body: JSON.stringify(getUpdateUserDataFromForm())
+    };
+
+    fetch(url, body)
+        .then(res => res.json())
+        .catch(err => console.log(err));
 }
 
 function fetchCurrentUserProfile() {
-    console.log(currentUserData)
+    const url = "http://localhost:8080/api/profile/current";
 
-    fetch("http://localhost:8080/api/profile/current").then(res => {
-        if (!res.ok)
-            throw Error('Userdata couldn\'t be fetched!')
-        return res.json();
-    }).then(userData => {
-        updateForm(userData)
-    }).catch(err => {
-        alert(err)
-    });
+    fetch(url)
+        .then(res => res.json())
+        .catch(err => console.log(err));
 }
 
-function updateCurrentUserData() {
+function getUpdateUserDataFromForm() {
+    let currentUserData = {};
+
     currentUserData.loginname = document.querySelector('#loginName').value
     currentUserData.firstname = document.querySelector('#firstName').value
     currentUserData.lastname = document.querySelector('#lastName').value
@@ -73,6 +66,10 @@ function updateCurrentUserData() {
 }
 
 function loadCurrentUserData() {
+    const currentUserData = fetchCurrentUserProfile()
+
+    console.log(currentUserData)
+
     document.querySelector('#loginName').value = `${currentUserData.loginname}`;
     document.querySelector('#firstName').value = `${currentUserData.firstname}`;
     document.querySelector('#lastName').value = `${currentUserData.lastname}`;
@@ -88,10 +85,4 @@ function loadCurrentUserData() {
     }
 }
 
-function updateForm(userData) {
-    currentUserData = userData;
-
-    loadCurrentUserData();
-}
-
-fetchCurrentUserProfile();
+loadCurrentUserData();

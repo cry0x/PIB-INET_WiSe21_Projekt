@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/{userId}")
-    public User getUserById(@PathVariable Long userId) {
+    public User getUserById(@PathVariable Long userId) throws Exception {
         logger.info(String.format("GET /api/user/%s", userId));
 
         return this.userService.readUserById(userId);

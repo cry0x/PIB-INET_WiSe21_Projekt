@@ -49,8 +49,6 @@ public class AuthenticatedUser extends User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        logger.info("isEnabled");
-
         return true;
     }
 }

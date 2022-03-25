@@ -21,8 +21,8 @@ public class UserService {
         return this.userRepository.save(user);
     }
 
-    public User readUserById(long userId) {
-        return this.userRepository.findById(userId).orElseThrow();
+    public User readUserById(long userId) throws Exception {
+        return this.userRepository.findById(userId).orElseThrow(() -> new Exception(String.format("User with Id: %s doesnt exist!", userId)));
     }
 
     public List<User> readAllUsers() {
