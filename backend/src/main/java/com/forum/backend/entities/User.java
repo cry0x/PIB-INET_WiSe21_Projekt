@@ -29,5 +29,6 @@ public class User {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate registrationdate = LocalDate.now();
     private String password;
+    private String pictureUrl = "https://c.tenor.com/-bnpTFlQLKwAAAAC/pepe-clown.gif";
 
 }

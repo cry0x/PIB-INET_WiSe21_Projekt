@@ -78,15 +78,14 @@ async function loadCurrentUserData() {
     document.querySelector('#lastName').value = `${currentUserData.lastname}`;
     document.querySelector('#email').value = `${currentUserData.email}`;
     document.querySelector('#birthdate').value = `${currentUserData.birthdate}`;
-    // document.querySelector('#pictureUrl').value = `${currentUserData.pictureUrl}`;
-    document.querySelector('#pictureUrl').value = 'https://upload.wikimedia.org/wikipedia/en/6/63/Feels_good_man.jpg';
+    document.querySelector('#pictureUrl').value = `${currentUserData.pictureUrl}`;
     document.querySelector('#memberSince').innerHTML = `Mitglied seit: ${currentUserData.registrationdate}`;
 
-    // if (currentUserData.pictureUrl === "") {
-        document.querySelector('#profilepicture').src = 'https://upload.wikimedia.org/wikipedia/en/6/63/Feels_good_man.jpg';
-    // } else {
-    //     document.querySelector('#profilepicture').src = `${currentUserData.pictureUrl}`;
-    // }
+    if (currentUserData.pictureUrl === "") {
+        document.querySelector('#profilepicture').src = '';
+    } else {
+         document.querySelector('#profilepicture').src = `${currentUserData.pictureUrl}`;
+    }
 }
 
 loadCurrentUserData();
