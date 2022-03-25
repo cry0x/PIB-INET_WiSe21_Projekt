@@ -24,36 +24,26 @@ public class AuthenticatedUser extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        logger.info("getAuthorities");
-
         return AuthorityUtils.createAuthorityList("ROLE_USER");
     }
 
     @Override
     public String getUsername() {
-        logger.info("getUsername");
-
         return getLoginname();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        logger.info("isAccountNonExpired");
-
         return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        logger.info("isAccountNonLocked");
-
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        logger.info("isCredentialsNonExpired");
-
         return true;
     }
 

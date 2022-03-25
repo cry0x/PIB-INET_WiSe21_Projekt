@@ -23,8 +23,6 @@ public class AuthService implements UserDetailsService {
 
     @Override
     public AuthenticatedUser loadUserByUsername(String username) throws UsernameNotFoundException {
-        logger.info("loadUserByUsername");
-
         User user = this.userService.findUserByName(username);
 
         return new AuthenticatedUser(user);
