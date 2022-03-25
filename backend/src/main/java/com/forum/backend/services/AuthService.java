@@ -1,7 +1,6 @@
 package com.forum.backend.services;
 
 import com.forum.backend.entities.AuthenticatedUser;
-import com.forum.backend.entities.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

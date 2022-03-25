@@ -15,14 +15,11 @@ public class ProfileController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
 
-    private UserService userService;
-
-    private final PasswordEncoder passwordEncoder;
+    private final UserService userService;
 
     @Autowired
-    public ProfileController(UserService userService, PasswordEncoder passwordEncoder) {
+    public ProfileController(UserService userService) {
         this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/current")
@@ -49,12 +46,7 @@ public class ProfileController {
         user.setId(existingUser.getId());
         user.setPassword(existingUser.getPassword());
 
-        user = this.userService.saveUser(user);
-
-//        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(user.getLoginname(), user.getPassword());
-//        SecurityContextHolder.getContext().setAuthentication(authRequest);
-
-        return user;
+        return this.userService.saveUser(user);
     }
 
 }

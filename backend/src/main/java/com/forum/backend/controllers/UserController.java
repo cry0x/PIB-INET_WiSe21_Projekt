@@ -60,7 +60,7 @@ public class UserController {
 
     @DeleteMapping
     public void deleteUser(@RequestBody User user) {
-        logger.info(String.format("DELETE /api/user ", user.toString()));
+        logger.info(String.format("DELETE /api/user %s", user.toString()));
 
         if (user.getId() == null)
             throw new RuntimeException("The user to be deleted doesnt have an id!");
