@@ -1,5 +1,3 @@
-let currentUserData;
-
 let isProfileFormDisabled = true;
 
 function handleUserProfileChange() {
@@ -9,10 +7,11 @@ function handleUserProfileChange() {
         document.getElementById('userFormFieldSet').removeAttribute('disabled')
         document.getElementById('userFormSubmitButton').innerHTML = 'save'
         document.getElementById('userFormSubmitCancel').style.visibility = 'visible';
+        document.querySelector('#loginName').setAttribute('disabled', 'disabled')
     } else {
         isProfileFormDisabled = true
 
-        putUserProfileData()
+        updateUserDataFromForm()
 
         document.getElementById('userFormFieldSet').setAttribute('disabled','disabled')
         document.getElementById('userFormSubmitButton').innerHTML = 'change data'
@@ -33,61 +32,60 @@ function cancelUserProfileChange() {
     }
 }
 
-function putUserProfileData() {
-    fetch("http://localhost:8080/api/profile/current", {
+function putUserProfileData(newUserData) {
+    const url = "http://localhost:8080/api/profile/current";
+    const body = {
         method: 'PUT',
         headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify(updateCurrentUserData())
-    }).then(res => {
-        return res.json()
-    }).then(userData => {
-        updateForm(userData)
-    });
+        body: JSON.stringify(newUserData)
+    };
+
+    return fetch(url, body)
+        .then(response => response.json())
+        .catch(error => console.error(error));
 }
 
-function fetchCurrentUserProfile() {
-    fetch("http://localhost:8080/api/profile/current").then(res => {
-        if (!res.ok)
-            throw Error('Userdata couldn\'t be fetched!')
+async function updateUserDataFromForm() {
+    let currentUserData = {};
 
-        return res.json();
-    }).then(userData => {
-        updateForm(userData)
-    }).catch(err => {
-        alert(err)
-    });
-}
-
-function updateCurrentUserData() {
-    currentUserData.loginName = document.querySelector('#loginName').value
-    currentUserData.firstName = document.querySelector('#firstName').value
-    currentUserData.lastName = document.querySelector('#lastName').value
+    currentUserData.loginname = document.querySelector('#loginName').value
+    currentUserData.firstname = document.querySelector('#firstName').value
+    currentUserData.lastname = document.querySelector('#lastName').value
     currentUserData.email = document.querySelector('#email').value
     currentUserData.birthdate = document.querySelector('#birthdate').value
     currentUserData.pictureUrl = document.querySelector('#pictureUrl').value
 
-    return currentUserData;
-}
-
-function loadCurrentUserData() {
-    document.querySelector('#loginName').value = `${currentUserData.loginName}`;
-    document.querySelector('#firstName').value = `${currentUserData.firstName}`;
-    document.querySelector('#lastName').value = `${currentUserData.lastName}`;
-    document.querySelector('#email').value = `${currentUserData.email}`;
-    document.querySelector('#birthdate').value = `${currentUserData.birthdate}`;
-    document.querySelector('#pictureUrl').value = `${currentUserData.pictureUrl}`;
-    document.querySelector('#memberSince').innerHTML = `Mitglied seit: ${currentUserData.registrationdate}`;
-    if (currentUserData.pictureUrl === "") {
-        document.querySelector('#profilepicture').src = '/resources/images/default-profile-picture.png';
-    } else {
-        document.querySelector('#profilepicture').src = `${currentUserData.pictureUrl}`;
-    }
-}
-
-function updateForm(userData) {
-    currentUserData = userData;
+    await putUserProfileData(currentUserData);
 
     loadCurrentUserData();
 }
 
-fetchCurrentUserProfile();
+function fetchCurrentUserProfile() {
+    const url = "http://localhost:8080/api/profile/current";
+
+    return fetch(url)
+        .then(response => response.json())
+        .catch(err => console.error(err));
+}
+
+async function loadCurrentUserData() {
+    const currentUserData = await fetchCurrentUserProfile();
+
+    console.log(currentUserData)
+
+    document.querySelector('#loginName').value = `${currentUserData.loginname}`;
+    document.querySelector('#firstName').value = `${currentUserData.firstname}`;
+    document.querySelector('#lastName').value = `${currentUserData.lastname}`;
+    document.querySelector('#email').value = `${currentUserData.email}`;
+    document.querySelector('#birthdate').value = `${currentUserData.birthdate}`;
+    document.querySelector('#pictureUrl').value = `${currentUserData.pictureUrl}`;
+    document.querySelector('#memberSince').innerHTML = `Mitglied seit: ${currentUserData.registrationdate}`;
+
+    if (currentUserData.pictureUrl === "") {
+        document.querySelector('#profilepicture').src = '';
+    } else {
+         document.querySelector('#profilepicture').src = `${currentUserData.pictureUrl}`;
+    }
+}
+
+loadCurrentUserData();

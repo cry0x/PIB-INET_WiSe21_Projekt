@@ -1,6 +1,8 @@
 package com.forum.backend.services;
 
-import com.forum.backend.entities.User;
+import com.forum.backend.entities.AuthenticatedUser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService implements UserDetailsService {
+
+    private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
     private final UserService userService;
 
@@ -17,7 +21,8 @@ public class AuthService implements UserDetailsService {
     }
 
     @Override
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        return this.userService.findUserByName(username);
+    public AuthenticatedUser loadUserByUsername(String username) throws UsernameNotFoundException {
+        return new AuthenticatedUser(this.userService.findUserByName(username));
     }
+
 }

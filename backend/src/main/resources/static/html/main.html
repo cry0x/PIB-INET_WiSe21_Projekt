@@ -28,13 +28,13 @@
                 </ul>
             </nav>
             <div id="headerNavButtons" class="textBasic">
-                <!-- Login Button -->
-                <button class="textBasic" id="loginButton">
-                    <a href="/html/userProfile.html">Profile</a>
+                <!-- Profile Button -->
+                <button class="textBasic" id="profileButton">
+                    <a onclick="contentSwitch('#profile');"> PROFILE </a>
                 </button>
-                <!-- Register Button -->
-                <button class="textBasic" id="registerButton">
-                    <a href="/index.html">Logout</a>
+                <!-- Logout Button -->
+                <button class="textBasic" id="logoutButton">
+                    <a href="/logout">Logout</a>
                 </button>
             </div>
             <!-- IF SCREEN IS SMALLER THAN 1200px(width)-->
@@ -46,6 +46,29 @@
             <div id="main">FORUMPOSTS</div>
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
+            <div id="profile" hidden>
+                <script type="text/javascript" src="js/profile.js" ></script>
+                <form id="userForm" class="userForm" >
+                    <fieldset id="userFormFieldSet" disabled="disabled">
+                        <img id="profilepicture"><br/>
+                        <label for="loginName">Loginname:</label>
+                        <input type="text" id="loginName" name="loginName" placeholder="Username"><br/>
+                        <label for="firstName">Firstname:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Firstname"><br/>
+                        <label for="lastName">Lastname:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Lastname"><br/>
+                        <label for="email">EMail:</label>
+                        <input type="text" id="email" name="email" placeholder="Email"><br/>
+                        <label for="birthdate">Birthdate:</label>
+                        <input type="text" id="birthdate" name="birthdate" placeholder="Birthdate"><br/>
+                        <label for="pictureUrl">Picture-URL:</label>
+                        <input type="text" id="pictureUrl" name="pictureUrl" placeholder="Picture URL"><br/>
+                        <label id="memberSince" name="memberSince"></label>
+                    </fieldset>
+                </form>
+                <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()">change data</button>
+                <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()" style="visibility: hidden">cancel</button>
+            </div>
             <!-- USE THIS MENU -->
             <div id="sideNav" hidden>
                 <div
@@ -71,17 +94,13 @@
                 >
                     CONTACT
                 </div>
-                <!-- Login Button -->
-                <button
-                    class="textBasic sideNavItem sideNavButton"
-                    id="loginButton"
-                >
-                    <a href="/html/login.html">Login</a>
+                <!-- Profile Button -->
+                <button class="textBasic" id="profileButton">
+                    <a onclick="contentSwitch('#profile');"> PROFILE </a>
                 </button>
-                <br />
-                <!-- Register Button -->
-                <button class="textBasic sideNavItem" id="registerButton">
-                    <a href="/html/registration.html">Register</a>
+                <!-- Logout Button -->
+                <button class="textBasic" id="logoutButton">
+                    <a href="/logout">Logout</a>
                 </button>
             </div>
         </div>

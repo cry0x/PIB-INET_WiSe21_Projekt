@@ -1,68 +1,71 @@
 package com.forum.backend.controllers;
 
 import com.forum.backend.entities.User;
-import com.forum.backend.entities.UserDto;
-import com.forum.backend.entities.UserProfilDto;
 import com.forum.backend.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.http.MediaType;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping(path = "/api/users")
+@CrossOrigin(origins="*")
 public class UserController {
 
-    private UserService userService;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    private final UserService userService;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    @PutMapping(value = "/{id}", consumes = "application/json")
-    public User updateUser(@PathVariable Long id, @RequestBody UserProfilDto userProfilDto) {
-        User user = this.userService.readUserById(id);
+    @GetMapping(path = "/{userId}")
+    public User getUserById(@PathVariable Long userId) throws Exception {
+        logger.info(String.format("GET /api/user/%s", userId));
 
-        user.setLogin_name(userProfilDto.getLoginName());
-        user.setFirstname(userProfilDto.getFirstName());
-        user.setLastname(userProfilDto.getLastName());
-        user.setEmail(userProfilDto.getEmail());
-        user.setBirthdate(userProfilDto.getBirthdate());
-
-        return this.userService.createUser(user);
+        return this.userService.readUserById(userId);
     }
 
-    @GetMapping(value = "/{id}")
-    public User readUserById(@PathVariable Long id) {
-        return this.userService.readUserById(id);
+    @GetMapping
+    public List<User> getAllUsers() {
+        logger.info("GET /api/user");
+
+        return this.userService.readAllUsers();
     }
 
-    @PostMapping
-    public ResponseEntity<User> createUser(@ModelAttribute UserDto userDto) {
-        userDto.setPwd(bCryptPasswordEncoder.encode(userDto.getPwd()));
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public User postUser(@RequestBody User user) {
+        logger.info(String.format("POST /api/user %s", user.toString()));
 
-        User newUser = userDto.getUser();
-        newUser.setRegistrationdate(LocalDate.now());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        return new ResponseEntity<>(this.userService.createUser(newUser), HttpStatus.CREATED);
+        return this.userService.saveUser(user);
     }
 
-    @GetMapping(produces = "application/json;charset=UTF-8")
-    public ResponseEntity<Iterable<User>> getAllUsers() {
-        return new ResponseEntity<>(this.userService.getAllUsers(), HttpStatus.FOUND);
+    @DeleteMapping(path = "/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        logger.info(String.format("DELETE /api/user/%s", userId));
+
+        this.userService.deleteUser(userId);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Long> deleteUserById(@PathVariable Long id) {
-        this.userService.deleteUserById(id);
+    @DeleteMapping
+    public void deleteUser(@RequestBody User user) {
+        logger.info(String.format("DELETE /api/user %s", user.toString()));
 
-        return new ResponseEntity<>(id, HttpStatus.OK);
+        if (user.getId() == null)
+            throw new RuntimeException("The user to be deleted doesnt have an id!");
+
+        this.userService.deleteUser(user.getId());
     }
 
 }

@@ -1,10 +1,11 @@
 package com.forum.backend.services;
 
 import com.forum.backend.entities.User;
-import com.forum.backend.excpetions.UserNotFoundException;
 import com.forum.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -16,20 +17,20 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(User user) {
+    public User saveUser(User user) {
         return this.userRepository.save(user);
     }
 
-    public User readUserById(Long id) throws UserNotFoundException {
-        return this.userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    public User readUserById(long userId) throws Exception {
+        return this.userRepository.findById(userId).orElseThrow(() -> new Exception(String.format("User with Id: %s doesnt exist!", userId)));
     }
 
-    public Iterable<User> getAllUsers() {
+    public List<User> readAllUsers() {
         return this.userRepository.findAll();
     }
 
-    public void deleteUserById(Long id) {
-        this.userRepository.deleteById(id);
+    public void deleteUser(long userId) {
+        this.userRepository.deleteById(userId);
     }
 
     public User findUserByName(String username) {

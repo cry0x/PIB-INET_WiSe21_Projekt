@@ -7,24 +7,24 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private AuthService authService;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final AuthService authService;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public WebSecurityConfiguration(AuthService authService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public WebSecurityConfiguration(AuthService authService, PasswordEncoder passwordEncoder) {
         this.authService = authService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(authService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(authService).passwordEncoder(passwordEncoder);
     }
 
     @Override
@@ -32,13 +32,19 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/profile").hasRole("USER")
+                    .antMatchers("/profile", "/main").hasRole("USER")
                     .antMatchers("/", "/**", "/**/**", "/**/**/**").permitAll()
                     .anyRequest().permitAll()
                 .and()
                     .formLogin()
                     .loginPage("/login")
+                    .defaultSuccessUrl("/main")
                     .permitAll()
+                .and()
+                    .logout()
+                    .logoutSuccessUrl("/")
+                .and()
+                    .cors()
                 .and()
                     .csrf()
                     .disable();

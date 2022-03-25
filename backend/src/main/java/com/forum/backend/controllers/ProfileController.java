@@ -1,17 +1,21 @@
 package com.forum.backend.controllers;
 
 import com.forum.backend.entities.User;
-import com.forum.backend.entities.UserProfilDto;
 import com.forum.backend.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/profile")
+@RequestMapping(path = "/api/profile")
 public class ProfileController {
 
-    private UserService userService;
+    private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
+
+    private final UserService userService;
 
     @Autowired
     public ProfileController(UserService userService) {
@@ -19,64 +23,30 @@ public class ProfileController {
     }
 
     @GetMapping("/current")
-    public UserProfilDto getCurrentUser() {
-        String username = "";
+    public User getCurrentUser() throws Exception {
+        String userLoginname = "";
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof User)
-            username = ((User)principal).getUsername();
+            userLoginname = ((User) principal).getLoginname();
 
-        return getUserProfilDto(this.userService.findUserByName(username));
+        return this.userService.findUserByName(userLoginname);
     }
 
     @PutMapping(value = "/current", consumes = "application/json")
-    public UserProfilDto updateCurrentUser(@RequestBody UserProfilDto userProfilDto) {
-        UserProfilDto newUserProfilDto = updateUserFromUserProfileDto(userProfilDto);
-
+    public User updateCurrentUser(@RequestBody User user) {
+        String loginname = "";
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof User)
-            ((User)principal).setUsername(newUserProfilDto.getLoginName());
+            loginname = ((User) principal).getLoginname();
 
-        return newUserProfilDto;
-    }
+        User existingUser = this.userService.findUserByName(loginname);
 
-    @PutMapping(value = "/current/password")
-    public void updateCurrentUserPassword(@RequestBody String userPassword) {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user.setId(existingUser.getId());
+        user.setPassword(existingUser.getPassword());
 
-        if (principal instanceof User) {
-            ((User)principal).setPassword(userPassword);
-            this.userService.createUser((User)principal);
-        }
-    }
-
-    private UserProfilDto updateUserFromUserProfileDto(UserProfilDto userProfilDto) {
-        User user = this.userService.readUserById(userProfilDto.getId());
-
-        user.setLogin_name(userProfilDto.getLoginName());
-        user.setFirstname(userProfilDto.getFirstName());
-        user.setLastname(userProfilDto.getLastName());
-        user.setEmail(userProfilDto.getEmail());
-        user.setBirthdate(userProfilDto.getBirthdate());
-        user.setPictureUrl(userProfilDto.getPictureUrl());
-
-        return getUserProfilDto(this.userService.createUser(user));
-    }
-
-    public UserProfilDto getUserProfilDto(User user) {
-        UserProfilDto userProfilDto = new UserProfilDto();
-
-        userProfilDto.setId(user.getId());
-        userProfilDto.setLoginName(user.getLogin_name());
-        userProfilDto.setFirstName(user.getFirstname());
-        userProfilDto.setLastName(user.getLastname());
-        userProfilDto.setEmail(user.getEmail());
-        userProfilDto.setBirthdate(user.getBirthdate());
-        userProfilDto.setPictureUrl(user.getPictureUrl());
-        userProfilDto.setRegistrationdate(user.getRegistrationdate());
-
-        return userProfilDto;
+        return this.userService.saveUser(user);
     }
 
 }
