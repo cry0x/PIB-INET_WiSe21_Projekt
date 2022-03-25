@@ -15,18 +15,6 @@ import java.time.LocalDate;
 @Entity
 public class User {
 
-    public User() {
-
-    }
-
-    public User(String firstname, String lastname, String email, String loginname, String password) {
-        setFirstname(firstname);
-        setLastname(lastname);
-        setEmail(email);
-        setLoginname(loginname);
-        setPassword(password);
-    }
-
     @Id
     @GeneratedValue
     private Long id;
