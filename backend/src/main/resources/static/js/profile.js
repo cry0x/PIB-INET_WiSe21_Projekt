@@ -7,14 +7,15 @@ function handleUserProfileChange() {
         document.getElementById('userFormFieldSet').removeAttribute('disabled')
         document.getElementById('userFormSubmitButton').innerHTML = 'save'
         document.getElementById('userFormSubmitCancel').style.visibility = 'visible';
-        document.getElementById('userFormSubmitButton').addEventListener("click", putUserProfileData)
+        document.querySelector('#loginName').setAttribute('disabled', 'disabled')
     } else {
         isProfileFormDisabled = true
+
+        updateUserDataFromForm()
 
         document.getElementById('userFormFieldSet').setAttribute('disabled','disabled')
         document.getElementById('userFormSubmitButton').innerHTML = 'change data'
         document.getElementById('userFormSubmitCancel').style.visibility = 'hidden';
-        document.getElementById('userFormSubmitButton').removeEventListener("click", putUserProfileData)
     }
 }
 
@@ -31,28 +32,20 @@ function cancelUserProfileChange() {
     }
 }
 
-function putUserProfileData() {
+function putUserProfileData(newUserData) {
     const url = "http://localhost:8080/api/profile/current";
     const body = {
         method: 'PUT',
         headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify(getUpdateUserDataFromForm())
+        body: JSON.stringify(newUserData)
     };
 
-    fetch(url, body)
-        .then(res => res.json())
-        .catch(err => console.log(err));
+    return fetch(url, body)
+        .then(response => response.json())
+        .catch(error => console.error(error));
 }
 
-function fetchCurrentUserProfile() {
-    const url = "http://localhost:8080/api/profile/current";
-
-    fetch(url)
-        .then(res => res.json())
-        .catch(err => console.log(err));
-}
-
-function getUpdateUserDataFromForm() {
+async function updateUserDataFromForm() {
     let currentUserData = {};
 
     currentUserData.loginname = document.querySelector('#loginName').value
@@ -62,11 +55,21 @@ function getUpdateUserDataFromForm() {
     currentUserData.birthdate = document.querySelector('#birthdate').value
     currentUserData.pictureUrl = document.querySelector('#pictureUrl').value
 
-    return currentUserData;
+    await putUserProfileData(currentUserData);
+
+    loadCurrentUserData();
 }
 
-function loadCurrentUserData() {
-    const currentUserData = fetchCurrentUserProfile()
+function fetchCurrentUserProfile() {
+    const url = "http://localhost:8080/api/profile/current";
+
+    return fetch(url)
+        .then(response => response.json())
+        .catch(err => console.error(err));
+}
+
+async function loadCurrentUserData() {
+    const currentUserData = await fetchCurrentUserProfile();
 
     console.log(currentUserData)
 
