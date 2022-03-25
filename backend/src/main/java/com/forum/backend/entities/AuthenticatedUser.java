@@ -26,7 +26,7 @@ public class AuthenticatedUser extends User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (getUsername().equals("admin"))
-            return AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
+            return AuthorityUtils.createAuthorityList("ROLE_ADMIN");
 
         return AuthorityUtils.createAuthorityList("ROLE_USER");
     }

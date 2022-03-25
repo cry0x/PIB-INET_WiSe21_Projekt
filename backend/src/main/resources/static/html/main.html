@@ -29,9 +29,7 @@
             </nav>
             <div id="headerNavButtons" class="textBasic">
                 <!-- Profile Button -->
-                <button class="textBasic" id="profileButton">
-                    <a onclick="contentSwitch('#profile');"> PROFILE </a>
-                </button>
+                <button class="textBasic" id="profileButton">PROFILE</button>
                 <!-- Logout Button -->
                 <button class="textBasic" id="logoutButton">
                     <a href="/logout">Logout</a>
@@ -69,6 +67,7 @@
                 <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()">change data</button>
                 <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()" style="visibility: hidden">cancel</button>
             </div>
+            <div id="user-management" hidden>USER-MANAGEMENT</div>
             <!-- USE THIS MENU -->
             <div id="sideNav" hidden>
                 <div
@@ -95,17 +94,32 @@
                     CONTACT
                 </div>
                 <!-- Profile Button -->
-                <button class="textBasic" id="profileButton">
-                    <a onclick="contentSwitch('#profile');"> PROFILE </a>
-                </button>
+                <button class="textBasic" id="profileButton">PROFILE</button>
                 <!-- Logout Button -->
                 <button class="textBasic" id="logoutButton">
                     <a href="/logout">Logout</a>
                 </button>
             </div>
         </div>
+        <script src="js/contentSwitch.js"></script>
         <!-- Import script to switch between content pages -->
-        <script src="/js/contentSwitch.js"></script>
-        <script src="/js/usermanagement.js"></script>
+        <script>
+            async function setUiAccordingToRole() {
+                const url = "http://localhost:8080/api/profile/admin";
+
+                const isAdmin = await fetch(url)
+                    .then(response => response.json())
+                    .catch(err => console.error(err));
+
+                if (isAdmin) {
+                    document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#user-management'))
+                } else {
+                    document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#profile'))
+                }
+            }
+
+            setUiAccordingToRole()
+        </script>
+        <script src="js/user-management.js"></script>
     </body>
 </html>
