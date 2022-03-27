@@ -3,7 +3,7 @@
 
 /* FORM GRID */
 #userFormFieldSet {
-    /* box-shadow: 0px 4px 4px var(--shadow); */
+    box-shadow: 0px 4px 4px var(--shadow);
     background-color: var(--foreground);
     display: grid;
     padding: 3rem;
