@@ -22,14 +22,20 @@ header {
     width: 148.8px;
     height: 44.4px;
 }
-#loginButton {
+#loginButton,
+#profileButton {
     background-color: var(--cyan);
 }
 #registerButton {
     background-color: var(--blue);
 }
+#logoutButton {
+    background-color: var(--red);
+}
 #loginButton:hover,
-#registerButton:hover {
+#registerButton:hover,
+#profileButton:hover,
+#logoutButton:hover {
     outline: none;
     color: #000000;
     background-color: var(--green);
@@ -40,9 +46,9 @@ header {
 #content {
     display: grid;
     padding: 0;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    grid-template-areas: 'mainContent sideBar';
+    grid-template-areas: 'mainContent';
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -84,6 +90,16 @@ header {
         flex-direction: column;
         align-items: center;
         padding: 1rem;
+    }
+
+    #content {
+        display: grid;
+        padding: 0;
+        grid-template-columns: 5fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 'mainContent sideBar';
+        gap: 2rem;
+        margin-top: 2rem;
     }
 
     .sideNavItem {
