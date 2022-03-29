@@ -44,7 +44,7 @@ function cancelUserProfileChange() {
 }
 
 function putUserProfileData(newUserData) {
-    const url = 'http://localhost:8080/api/profile/current'
+    const url = 'http://192.168.100.174:8080/api/profile/current'
     const body = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -72,7 +72,7 @@ async function updateUserDataFromForm() {
 }
 
 function fetchCurrentUserProfile() {
-    const url = 'http://forum/api/profile/current'
+    const url = 'http://192.168.100.174:8080/api/profile/current'
 
     return fetch(url)
         .then((response) => response.json())

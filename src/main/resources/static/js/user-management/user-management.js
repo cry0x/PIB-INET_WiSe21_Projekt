@@ -10,7 +10,7 @@ class UserManagement extends React.Component {
   }
 
   componentDidMount() {
-    const url = `http://localhost:8080/api/users`;
+    const url = `http://192.168.100.174:8080/api/users`;
     fetch(url).then(res => res.json()).then(json => {
       this.setState({
         users: json,
@@ -20,7 +20,7 @@ class UserManagement extends React.Component {
   }
 
   deleteUser(id) {
-    const url = 'http://localhost:8080/api/users/' + id;
+    const url = 'http://192.168.100.174:8080/api/users/' + id;
     const fetchInit = {
       method: 'DELETE'
     };
