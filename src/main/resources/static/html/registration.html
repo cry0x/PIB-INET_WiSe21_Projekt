@@ -135,7 +135,7 @@
                     password
                 }
 
-                await fetch('http://forum-db/api/users', {
+                await fetch('http://forum/api/users', {
                     method: 'POST',
                     body: JSON.stringify(userData),
                     headers: {
@@ -145,9 +145,9 @@
                     .then(response => response.json())
                     .then(json => console.log(json))
 
-                window.location.replace("http://forum-db/")
+                window.location.replace("http://forum/")
             }
-            fetch('http://forum-db/api/users')
+            fetch('http://forum/api/users')
                 .then(response => response.json())
                 .then(json => console.log(json))
                 .catch(error => console.log(error))
