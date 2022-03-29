@@ -72,7 +72,7 @@ async function updateUserDataFromForm() {
 }
 
 function fetchCurrentUserProfile() {
-    const url = 'http://localhost:8080/api/profile/current'
+    const url = 'http://forum-db/api/profile/current'
 
     return fetch(url)
         .then((response) => response.json())

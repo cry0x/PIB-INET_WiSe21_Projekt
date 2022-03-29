@@ -10,7 +10,8 @@ class UserManagement extends React.Component {
     }
 
     componentDidMount() {
-        const url = 'http://localhost:8080/api/users';
+        const host = 'localhost:8080'
+        const url = `http://forum-db/api/users`;
 
         fetch(url)
             .then(res => res.json())
