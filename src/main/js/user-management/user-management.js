@@ -10,7 +10,7 @@ class UserManagement extends React.Component {
     }
 
     componentDidMount() {
-        const url = `http://forum-db/api/users`;
+        const url = `http://forum/api/users`;
 
         fetch(url)
             .then(res => res.json())
@@ -23,7 +23,7 @@ class UserManagement extends React.Component {
     }
 
     deleteUser(id) {
-        const url = 'http://forum-db/api/users/' + id;
+        const url = 'http://forum/api/users/' + id;
         const fetchInit = {
             method: 'DELETE',
         };
