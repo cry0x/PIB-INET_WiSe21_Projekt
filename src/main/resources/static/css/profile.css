@@ -1,0 +1,97 @@
+/* IMPORT CUSTOMIZED BASE CONFIGURATION OF MULTIPLE ELEMENTS */
+@import url(/css/baseSheet.css);
+
+/* FORM GRID */
+#userFormFieldSet {
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: var(--foreground);
+    display: grid;
+    padding: 3rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 7fr;
+    grid-template-areas:
+        'profilepicture loginName'
+        'profilepicture firstName'
+        'profilepicture lastName'
+        'profilepicture email'
+        'profilepicture birthdate'
+        'profilepicture pictureUrl'
+        'profilepicture memberSince'
+        'userFormSubmitButton userFormSubmitCancel';
+    gap: 2rem;
+}
+
+/* DEFINITION OF FORM GRID CHILDREN */
+button {
+    background-color: var(--blue);
+    grid-area: register;
+    justify-self: center;
+    width: 10rem;
+}
+#profilepicture {
+    grid-area: profilepicture;
+    width: 300px;
+    height: 300px;
+}
+#loginName {
+    grid-area: loginName;
+}
+#firstName {
+    grid-area: firstName;
+}
+#lastName {
+    grid-area: lastName;
+}
+#email {
+    grid-area: email;
+}
+#birthdate {
+    grid-area: birthdate;
+}
+#pictureUrl {
+    grid-area: pictureUrl;
+}
+#memberSince {
+    grid-area: memberSince;
+}
+#userFormSubmitButton {
+    grid-area: userFormSubmitButton;
+    background-color: var(--cyan);
+}
+#userFormSubmitCancel {
+    grid-area: userFormSubmitCancel;
+    background-color: var(--red);
+    visibility: hidden;
+}
+
+#userFormSubmitButton:hover,
+#userFormCancel:hover {
+    outline: none;
+    color: #000000;
+    background-color: var(--green);
+}
+
+/* CHANGE ELEMENTS DEPENDANT ON SCREEN SIZE */
+@media only screen and (max-width: 1200px) {
+    main {
+        min-width: 15rem;
+    }
+    /* FORM GRID */
+    form {
+        padding: 0rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: 10fr;
+        grid-template-areas:
+            'logo'
+            'salutation '
+            'fName '
+            'lName'
+            'email'
+            'login '
+            'birth'
+            'pwd '
+            'pwdConfirm'
+            'register ';
+        gap: 0.5rem;
+    }
+}

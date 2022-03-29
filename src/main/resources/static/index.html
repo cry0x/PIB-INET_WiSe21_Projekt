@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Forum</title>
+        <link rel="stylesheet" href="/css/index.css" />
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/sideNav.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <img src="/resources/images/logo.png" alt="code." id="logo" />
+            <!-- Main Menu -->
+            <nav id="headerNav" class="textBasic">
+                <ul>
+                    <li class="inlineList">
+                        <a onclick="contentSwitch('#main');">HOME</a>
+                    </li>
+                    <li class="inlineList">
+                        <a onclick="contentSwitch('#about');">ABOUT</a>
+                    </li>
+                    <li class="inlineList">
+                        <a onclick="contentSwitch('#contact');"> CONTACT </a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="headerNavButtons" class="textBasic">
+                <!-- Login Button -->
+                <button class="textBasic" id="loginButton">
+                    <a href="/login">Login</a>
+                </button>
+                <!-- Register Button -->
+                <button class="textBasic" id="registerButton">
+                    <a href="/registration">Register</a>
+                </button>
+            </div>
+            <!-- IF SCREEN IS SMALLER THAN 1200px(width)-->
+            <!-- SideNav Button -->
+            <button class="textBasic" id="sideNavButton" hidden>&#9776;</button>
+        </header>
+        <!-- MAIN CONTENT -->
+        <div id="content">
+            <div id="main">FORUMPOSTS</div>
+            <div id="about" hidden>ABOUT</div>
+            <div id="contact" hidden>CONTACT</div>
+            <!-- USE THIS MENU -->
+            <div id="sideNav" hidden>
+                <div
+                    id="sideHome"
+                    class="textBasic sideNavItem"
+                    onclick="contentSwitch(home);"
+                >
+                    HOME
+                </div>
+
+                <div
+                    id="sideAbout"
+                    class="textBasic sideNavItem"
+                    onclick="contentSwitch(about);"
+                >
+                    ABOUT
+                </div>
+
+                <div
+                    id="sideContact"
+                    class="textBasic sideNavItem"
+                    onclick="contentSwitch(contact);"
+                >
+                    CONTACT
+                </div>
+                <!-- Login Button -->
+                <button
+                    class="textBasic sideNavItem sideNavButton"
+                    id="loginButton"
+                >
+                    <a href="/html/login.html">Login</a>
+                </button>
+                <br />
+                <!-- Register Button -->
+                <button class="textBasic sideNavItem" id="registerButton">
+                    <a href="/html/registration.html">Register</a>
+                </button>
+            </div>
+        </div>
+        <!-- Import script to switch between content pages -->
+        <script src="/js/contentSwitch.js"></script>
+    </body>
+</html>

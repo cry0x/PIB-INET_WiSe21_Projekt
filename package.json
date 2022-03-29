@@ -1,0 +1,33 @@
+{
+  "name": "pib-inet_wise21_projekt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx babel ./src/main/js --out-dir ./src/main/resources/static/js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cry0x/PIB-INET_WiSe21_Projekt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cry0x/PIB-INET_WiSe21_Projekt/issues"
+  },
+  "homepage": "https://github.com/cry0x/PIB-INET_WiSe21_Projekt#readme",
+  "dependencies": {
+    "babel-preset-react-app": "10.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "babel-cli": "^6.26.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  }
+}
