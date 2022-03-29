@@ -1,0 +1,123 @@
+/* IMPORT CUSTOMIZED BASE CONFIGURATION OF MULTIPLE ELEMENTS */
+@import url(/css/index.css);
+
+main {
+    margin: 1rem;
+    font-family: SourceSerifPro-Regular, monospace;
+    font-size: larger;
+}
+
+
+/*Table-head */
+.table-head {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    margin: 1rem;  
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: rgb(214, 252, 250);
+    padding: 0rem;
+    
+    
+}
+
+.table-head .subjects {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 1rem;
+    border: 1rem;
+    
+}
+
+.table-head .users {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: rgb(83, 175, 175);
+    padding: 1rem;
+    border: 1rem;
+    
+}
+/*Threads */
+.thread {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    margin: 1rem;
+    margin-top: 4rem;
+     
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color:rgb(198, 252, 249);
+    padding: 0rem;
+    
+}
+
+.thread .question {
+    grid-column: 1;
+    grid-row: 1;
+    
+    padding: 1rem;
+    border: 1rem;
+    margin: 1rem;
+}
+
+.thread .user {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: rgb(83, 175, 175);
+    padding: 1rem;
+    border: 1rem;
+    margin: 0rem;
+}
+
+/*Comments */
+.comment {
+    display: grid;
+    grid-template-columns: 5fr 1fr;  
+    margin: 1rem;
+    margin-top: 2rem;  
+    box-shadow: 0px 4px 4px var(--shadow);
+    background-color: rgb(169, 199, 197);
+    padding: 0rem;
+    
+}
+
+.comment .content {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 1rem;
+    border: 1rem;
+    margin: 1rem;
+    
+}
+
+.comment .user {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: rgb(83, 175, 175);
+    padding: 1rem;
+    border: 1rem;
+    margin: 0rem;
+}    
+
+#submitBtn {
+    margin: 1rem;
+       
+}
+
+#commentBox {
+    width: 1846px;
+    height: 40px;
+    margin-left: 1rem; 
+    font-family: SourceSerifPro-Regular, monospace;
+    font-size: larger;
+}
+
+input[type=submit] {
+    background-color: rgb(83, 175, 175);
+    border: none;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    width:max-content;
+    font-family: SourceSerifPro-Regular, monospace;
+    font-size: larger;
+    
+ }

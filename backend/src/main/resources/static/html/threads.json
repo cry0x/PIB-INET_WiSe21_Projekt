@@ -1,0 +1,40 @@
+[
+    {
+        "id": "1",
+        "subject": "Lohnt es sich JavaScript zu lernen?",
+        "user": "Peter Lustig",
+        "commentCounter": "3",
+        "comments": [{"user":"Peter Lustig","comment":"Kommt darauf an."},{"user":"Hans Peter","comment":"Auf was?"},{"user":"Hans Wurst","comment":"Jajajaja"}]
+    },
+    {
+        "id": "2",
+        "subject": "Lohnt es sich TypeScript zu lernen?",
+        "user": "User234",
+        "commentCounter": "2",
+        "comments": [{"user":"Peter Lustig","comment":"Kommt darauf an."}]
+    },
+    {
+        "id": "3",
+        "subject": "Lohnt es sich Java zu lernen?",
+        "user": "User1",
+        "commentCounter": "0",
+        "comments": []
+    },
+
+    {
+        "id": "4",
+        "subject": "Lohnt es sich Python zu lernen?",
+        "user": "User1",
+        "commentCounter": "0",
+        "comments": [{"user":"Blank","comment":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."}]
+    },
+
+    {
+        "id": "5",
+        "subject": "Lohnt es sich Python zu lernen?",
+        "user": "User1",
+        "commentCounter": "0",
+        "comments": [{"user":"Blank","comment":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."}]
+    }
+
+]

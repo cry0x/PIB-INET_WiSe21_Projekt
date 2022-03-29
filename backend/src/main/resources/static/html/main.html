@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,9 +6,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Forum</title>
-        <link rel="stylesheet" href="/css/index.css" />
+        <link rel="stylesheet" href="/css/main.css" />
         <script src="/js/jquery.min.js"></script>
         <script src="js/sideNav.js"></script>
+        <script src="js/threads.js"></script>
     </head>
 
     <body>
@@ -43,7 +45,84 @@
         </header>
         <!-- MAIN CONTENT -->
         <div id="content">
-            <div id="main">FORUMPOSTS</div>
+            <div id="main">
+        
+        <!--SearchBox Section-->
+        <!--<div class="search-box">
+            <div>
+                <select name="" id="">
+                    <option value="Everything">Everything</option>
+                    <option value="Titles">Titles</option>
+                    <option value="Descriptions">Descriptions</option>
+                </select>
+                <input type="text" name="q" placeholder="search ...">
+                <button><i class="fa fa-search"></i></button>
+            </div>
+        </div> -->
+
+    </header>
+    <main>
+    <div class="container">
+        
+        <!--Display posts table-->
+        <div class="posts-table">
+            <div class="table-head">    
+                <div class="subjects">Subjects</div>
+                <div class="users">Users</div>
+                
+            </div>
+            <div class="table-row">
+                <div id="threads"></div>
+            </div>    
+        
+        <script>
+            fetch("http://localhost:8080/api/v1/posts")
+                .then((response) => response.json())
+                .then((data) => {
+                    // eslint-disable-next-line no-use-before-define
+                    appendData(data);
+                })
+                .catch((err) => {
+                    // eslint-disable-next-line no-console
+                    console.log(`error: ${err}`);
+                });
+            function appendData(data) {
+                const mainContainer = document.getElementById("threads");
+ 
+                // eslint-disable-next-line no-plusplus
+                for (let i = 0; i < data.length; i++) {
+                    const divThread = document.createElement("div");
+                    
+                    divThread.innerHTML = `
+                            <div class="thread">
+                                <div class="question" id="${data[i].id}">${data[i].subject}</div>
+                                <br>
+                                <div class="user">Started by <b><a href="">${data[i].user}</a></div>
+                            </div>
+                              
+                            <div>
+                                <textarea name="comment" id="commentBox" placeholder="comment here ... "></textarea>
+                                <div id="submitBtn"><input type="submit" value="submit"></div>
+                            </div>`;
+                                
+                    mainContainer.appendChild(divThread);
+
+                    // eslint-disable-next-line no-plusplus
+                    for (let j = 0; j < data[i].comments.length; j++) {
+                        const divComments = document.createElement("div");                 
+                        divComments.innerHTML =  `                  
+                            <div class="comment">
+                                
+                                <div class="content">${data[i].comments[j].comment}</div>
+                                <div class=" user">${data[i].comments[j].user}</div>
+                            </div>`;
+                        mainContainer.append(divComments);
+                    }                                 
+                }     
+            }   
+        </script>
+        </main>
+            </div>
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
             <div id="profile" hidden>
