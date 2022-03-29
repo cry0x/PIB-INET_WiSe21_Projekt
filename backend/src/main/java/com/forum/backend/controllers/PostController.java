@@ -1,17 +1,22 @@
 package com.forum.backend.controllers;
 
 import com.forum.backend.entities.Post;
-import com.forum.backend.entities.PostDto;
 import com.forum.backend.services.PostService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("api/v1/posts")
+import java.util.List;
 
+@RestController
+@RequestMapping("/api/v1/posts")
+@CrossOrigin(origins="*")
 public class PostController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
     @Autowired 
     private final PostService postService;
@@ -22,25 +27,25 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> createPost(@ModelAttribute PostDto postDto) {
-        return new ResponseEntity<>(this.postService.createPost(postDto.getPosts()), HttpStatus.CREATED);
+    public Post createPost(@RequestBody Post post) {
+        logger.info("POST /api/v1/posts");
+
+        return this.postService.createPost(post);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Post> readUserById(@PathVariable Long id) {
-        return new ResponseEntity<>(this.postService.readPostById(id), HttpStatus.FOUND);
+    public Post readUserById(@PathVariable Long id) {
+        return this.postService.readPostById(id);
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<Post>> getAllPosts() {
-        return new ResponseEntity<>(this.postService.getAllPosts(), HttpStatus.FOUND);
+    public List<Post> getAllPosts() {
+        return this.postService.getAllPosts();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Long> deletePostById(@PathVariable Long id) {
+    public void deletePostById(@PathVariable Long id) {
         this.postService.deletePostById(id);
-
-        return new ResponseEntity<>(id, HttpStatus.OK);
     }
     
 }

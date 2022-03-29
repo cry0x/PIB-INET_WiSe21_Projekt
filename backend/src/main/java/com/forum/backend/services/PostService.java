@@ -6,6 +6,8 @@ import com.forum.backend.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostService {
 
@@ -24,7 +26,7 @@ public class PostService {
         return this.postRepository.findById(id).orElseThrow(PostNotFoundException::new);
     }
 
-    public Iterable<Post> getAllPosts() {
+    public List<Post> getAllPosts() {
         return this.postRepository.findAll();
     }
 

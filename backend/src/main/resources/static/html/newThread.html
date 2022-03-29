@@ -11,7 +11,7 @@
 
     <body>
         <main id="mainHolder">
-            <form action="/api/v1/posts" method="post">
+            <form id="postForm">
                  <!-- Logo -->
                  <img src="/resources/images/logo.png" alt="code." id="logo" />
                 <!--Titel vom Beitrag-->
@@ -31,13 +31,38 @@
                     name="post"
                     placeholder="Please enter name"
                     maxlength="55"
-                    required></input>
+                    required />
                 </div>
                 <!-- Hidden Field to get back to the Form after Submitting -->
-                <input type="hidden" name="caller" value="/addPost" />
+<!--                <input type="hidden" name="caller" value="/addPost" />-->
                 
-                <button type="submit" class="textBasic">Submit</button>
+                <button id="submitPost" class="textBasic">Submit</button>
             </form>
-        </main>   
+        </main>
+        <script>
+            async function testabc() {
+                let currentPost = {}
+
+                currentPost.subject = document.querySelector('#subject').value
+                currentPost.user = document.querySelector('#user').value
+
+                const url = `${window.location.origin}/api/v1/posts`;
+                const body = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(currentPost),
+                }
+
+                console.log(currentPost)
+
+                currentPost = await fetch(url, body)
+                    .then(response => response.json())
+                    .catch(err => console.error(err));
+
+                console.log(currentPost)
+            }
+
+            document.getElementById('submitPost').addEventListener("click", () => testabc())
+        </script>
     </body>
 </html>
