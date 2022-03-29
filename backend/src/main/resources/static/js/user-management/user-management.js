@@ -18,17 +18,19 @@ var UserManagement = function (_React$Component) {
 
         _this.state = {
             users: [],
-            DataisLoaded: false
+            dataIsLoaded: false
         };
         return _this;
     }
 
     _createClass(UserManagement, [{
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
             var _this2 = this;
 
-            fetch("http://localhost:8080/api/users").then(function (res) {
+            var url = 'http://localhost:8080/api/users';
+
+            fetch(url).then(function (res) {
                 return res.json();
             }).then(function (json) {
                 _this2.setState({
@@ -38,99 +40,108 @@ var UserManagement = function (_React$Component) {
             });
         }
     }, {
-        key: "renderTableData",
+        key: 'deleteUser',
+        value: function deleteUser(id) {
+            var url = 'http://localhost:8080/api/users/' + id;
+            var fetchInit = {
+                method: 'DELETE'
+            };
+
+            fetch(url, fetchInit).then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                return console.log(res);
+            });
+        }
+    }, {
+        key: 'renderTableData',
         value: function renderTableData() {
+            var _this3 = this;
+
             return this.state.users.map(function (user, index) {
                 return React.createElement(
-                    "tr",
+                    'tr',
                     { key: user.id },
                     React.createElement(
-                        "td",
+                        'td',
                         null,
                         user.id
                     ),
                     React.createElement(
-                        "td",
+                        'td',
                         null,
                         user.loginname
                     ),
                     React.createElement(
-                        "td",
+                        'td',
                         null,
                         user.firstname
                     ),
                     React.createElement(
-                        "td",
+                        'td',
                         null,
                         user.lastname
                     ),
                     React.createElement(
-                        "td",
+                        'td',
                         null,
                         user.email
                     ),
                     React.createElement(
-                        "td",
-                        { id: "editUser" },
+                        'td',
+                        { id: 'deleteUser' },
                         React.createElement(
-                            "p",
-                            null,
-                            "EDIT"
-                        )
-                    ),
-                    React.createElement(
-                        "td",
-                        { id: "deleteUser" },
-                        React.createElement(
-                            "p",
-                            null,
-                            "DELETE"
+                            'button',
+                            { id: 'btnDeleteUser', onClick: function onClick() {
+                                    return _this3.deleteUser(user.id);
+                                } },
+                            'DELETE'
                         )
                     )
                 );
             });
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             return React.createElement(
-                "table",
-                { id: "students" },
+                'table',
+                { id: 'students' },
                 React.createElement(
-                    "thead",
+                    'thead',
                     null,
                     React.createElement(
-                        "tr",
+                        'tr',
                         null,
                         React.createElement(
-                            "th",
+                            'th',
                             null,
-                            "ID"
+                            'ID'
                         ),
                         React.createElement(
-                            "th",
+                            'th',
                             null,
-                            "Loginname"
+                            'Loginname'
                         ),
                         React.createElement(
-                            "th",
+                            'th',
                             null,
-                            "Vorname"
+                            'Vorname'
                         ),
                         React.createElement(
-                            "th",
+                            'th',
                             null,
-                            "Nachname"
+                            'Nachname'
                         ),
                         React.createElement(
-                            "th",
+                            'th',
                             null,
-                            "EMail"
+                            'EMail'
                         )
                     )
                 ),
                 React.createElement(
-                    "tbody",
+                    'tbody',
                     null,
                     this.renderTableData()
                 )

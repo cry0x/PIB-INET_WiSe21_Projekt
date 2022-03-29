@@ -5,19 +5,32 @@ class UserManagement extends React.Component {
         super(props)
         this.state = {
             users: [],
-            DataisLoaded: false
+            dataIsLoaded: false
         };
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/api/users")
-            .then((res) => res.json())
-            .then((json) => {
+        const url = 'http://localhost:8080/api/users';
+
+        fetch(url)
+            .then(res => res.json())
+            .then(json => {
                 this.setState({
                     users: json,
                     DataisLoaded: true
                 });
             })
+    }
+
+    deleteUser(id) {
+        const url = 'http://localhost:8080/api/users/' + id;
+        const fetchInit = {
+            method: 'DELETE',
+        };
+
+        fetch(url, fetchInit)
+            .then(res => res.json())
+            .then(res => console.log(res))
     }
 
     renderTableData() {
@@ -29,11 +42,8 @@ class UserManagement extends React.Component {
                         <td>{ user.firstname }</td>
                         <td>{ user.lastname }</td>
                         <td>{ user.email }</td>
-                        <td id="editUser">
-                            <p>EDIT</p>
-                        </td>
                         <td id="deleteUser">
-                            <p>DELETE</p>
+                            <button id="btnDeleteUser" onClick={() => this.deleteUser(user.id)}>DELETE</button>
                         </td>
                     </tr>
                 )
