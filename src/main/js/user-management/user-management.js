@@ -10,7 +10,6 @@ class UserManagement extends React.Component {
     }
 
     componentDidMount() {
-        const host = 'localhost:8080'
         const url = `http://forum-db/api/users`;
 
         fetch(url)
@@ -24,7 +23,7 @@ class UserManagement extends React.Component {
     }
 
     deleteUser(id) {
-        const url = 'http://localhost:8080/api/users/' + id;
+        const url = 'http://forum-db/api/users/' + id;
         const fetchInit = {
             method: 'DELETE',
         };

@@ -10,7 +10,7 @@ class UserManagement extends React.Component {
   }
 
   componentDidMount() {
-    const url = 'http://forum-db/api/users';
+    const url = `http://forum-db/api/users`;
     fetch(url).then(res => res.json()).then(json => {
       this.setState({
         users: json,
