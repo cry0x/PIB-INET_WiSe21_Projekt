@@ -13,6 +13,8 @@ public class ViewController implements WebMvcConfigurer {
         registry.addViewController("/main").setViewName("/html/main.html");
         registry.addViewController("/registration").setViewName("/html/registration.html");
         registry.addViewController("/login").setViewName("/html/login.html");
+        registry.addViewController("/newThread").setViewName("/html/newThread.html");
+        registry.addViewController("/main").setViewName("/html/main.html");
     }
 
 }

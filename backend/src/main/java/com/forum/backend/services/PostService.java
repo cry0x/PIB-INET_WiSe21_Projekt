@@ -32,7 +32,7 @@ public class PostService {
         this.postRepository.deleteById(id);
     }
 
-    public Post findPostbyTitle(String title) {
-        return this.postRepository.findPostbyTitle(title);
-    }
+    //public Post findPostbyUser(String user) {
+    //    return this.postRepository.findPostbyUser(user);
+    //}
 }

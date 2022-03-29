@@ -15,10 +15,10 @@ public class PostDto {
     @NotEmpty
     private String user;
 
-    private Object[]comments;
+    
 
     public PostDto() {
-        comments = new Object[50];
+        
     }
     
     public Post getPosts() {
@@ -45,11 +45,11 @@ public class PostDto {
         this.user = user;
     }
 
-    public Object[] getComments() {
-        return comments;
-    } 
-
-    public void setComments(Object[]comments) {
-        this.comments = comments;
-    }
+    // public Object[] getComments() {
+    //     return comments;
+    // } 
+// 
+    // public void setComments(Object[]comments) {
+    //     this.comments = comments;
+    // }
 }
