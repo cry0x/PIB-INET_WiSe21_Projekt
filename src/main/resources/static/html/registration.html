@@ -135,7 +135,7 @@
                     password
                 }
 
-                await fetch('http://192.168.100.174:8080/api/users', {
+                await fetch(`${window.location.origin}/api/users`, {
                     method: 'POST',
                     body: JSON.stringify(userData),
                     headers: {
@@ -145,9 +145,9 @@
                     .then(response => response.json())
                     .then(json => console.log(json))
 
-                window.location.replace("http://192.168.100.174:8080/")
+                window.location.replace(`${window.location.origin}`)
             }
-            fetch('http://192.168.100.174:8080/api/users')
+            fetch(`${window.location.origin}/api/users`)
                 .then(response => response.json())
                 .then(json => console.log(json))
                 .catch(error => console.log(error))
