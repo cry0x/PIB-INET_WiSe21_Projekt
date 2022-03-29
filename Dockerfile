@@ -1,16 +1,3 @@
-FROM node:latest
-
-WORKDIR /build/app
-
-COPY package.json .
-COPY package-lock.json .
-COPY src/main/js .
-
-RUN npm uninstall babel
-RUN npm install --save-dev babel-cli
-
-RUN npx babel . --out-dir ./target
-
 FROM openjdk:11-jdk as build
 
 WORKDIR /build/app
