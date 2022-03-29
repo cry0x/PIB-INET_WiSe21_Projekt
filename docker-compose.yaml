@@ -1,7 +1,23 @@
 version: "3.9"
 
 services:
-  postgresdb:
+  forum:
+    build: .
+    image: pib-inet/forum:latest
+    ports:
+       - "8080:8080"
+    networks:
+        forum_network:
+    environment:
+      spring.application.name: forum
+      spring.datasource.url: jdbc:postgresql://forum-db/forum
+      spring.jpa.show-sql: false
+      spring.datasource.username: root
+      spring.datasource.password: root
+      spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL95Dialect
+      spring.datasource.driver-class-name: org.postgresql.Driver
+
+  forum-db:
     image: postgres:latest
     restart: always
     environment:
@@ -10,3 +26,9 @@ services:
       POSTGRES_DB: forum
     ports:
       - 5432:5432
+    networks:
+        forum_network:
+
+networks:
+  forum_network:
+    driver: bridge
