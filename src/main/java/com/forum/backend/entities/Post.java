@@ -12,7 +12,7 @@ public class Post {
     @GeneratedValue
     private long id;
     private String subject;
-    private String name;
+    private String username;
 //    private Object[] comments = new Object[50];
 
 }

@@ -11,7 +11,7 @@
 
     <body>
         <main id="mainHolder">
-            <form id="postForm">
+            <form id="postForm" onsubmit="testabc(event)">
                  <!-- Logo -->
                  <img src="/resources/images/logo.png" alt="code." id="logo" />
                 <!--Titel vom Beitrag-->
@@ -40,29 +40,26 @@
             </form>
         </main>
         <script>
-            async function testabc() {
+            async function testabc(event) {
+                event.preventDefault();
                 let currentPost = {}
 
                 currentPost.subject = document.querySelector('#subject').value
-                currentPost.user = document.querySelector('#user').value
+                currentPost.username = document.querySelector('#user').value
 
-                const url = `${window.location.origin}/api/v1/posts`;
+                const url = `${window.location.origin}/api/posts`
                 const body = {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(currentPost),
                 }
 
-                console.log(currentPost)
+                const abc = fetch(url, body)
+                    .then((response) => response.json())
+                    .catch((error) => console.error(error))
 
-                currentPost = await fetch(url, body)
-                    .then(response => response.json())
-                    .catch(err => console.error(err));
-
-                console.log(currentPost)
+                console.log(abc)
             }
-
-            document.getElementById('submitPost').addEventListener("click", () => testabc())
         </script>
     </body>
 </html>
