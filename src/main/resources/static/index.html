@@ -44,10 +44,59 @@
             <button class="textBasic" id="sideNavButton" hidden>&#9776;</button>
         </header>
         <!-- MAIN CONTENT -->
-        <div id="content">
+        <div id="content">    
             <div id="main">
                 <main>
-                    <div class="container">
+            <div class="container">
+                <form id="postForm" onsubmit="request(event)">
+                   <!--Subject vom Beitrag-->
+                   <div class="subject">
+                       <input id="subject"
+                       class="textBasic"
+                       type="text"
+                       name="Subject"
+                       placeholder="Subject"
+                       maxlength="150"
+                       required>
+                   </div>
+                   <!--Name des Users-->
+                   <div class="user">
+                       <input id="user"
+                       class="textBasic"
+                       name="post"
+                       placeholder="Please enter name"
+                       maxlength="55"
+                       required />
+                   </div>
+                   <button type="submit" id="submitPost" class="textBasic">Submit</button>
+               </form>
+            </div>       
+                   
+                <script>
+                    async function request(event) {
+                        event.preventDefault();
+                        let currentPost = {}
+        
+                        currentPost.subject = document.querySelector('#subject').value
+                        currentPost.username = document.querySelector('#user').value
+        
+                        const url = `${window.location.origin}/api/posts`
+                        const body = {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(currentPost),
+                        }
+        
+                        const e = fetch(url, body)
+                            .then((response) => response.json())
+                            .catch((error) => console.error(error))
+        
+                        console.log(e)
+                        
+                    }
+                </script>
+                        
+                        
                         <!--Display posts table-->
                         <div class="posts-table">
                             <div class="table-head">
@@ -58,8 +107,8 @@
                                 <div id="threads"></div>
                             </div>
                             <script>
-                                // fetch(`${window.location.origin}/api/v1/posts`)
-                                fetch("threads.json")
+                                // fetch(`${window.location.origin}/api/posts`)
+                                fetch(`${window.location.origin}/api/posts`)
                                     .then((response) => response.json())
                                     .then((data) => {
                                         // eslint-disable-next-line no-use-before-define
@@ -81,7 +130,7 @@
                                             <div class="thread">
                                                 <div class="question" id="${data[i].id}">${data[i].subject}</div>
                                                 <br>
-                                                <div class="user">Started by <b><a href="">${data[i].user}</a></div>
+                                                <div class="user">Started by <b><a href="">${data[i].username}</a></div>
                                             </div>
 
                                             <div>
@@ -91,22 +140,25 @@
 
                                         mainContainer.appendChild(divThread);
 
-                                        // eslint-disable-next-line no-plusplus
-                                        for (let j = 0; j < data[i].comments.length; j++) {
-                                            const divComments = document.createElement("div");
-                                            divComments.innerHTML =  `
-                                                <div class="comment">
-                                                    <div class="content">${data[i].comments[j].comment}</div>
-                                                    <div class=" user">${data[i].comments[j].user}</div>
-                                                </div>`;
-                                            mainContainer.append(divComments);
-                                        }
+                                        if(data[i].comments >= 0){
+                                            // eslint-disable-next-line no-plusplus
+                                            for (let j = 0; j < data[i].comments.length; j++) {
+                                                const divComments = document.createElement("div");
+                                                divComments.innerHTML =  `
+                                                    <div class="comment">
+                                                        <div class="content">${data[i].comments[j].comment}</div>
+                                                        <div class=" user">${data[i].comments[j].user}</div>
+                                                    </div>`;
+                                                mainContainer.append(divComments);
+                                            }
+                                        }   
                                     }
                                 }
                             </script>
                         </div>
                     </div>
                 </main>
+                </div>
             </div>
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
