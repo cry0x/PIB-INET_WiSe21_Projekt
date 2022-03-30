@@ -6,13 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Forum</title>
         <link rel="stylesheet" href="/css/index.css" />
-        <link rel="stylesheet" href="/css/main.css" />
-
+        <link rel="stylesheet" href="css/main.css" />
         <script src="/js/jquery.min.js"></script>
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
         <script src="/js/sideNav.js"></script>
-        <script src="/js/main.js"></script>
     </head>
-
     <body>
         <header>
             <img src="/resources/images/logo.png" alt="code." id="logo" />
@@ -44,114 +43,150 @@
             <!-- SideNav Button -->
             <button class="textBasic" id="sideNavButton" hidden>&#9776;</button>
         </header>
-        <!----------------------------------------------------------------------------------------------->
         <!-- MAIN CONTENT -->
         <div id="content">
             <div id="main">
                 <main>
                     <div class="container">
-                        
                         <!--Display posts table-->
                         <div class="posts-table">
-                            <div class="table-head">    
+                            <div class="table-head">
                                 <div class="subjects">Subjects</div>
-                                <div class="addThread"><a href="/html/newThread.html">New Thread</a></div>
                                 <div class="users">Users</div>
-                                
-
-                               
                             </div>
                             <div class="table-row">
                                 <div id="threads"></div>
-                            </div>    
-                        <!-- "threads.json" -->
-                        <!-- "http://127.0.0.1:8080/api/posts" -->
-                        <script>
-                            
-                            fetch("threads.json")
-                                .then((response) => response.json())
-                                .then((data) => {
-                                    // eslint-disable-next-line no-use-before-define
-                                    appendData(data);
-                                })
-                                .catch((err) => {
-                                    // eslint-disable-next-line no-console
-                                    console.log(`error: ${err}`);
-                                });
-                            function appendData(data) {
-                                const mainContainer = document.getElementById("threads");
-                 
-                                // eslint-disable-next-line no-plusplus
-                                for (let i = 0; i < data.length; i++) {
-                                    const divThread = document.createElement("div");
-                                    
-                                    divThread.innerHTML = `
-                                            <div class="thread">
-                                                <div class="question" id="question-${data[i].id}">${data[i].subject}</div>
-                                                <br>
-                                                <div class="user">Started by <b><a href="">${data[i].username}</a></div>
-                                            </div>
-                                              
-                                            <div>
-                                                <textarea name="commentBox" id="commentBox" placeholder="comment here ... "></textarea>
-                                                <div class="submitBtnWrapper">
-                                                    <input class="submitBtn" id="${data[i].id}" type="submit" value="submit" onsubmit="submitComment()">
-                                                </div>
-                                            </div>`
+                            </div>
+                            <script>
+                                // fetch(`${window.location.origin}/api/v1/posts`)
+                                fetch("threads.json")
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        // eslint-disable-next-line no-use-before-define
+                                        appendData(data);
+                                    })
+                                    .catch((err) => {
+                                        // eslint-disable-next-line no-console
+                                        console.log(`error: ${err}`);
+                                    });
 
-                                    mainContainer.appendChild(divThread);
-                
+                                function appendData(data) {
+                                    const mainContainer = document.getElementById("threads");
+
                                     // eslint-disable-next-line no-plusplus
-                                    for (let j = 0; j < data[i].comments.length; j++) {
-                                        const divComments = document.createElement("div");                 
-                                        
-                                        divComments.innerHTML =  `                  
-                                            <div class="comment">
-                                                <div class="content">${data[i].comments[j].comment}</div>
-                                                <div class=" user">${data[i].comments[j].user}</div>
+                                    for (let i = 0; i < data.length; i++) {
+                                        const divThread = document.createElement("div");
+
+                                        divThread.innerHTML = `
+                                            <div class="thread">
+                                                <div class="question" id="${data[i].id}">${data[i].subject}</div>
+                                                <br>
+                                                <div class="user">Started by <b><a href="">${data[i].user}</a></div>
+                                            </div>
+
+                                            <div>
+                                                <textarea name="comment" id="commentBox" placeholder="comment here ... "></textarea>
+                                                <div id="submitBtn"><input type="submit" value="submit"></div>
                                             </div>`;
-                                        
-                                        mainContainer.append(divComments);
-                                    }                                 
-                                }     
-                            } 
-                            
-                    </script>
+
+                                        mainContainer.appendChild(divThread);
+
+                                        // eslint-disable-next-line no-plusplus
+                                        for (let j = 0; j < data[i].comments.length; j++) {
+                                            const divComments = document.createElement("div");
+                                            divComments.innerHTML =  `
+                                                <div class="comment">
+                                                    <div class="content">${data[i].comments[j].comment}</div>
+                                                    <div class=" user">${data[i].comments[j].user}</div>
+                                                </div>`;
+                                            mainContainer.append(divComments);
+                                        }
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
                 </main>
             </div>
-            <!----------------------------------------------------------------------------------------------->
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
+            <!-- Profile Page -->
+            <div id="profile" hidden>
+                <link rel="stylesheet" href="/css/profile.css" />
+                <script type="text/javascript" src="js/profile.js"></script>
+                <form id="userForm" class="userForm">
+                    <fieldset id="userFormFieldSet" disabled="disabled">
+                        <img
+                                src="/resources/images/profile_picture.png"
+                                alt="defaultProfilePicture"
+                                id="profilepicture"
+                        /><br />
+                        <label for="loginName"></label>
+                        <input
+                                type="text"
+                                id="loginName"
+                                name="loginName"
+                                placeholder="Username"
+                        /><br />
+                        <label for="firstName"></label>
+                        <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Firstname"
+                        /><br />
+                        <label for="lastName"></label>
+                        <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Lastname"
+                        /><br />
+                        <label for="email"></label>
+                        <input
+                                type="text"
+                                id="email"
+                                name="email"
+                                placeholder="Email"
+                        /><br />
+                        <label for="birthdate"></label>
+                        <input
+                                type="text"
+                                id="birthdate"
+                                name="birthdate"
+                                placeholder="Birthdate"
+                        /><br />
+                        <label for="pictureUrl"></label>
+                        <input
+                                type="text"
+                                id="pictureUrl"
+                                name="pictureUrl"
+                                placeholder="Picture URL"
+                        /><br />
+                        <label id="memberSince" name="memberSince"></label>
+                    </fieldset>
+                </form>
+                <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()" >
+                    change data
+                </button>
+                <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()" style="visibility: hidden" >
+                    cancel
+                </button>
+            </div>
+            <div id="user-management" hidden>USER-MANAGEMENT</div>
             <!-- USE THIS MENU -->
             <div id="sideNav" hidden>
-                <div
-                    id="sideHome"
-                    class="textBasic sideNavItem"
-                    onclick="contentSwitch(home);"
-                >
+                <div id="sideHome" class="textBasic sideNavItem" onclick="contentSwitch(home);" >
                     HOME
                 </div>
-
-                <div
-                    id="sideAbout"
-                    class="textBasic sideNavItem"
-                    onclick="contentSwitch(about);"
-                >
+                <div id="sideAbout" class="textBasic sideNavItem" onclick="contentSwitch(about);" >
                     ABOUT
                 </div>
-
-                <div
-                    id="sideContact"
-                    class="textBasic sideNavItem"
-                    onclick="contentSwitch(contact);"
-                >
+                <div id="sideContact" class="textBasic sideNavItem" onclick="contentSwitch(contact);" >
                     CONTACT
                 </div>
                 <!-- Login Button -->
-                <button
-                    class="textBasic sideNavItem sideNavButton"
-                    id="loginButton"
-                >
+                <button class="textBasic sideNavItem sideNavButton" id="loginButton" >
                     <a href="/html/login.html">Login</a>
                 </button>
                 <br />
@@ -161,7 +196,27 @@
                 </button>
             </div>
         </div>
+        <script src="js/contentSwitch.js"></script>
         <!-- Import script to switch between content pages -->
-        <script src="/js/contentSwitch.js"></script>
+        <script>
+            async function setUiAccordingToRole() {
+                const url = `${window.location.origin}/api/profile/admin`;
+
+                const isAdmin = await fetch(url)
+                    .then(response => response.json())
+                    .catch(err => console.error(err));
+
+                if (isAdmin) {
+                    document.querySelector('#profileButton').innerHTML = 'USER-MANAGEMENT'
+                    document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#user-management'))
+                } else {
+                    document.querySelector('#profileButton').innerHTML = 'PROFILE'
+                    document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#profile'))
+                }
+            }
+
+            setUiAccordingToRole()
+        </script>
+        <script type="module" src="js/user-management/user-management.js"></script>
     </body>
 </html>
