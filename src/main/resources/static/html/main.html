@@ -72,29 +72,41 @@
                                 async function appendData(data, isLoggedIn) {
                                     const mainContainer = document.getElementById("threads");
 
+                                    mainContainer.innerHTML = ''
+
                                     for (let i = 0; i < data.length; i++) {
                                         const divThread = document.createElement("div");
 
                                         if (isLoggedIn) {
                                             divThread.innerHTML =
                                                 `<div class="thread">
-                                                    <div class="question" id="${data[i].id}">${data[i].subject}</div>
-                                                    <br>
-                                                    <div class="user">Started by <b><a href="">${data[i].username}</a></div>
-                                                </div>
-                                                <div>
-                                                    <textarea id="commentBox-${data[i].id}" name="comment" placeholder="comment here ... "></textarea>
-                                                    <button id="submitComment-${data[i].id}">
-                                                        Create Comment
-                                                    </button>
-                                                </div>`;
+                                                <div class="question" id="${data[i].id}">${data[i].subject}</div>
+                                                <br>
+                                                <div class="user">Started by <b><a href="">${data[i].username}</a></div>
+                                            </div>
+                                            <div>
+                                                <textarea id="commentBox-${data[i].id}" class="commentBox" name="comment" placeholder="comment here ... "></textarea>
+                                                <button id="submitComment-${data[i].id}">
+                                                    Create Comment
+                                                </button>
+                                            </div>`;
                                         } else {
                                             divThread.innerHTML =
                                                 `<div class="thread">
-                                                    <div class="question" id="${data[i].id}">${data[i].subject}</div>
-                                                    <br>
-                                                        <div class="user">Started by <b><a href="">${data[i].username}</a></div>
-                                                </div>`;
+                                                <div class="question" id="${data[i].id}">${data[i].subject}</div>
+                                                <br>
+                                                    <div class="user">Started by <b><a href="">${data[i].username}</a></div>
+                                            </div>`;
+                                        }
+
+                                        for (let j = 0; j < data[i].commentList.length; j++) {
+                                            const divComments = document.createElement("div");
+                                            divComments.innerHTML =
+                                                `<div class="comment">
+                                                <div class="content">${data[i].commentList[j].content}</div>
+                                                <div class="user">${data[i].commentList[j].creator.loginname}</div>
+                                            </div>`;
+                                            divThread.append(divComments);
                                         }
 
                                         mainContainer.appendChild(divThread);
@@ -123,18 +135,24 @@
                                         .then(response => response.json())
                                         .then(json => console.log(json))
                                         .catch(error => console.error(error))
+
+                                    await loadThreads()
                                 }
 
-                                checkUserLoggedIn();
+                                async function loadThreads() {
+                                    await checkUserLoggedIn();
 
-                                fetch(`${window.location.origin}/api/posts`)
-                                    .then((response) => response.json())
-                                    .then((data) => {
-                                        appendData(data, isLoggedIn);
-                                    })
-                                    .catch((err) => {
-                                        console.log(`error: ${err}`);
-                                    });
+                                    await fetch(`${window.location.origin}/api/posts`)
+                                        .then((response) => response.json())
+                                        .then((data) => {
+                                            appendData(data, isLoggedIn);
+                                        })
+                                        .catch((err) => {
+                                            console.log(`error: ${err}`);
+                                        });
+                                }
+
+                                loadThreads()
                             </script>
                         </div>
                     </div>
