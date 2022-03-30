@@ -30,13 +30,11 @@
                 </ul>
             </nav>
             <div id="headerNavButtons" class="textBasic">
-                <!-- Login Button -->
-                <button class="textBasic" id="loginButton">
-                    <a href="/login">Login</a>
-                </button>
-                <!-- Register Button -->
-                <button class="textBasic" id="registerButton">
-                    <a href="/registration">Register</a>
+                <!-- Profile Button -->
+                <button class="textBasic" id="profileButton">PROFILE</button>
+                <!-- Logout Button -->
+                <button class="textBasic" id="logoutButton">
+                    <a href="/logout">Logout</a>
                 </button>
             </div>
             <!-- IF SCREEN IS SMALLER THAN 1200px(width)-->
@@ -177,7 +175,6 @@
                     document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#profile'))
                 }
             }
-
             setUiAccordingToRole()
         </script>
         <script type="module" src="js/user-management/user-management.js"></script>
