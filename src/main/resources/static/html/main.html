@@ -5,16 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Forum</title>
-        <link rel="stylesheet" href="/css/index.css" />
-        <script src="/js/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <script src="js/jquery.min.js"></script>
         <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-        <script src="/js/sideNav.js"></script>
+        <script src="js/sideNav.js"></script>
     </head>
-
     <body>
         <header>
-            <img src="/resources/images/logo.png" alt="code." id="logo" />
+            <img src="resources/images/logo.png" alt="code." id="logo" />
             <!-- Main Menu -->
             <nav id="headerNav" class="textBasic">
                 <ul>
@@ -43,105 +43,162 @@
         </header>
         <!-- MAIN CONTENT -->
         <div id="content">
-            <div id="main">FORUMPOSTS</div>
+            <div id="main">
+                <main>
+                    <div class="container">
+                        <!--Display posts table-->
+                        <div class="posts-table">
+                            <div class="table-head">
+                                <div class="subjects">Subjects</div>
+                                <div class="users">Users</div>
+                            </div>
+                            <div class="table-row">
+                                <div id="threads"></div>
+                            </div>
+                            <script>
+                                let isLoggedIn = false;
+
+                                async function checkUserLoggedIn() {
+                                    const url = `${window.location.origin}/api/profile/loggedin`;
+
+                                    isLoggedIn = await fetch(url)
+                                        .then(response => response.json())
+                                        .then(data => data)
+                                        .catch(err => console.error(err));
+
+                                    return isLoggedIn;
+                                }
+
+                                async function appendData(data, isLoggedIn) {
+                                    const mainContainer = document.getElementById("threads");
+
+                                    mainContainer.innerHTML = ''
+
+                                    for (let i = 0; i < data.length; i++) {
+                                        const divThread = document.createElement("div");
+
+                                        if (isLoggedIn) {
+                                            divThread.innerHTML =
+                                                `<div class="thread">
+                                                <div class="question" id="${data[i].id}">${data[i].subject}</div>
+                                                <br>
+                                                <div class="user">Started by <b><a href="">${data[i].username}</a></div>
+                                            </div>
+                                            <div>
+                                                <textarea id="commentBox-${data[i].id}" class="commentBox" name="comment" placeholder="comment here ... "></textarea>
+                                                <button id="submitComment-${data[i].id}">
+                                                    Create Comment
+                                                </button>
+                                            </div>`;
+                                        } else {
+                                            divThread.innerHTML =
+                                                `<div class="thread">
+                                                <div class="question" id="${data[i].id}">${data[i].subject}</div>
+                                                <br>
+                                                    <div class="user">Started by <b><a href="">${data[i].username}</a></div>
+                                            </div>`;
+                                        }
+
+                                        for (let j = 0; j < data[i].commentList.length; j++) {
+                                            const divComments = document.createElement("div");
+                                            divComments.innerHTML =
+                                                `<div class="comment">
+                                                <div class="content">${data[i].commentList[j].content}</div>
+                                                <div class="user">${data[i].commentList[j].creator.loginname}</div>
+                                            </div>`;
+                                            divThread.append(divComments);
+                                        }
+
+                                        mainContainer.appendChild(divThread);
+
+                                        document.getElementById(`submitComment-${data[i].id}`)
+                                            .addEventListener("click", () => createCommentForPost(data[i].id))
+                                    }
+                                }
+
+                                async function createCommentForPost(id) {
+                                    const comment = {
+                                        content: document.getElementById(`commentBox-${id}`).value,
+                                        creator: await fetchCurrentUserProfile()
+                                    }
+
+                                    const url = `${window.location.origin}/api/posts/${id}`;
+                                    const body = {
+                                        method: 'POST',
+                                        body: JSON.stringify(comment),
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    };
+
+                                    await fetch(url, body)
+                                        .then(response => response.json())
+                                        .then(json => console.log(json))
+                                        .catch(error => console.error(error))
+
+                                    await loadThreads()
+                                }
+
+                                async function loadThreads() {
+                                    await checkUserLoggedIn();
+
+                                    await fetch(`${window.location.origin}/api/posts`)
+                                        .then((response) => response.json())
+                                        .then((data) => {
+                                            appendData(data, isLoggedIn);
+                                        })
+                                        .catch((err) => {
+                                            console.log(`error: ${err}`);
+                                        });
+                                }
+
+                                loadThreads()
+                            </script>
+                        </div>
+                    </div>
+                </main>
+            </div>
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
             <!-- Profile Page -->
             <div id="profile" hidden>
-                <link rel="stylesheet" href="/css/profile.css" />
+                <link rel="stylesheet" href="css/profile.css" />
                 <script type="text/javascript" src="js/profile.js"></script>
                 <form id="userForm" class="userForm">
                     <fieldset id="userFormFieldSet" disabled="disabled">
-                        <img
-                            src="/resources/images/profile_picture.png"
-                            alt="defaultProfilePicture"
-                            id="profilepicture"
-                        /><br />
+                        <img src="resources/images/profile_picture.png" alt="defaultProfilePicture" id="profilepicture"/><br />
                         <label for="loginName"></label>
-                        <input
-                            type="text"
-                            id="loginName"
-                            name="loginName"
-                            placeholder="Username"
-                        /><br />
+                        <input type="text" id="loginName" name="loginName" placeholder="Username" /><br />
                         <label for="firstName"></label>
-                        <input
-                            type="text"
-                            id="firstName"
-                            name="firstName"
-                            placeholder="Firstname"
-                        /><br />
+                        <input type="text" id="firstName" name="firstName" placeholder="Firstname" /><br />
                         <label for="lastName"></label>
-                        <input
-                            type="text"
-                            id="lastName"
-                            name="lastName"
-                            placeholder="Lastname"
-                        /><br />
+                        <input type="text" id="lastName" name="lastName" placeholder="Lastname" /><br />
                         <label for="email"></label>
-                        <input
-                            type="text"
-                            id="email"
-                            name="email"
-                            placeholder="Email"
-                        /><br />
+                        <input type="text" id="email" name="email" placeholder="Email" /><br />
                         <label for="birthdate"></label>
-                        <input
-                            type="text"
-                            id="birthdate"
-                            name="birthdate"
-                            placeholder="Birthdate"
-                        /><br />
+                        <input type="text" id="birthdate" name="birthdate" placeholder="Birthdate" /><br />
                         <label for="pictureUrl"></label>
-                        <input
-                            type="text"
-                            id="pictureUrl"
-                            name="pictureUrl"
-                            placeholder="Picture URL"
-                        /><br />
-                        <label id="memberSince" name="memberSince"></label>
+                        <input type="text" id="pictureUrl" name="pictureUrl" placeholder="Picture URL" /><br />
+                        <label id="memberSince"></label>
                     </fieldset>
                 </form>
-                <button
-                    id="userFormSubmitButton"
-                    class="userFormSubmitButton"
-                    onclick="handleUserProfileChange()"
-                >
+                <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()">
                     change data
                 </button>
-                <button
-                    id="userFormSubmitCancel"
-                    class="userFormSubmitCancel"
-                    onclick="cancelUserProfileChange()"
-                    style="visibility: hidden"
-                >
+                <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()" style="visibility: hidden" >
                     cancel
                 </button>
             </div>
             <div id="user-management" hidden>USER-MANAGEMENT</div>
             <!-- USE THIS MENU -->
             <div id="sideNav" hidden>
-                <div
-                    id="sideHome"
-                    class="textBasic sideNavItem"
-                    onclick="contentSwitch(home);"
-                >
+                <div id="sideHome" class="textBasic sideNavItem" onclick="contentSwitch('#main');" >
                     HOME
                 </div>
-
-                <div
-                    id="sideAbout"
-                    class="textBasic sideNavItem"
-                    onclick="contentSwitch(about);"
-                >
+                <div id="sideAbout" class="textBasic sideNavItem" onclick="contentSwitch('#about');" >
                     ABOUT
                 </div>
-
-                <div
-                    id="sideContact"
-                    class="textBasic sideNavItem"
-                    onclick="contentSwitch(contact);"
-                >
+                <div id="sideContact" class="textBasic sideNavItem" onclick="contentSwitch('#contact');" >
                     CONTACT
                 </div>
                 <!-- Profile Button -->
@@ -160,17 +217,16 @@
 
                 const isAdmin = await fetch(url)
                     .then(response => response.json())
-                    .catch(err => console.error(err));
+                    .catch(error => console.error(error));
 
                 if (isAdmin) {
-                    document.querySelector('#profileButton').innerHTML = 'USER-MANAGEMENT'
+                    document.querySelector('#profileButton').innerHTML = 'USERS'
                     document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#user-management'))
                 } else {
                     document.querySelector('#profileButton').innerHTML = 'PROFILE'
                     document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#profile'))
                 }
             }
-
             setUiAccordingToRole()
         </script>
         <script type="module" src="js/user-management/user-management.js"></script>

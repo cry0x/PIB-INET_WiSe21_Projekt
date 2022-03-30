@@ -1,0 +1,33 @@
+[
+    {
+        "id": "1",
+        "subject": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "username": "Peter Lustig",
+        "commentCounter": "3",
+        "comments": [   {"user":"John Doe","comment":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+                        {"user":"Hans Peter","comment":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},
+                        {"user":"Hans Wurst","comment":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "}]
+    },
+    {
+        "id": "2",
+        "subject": "Lohnt es sich TypeScript zu lernen?",
+        "username": "User234",
+        "commentCounter": "2",
+        "comments": [{"user":"Peter Lustig","comment":"Kommt darauf an."}]
+    },
+    {
+        "id": "3",
+        "subject": "Was ist die Antwort auf alles?",
+        "username": "User42",
+        "commentCounter": "0",
+        "comments": []
+    },
+
+    {
+        "id": "4",
+        "subject": "Lohnt es sich Python zu lernen?",
+        "username": "User1",
+        "commentCounter": "0",
+        "comments": [{"user":"Blank","comment":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."}]
+    }
+]
