@@ -16,6 +16,7 @@ main {
     box-shadow: 0px 4px 4px var(--shadow);
     background-color: rgb(214, 252, 250);
     padding: 0rem;
+    font-size:2em;
     
     
 }
@@ -46,6 +47,7 @@ main {
     box-shadow: 0px 4px 4px var(--shadow);
     background-color:rgb(198, 252, 249);
     padding: 0rem;
+    font-weight: bolder;
     
 }
 
@@ -97,14 +99,14 @@ main {
     margin: 0rem;
 }    
 
-#submitBtn {
+.submitBtn {
     margin: 1rem;
        
 }
 
 #commentBox {
-    width: 1846px;
-    height: 40px;
+    width: 50rem;
+    height: 4rem;
     margin-left: 1rem; 
     font-family: SourceSerifPro-Regular, monospace;
     font-size: larger;
