@@ -1,5 +1,6 @@
 package com.forum.backend.controllers;
 
+import com.forum.backend.entities.Comment;
 import com.forum.backend.entities.Post;
 import com.forum.backend.services.PostService;
 import org.slf4j.Logger;
@@ -16,7 +17,6 @@ public class PostController {
 
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
-    @Autowired 
     private final PostService postService;
 
     @Autowired
@@ -26,7 +26,7 @@ public class PostController {
 
     @PostMapping
     public Post createPost(@RequestBody Post post) {
-        logger.info("POST /api/v1/posts");
+        logger.info("POST /api/posts");
 
         return this.postService.createPost(post);
     }
@@ -44,6 +44,13 @@ public class PostController {
     @DeleteMapping("/{id}")
     public void deletePostById(@PathVariable Long id) {
         this.postService.deletePostById(id);
+    }
+
+    @PostMapping(path = "/{id}")
+    public Post postCommentForPost(@PathVariable Long id, @RequestBody Comment comment) {
+        logger.info(String.format("POST /api/posts/%s", id));
+
+        return this.postService.addCommentToPost(id, comment);
     }
     
 }

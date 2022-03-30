@@ -64,12 +64,12 @@ async function updateUserDataFromForm() {
     loadCurrentUserData()
 }
 
-function fetchCurrentUserProfile() {
+async function fetchCurrentUserProfile() {
     const url = `${window.location.origin}/api/profile/current`
 
-    return fetch(url)
-        .then((response) => response.json())
-        .catch((err) => console.error(err))
+    return await fetch(url)
+        .then(response => response.json())
+        .catch(err => console.error(err))
 }
 
 async function loadCurrentUserData() {

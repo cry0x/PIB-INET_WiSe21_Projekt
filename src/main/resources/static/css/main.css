@@ -126,7 +126,7 @@
        
 }
 
-#commentBox {
+.commentBox {
     width: 50rem;
     height: 4rem;
     margin-left: 1rem; 

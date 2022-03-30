@@ -3,14 +3,25 @@ package com.forum.backend.entities;
 import javax.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "posts")
 @Data
 public class Post {
+
     @Id
     @GeneratedValue
     private long id;
     private String subject;
     private String username;
-//    private Object[] comments = new Object[50];
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> commentList;
+
+    public List<Comment> addComment(Comment comment) {
+        this.commentList.add(comment);
+
+        return this.commentList;
+    }
+
 }
