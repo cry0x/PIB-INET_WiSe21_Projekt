@@ -1,7 +1,9 @@
 package com.forum.backend.services;
 
+import com.forum.backend.entities.Comment;
 import com.forum.backend.entities.Post;
 import com.forum.backend.excpetions.PostNotFoundException;
+import com.forum.backend.repositories.CommentRepository;
 import com.forum.backend.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +14,14 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
+    private final ProfileService profileService;
 
     @Autowired
-    public PostService(PostRepository postRepository) {
+    public PostService(PostRepository postRepository, CommentRepository commentRepository, ProfileService profileService) {
         this.postRepository = postRepository;
+        this.commentRepository = commentRepository;
+        this.profileService = profileService;
     }
     
     public Post createPost(Post post) {
@@ -34,7 +40,10 @@ public class PostService {
         this.postRepository.deleteById(id);
     }
 
-    //public Post findPostbyUser(String user) {
-    //    return this.postRepository.findPostbyUser(user);
-    //}
+    public Post addCommentToPost(Long id, Comment comment) {
+        Post post = this.postRepository.findById(id).orElseThrow();
+        post.addComment(this.commentRepository.save(comment));
+        return this.postRepository.save(post);
+    }
+
 }
