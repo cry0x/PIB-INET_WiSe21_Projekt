@@ -170,7 +170,7 @@
                     .catch(err => console.error(err));
 
                 if (isAdmin) {
-                    document.querySelector('#profileButton').innerHTML = 'USER-MANAGEMENT'
+                    document.querySelector('#profileButton').innerHTML = 'USERS'
                     document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#user-management'))
                 } else {
                     document.querySelector('#profileButton').innerHTML = 'PROFILE'
