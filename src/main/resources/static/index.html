@@ -64,11 +64,21 @@
                                     for (let i = 0; i < data.length; i++) {
                                         const divThread = document.createElement("div");
 
-                                        divThread.innerHTML = `<div class="thread">
-                                            <div class="question" id="${data[i].id}">${data[i].subject}</div>
-                                            <br>
+                                        divThread.innerHTML =
+                                            `<div class="thread">
+                                                <div class="question" id="${data[i].id}">${data[i].subject}</div><br>
                                                 <div class="user">Started by <b><a href="">${data[i].username}</a></div>
-                                        </div>`;
+                                            </div>`;
+
+                                        for (let j = 0; j < data[i].commentList.length; j++) {
+                                            const divComments = document.createElement("div");
+                                            divComments.innerHTML =
+                                                `<div class="comment">
+                                                    <div class="content">${data[i].commentList[j].content}</div>
+                                                    <div class="user">${data[i].commentList[j].creator.loginname}</div>
+                                                </div>`;
+                                            divThread.append(divComments);
+                                        }
 
                                         mainContainer.appendChild(divThread);
                                     }
@@ -85,70 +95,6 @@
             </div>
             <div id="about" hidden>ABOUT</div>
             <div id="contact" hidden>CONTACT</div>
-            <!-- Profile Page -->
-            <div id="profile" hidden>
-                <link rel="stylesheet" href="/css/profile.css" />
-                <script type="text/javascript" src="js/profile.js"></script>
-                <form id="userForm" class="userForm">
-                    <fieldset id="userFormFieldSet" disabled="disabled">
-                        <img
-                                src="/resources/images/profile_picture.png"
-                                alt="defaultProfilePicture"
-                                id="profilepicture"
-                        /><br />
-                        <label for="loginName"></label>
-                        <input
-                                type="text"
-                                id="loginName"
-                                name="loginName"
-                                placeholder="Username"
-                        /><br />
-                        <label for="firstName"></label>
-                        <input
-                                type="text"
-                                id="firstName"
-                                name="firstName"
-                                placeholder="Firstname"
-                        /><br />
-                        <label for="lastName"></label>
-                        <input
-                                type="text"
-                                id="lastName"
-                                name="lastName"
-                                placeholder="Lastname"
-                        /><br />
-                        <label for="email"></label>
-                        <input
-                                type="text"
-                                id="email"
-                                name="email"
-                                placeholder="Email"
-                        /><br />
-                        <label for="birthdate"></label>
-                        <input
-                                type="text"
-                                id="birthdate"
-                                name="birthdate"
-                                placeholder="Birthdate"
-                        /><br />
-                        <label for="pictureUrl"></label>
-                        <input
-                                type="text"
-                                id="pictureUrl"
-                                name="pictureUrl"
-                                placeholder="Picture URL"
-                        /><br />
-                        <label id="memberSince" name="memberSince"></label>
-                    </fieldset>
-                </form>
-                <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()" >
-                    change data
-                </button>
-                <button id="userFormSubmitCancel" class="userFormSubmitCancel" onclick="cancelUserProfileChange()" style="visibility: hidden" >
-                    cancel
-                </button>
-            </div>
-            <div id="user-management" hidden>USER-MANAGEMENT</div>
             <!-- USE THIS MENU -->
             <div id="sideNav" hidden>
                 <div id="sideHome" class="textBasic sideNavItem" onclick="contentSwitch(home);" >
@@ -172,26 +118,5 @@
             </div>
         </div>
         <script src="js/contentSwitch.js"></script>
-        <!-- Import script to switch between content pages -->
-        <script>
-            async function setUiAccordingToRole() {
-                const url = `${window.location.origin}/api/profile/admin`;
-
-                const isAdmin = await fetch(url)
-                    .then(response => response.json())
-                    .catch(err => console.error(err));
-
-                if (isAdmin) {
-                    document.querySelector('#profileButton').innerHTML = 'USER-MANAGEMENT'
-                    document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#user-management'))
-                } else {
-                    document.querySelector('#profileButton').innerHTML = 'PROFILE'
-                    document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#profile'))
-                }
-            }
-
-            setUiAccordingToRole()
-        </script>
-        <script type="module" src="js/user-management/user-management.js"></script>
     </body>
 </html>
