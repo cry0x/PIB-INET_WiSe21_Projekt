@@ -23,20 +23,18 @@ form {
     grid-template-columns: 1fr;
     grid-template-rows: 4fr;
     grid-template-areas:
-        'title'
-        'post';
+        'logo'
+        'username'
+        'password'
+        'login';
     gap: 2rem;
 }
-
-
-
 
 /* DEFINITION OF FORM GRID CHILDREN */
 button {
     background-color: var(--cyan);
     justify-self: center;
-    width: inherit;
-    height: inherit;
+    width: 10rem;
 }
 #logo {
     justify-self: center;
@@ -45,7 +43,7 @@ button {
 }
 
 /* ERROR MESSAGES (TBI) */
-#ErrorMessageHolder {
+#loginErrorMessageHolder {
     width: 400px;
     height: 100px;
     display: grid;
@@ -54,7 +52,7 @@ button {
     padding-top: 266px;
     padding-left: 285px;
 }
-#ErrorMessage {
+#loginErrorMessage {
     width: 23%;
     text-align: center;
     margin: 0;
@@ -80,3 +78,4 @@ button {
         padding: 1rem;
         gap: 0.5rem;
     }
+}
