@@ -178,9 +178,8 @@
                         <label for="birthdate"></label>
                         <input type="text" id="birthdate" name="birthdate" placeholder="Birthdate" /><br />
                         <label for="pictureUrl"></label>
-                        <input type="text" id="pictureUrl" name="pictureUrl" placeholder="Picture URL"
-                        /><br />
-                        <label id="memberSince" name="memberSince"></label>
+                        <input type="text" id="pictureUrl" name="pictureUrl" placeholder="Picture URL" /><br />
+                        <label id="memberSince"></label>
                     </fieldset>
                 </form>
                 <button id="userFormSubmitButton" class="userFormSubmitButton" onclick="handleUserProfileChange()">
@@ -218,7 +217,7 @@
 
                 const isAdmin = await fetch(url)
                     .then(response => response.json())
-                    .catch(err => console.error(err));
+                    .catch(error => console.error(error));
 
                 if (isAdmin) {
                     document.querySelector('#profileButton').innerHTML = 'USERS'

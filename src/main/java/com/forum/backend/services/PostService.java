@@ -42,6 +42,7 @@ public class PostService {
 
     public Post addCommentToPost(Long id, Comment comment) {
         Post post = this.postRepository.findById(id).orElseThrow();
+        comment.setPost(post);
         post.addComment(this.commentRepository.save(comment));
         return this.postRepository.save(post);
     }

@@ -1,9 +1,12 @@
 package com.forum.backend.services;
 
 import com.forum.backend.entities.User;
+import com.forum.backend.repositories.CommentRepository;
+import com.forum.backend.repositories.PostRepository;
 import com.forum.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,9 +15,14 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
+
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PostRepository postRepository, CommentRepository commentRepository) {
         this.userRepository = userRepository;
+        this.postRepository = postRepository;
+        this.commentRepository = commentRepository;
     }
 
     public User saveUser(User user) {
@@ -29,7 +37,11 @@ public class UserService {
         return this.userRepository.findAll();
     }
 
+    @Transactional
     public void deleteUser(long userId) {
+        this.commentRepository.deleteAllByCreator_Id(userId);
+//        this.postRepository.deleteAllByCreator(user);
+
         this.userRepository.deleteById(userId);
     }
 
