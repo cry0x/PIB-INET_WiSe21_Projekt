@@ -11,7 +11,7 @@ services:
     environment:
       spring.application.name: forum
       spring.datasource.url: jdbc:postgresql://forum-db/forum
-      spring.jpa.show-sql: false
+      spring.jpa.show-sql: "false"
       spring.datasource.username: root
       spring.datasource.password: root
       spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL95Dialect
