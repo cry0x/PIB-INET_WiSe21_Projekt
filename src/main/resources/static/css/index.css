@@ -44,21 +44,35 @@ header {
 /* MAIN CONTENT (TBI) */
 
 #content {
-    display: grid;
+    /* display: grid;
     padding: 0;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: 'mainContent';
-    gap: 2rem;
+    gap: 2rem; */
     margin-top: 2rem;
 }
 #main,
 #about,
 #contact {
-    background-color: var(--foreground);
-    box-shadow: 0px 4px 4px var(--shadow);
+    /* background-color: var(--foreground); */
+    /* box-shadow: 0px 4px 4px var(--shadow); */
     grid-area: mainContent;
     justify-self: start;
+}
+
+#main > div,
+#about > div,
+#contact > div {
+    font-size: 25px;
+    padding: 2rem;
+    background-color: var(--foreground);
+    box-shadow: 0px 4px 4px var(--shadow);
+    margin-bottom: 2rem;
+}
+
+#aboutFirstChild {
+    background-color: blue;
 }
 
 /* CHANGE ELEMENTS DEPENDANT ON SCREEN SIZE */
