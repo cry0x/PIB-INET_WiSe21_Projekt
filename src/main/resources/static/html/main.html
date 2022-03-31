@@ -22,10 +22,10 @@
                         <a onclick="contentSwitch('#main');">HOME</a>
                     </li>
                     <li class="inlineList">
-                        <a onclick="contentSwitch('#about');">ABOUT</a>
+                        <a id="aboutButton" onclick="contentSwitch('#about');">ABOUT</a>
                     </li>
                     <li class="inlineList">
-                        <a onclick="contentSwitch('#contact');"> CONTACT </a>
+                        <a id="contactButton" onclick="contentSwitch('#contact');"> CONTACT </a>
                     </li>
                 </ul>
             </nav>
@@ -189,8 +189,8 @@
                     </div>
                 </main>
             </div>
-            <div id="about" hidden>ABOUT</div>
-            <div id="contact" hidden>CONTACT</div>
+            <div id="about" hidden></div>
+            <div id="contact" hidden></div>
             <!-- Profile Page -->
             <div id="profile" hidden>
                 <link rel="stylesheet" href="css/profile.css" />

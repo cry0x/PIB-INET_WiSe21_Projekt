@@ -8,13 +8,9 @@
         <link rel="stylesheet" href="css/index.css" />
         <link rel="stylesheet" href="css/main.css" />
         <script src="js/jquery.min.js"></script>
-        <script
-                src="https://unpkg.com/react@17/umd/react.development.js"
-                crossorigin>
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin>
         </script>
-        <script
-                src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-                crossorigin>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin>
         </script>
         <script src="js/sideNav.js"></script>
     </head>
@@ -28,17 +24,10 @@
                         <a onclick="contentSwitch('#main');">HOME</a>
                     </li>
                     <li class="inlineList">
-                        <a id="aboutButton" onclick="contentSwitch('#about');"
-                            >ABOUT</a
-                        >
+                        <a id="aboutButton" onclick="contentSwitch('#about');">ABOUT</a>
                     </li>
                     <li class="inlineList">
-                        <a
-                            id="contactButton"
-                            onclick="contentSwitch('#contact');"
-                        >
-                            CONTACT
-                        </a>
+                        <a id="contactButton" onclick="contentSwitch('#contact');">CONTACT</a>
                     </li>
                 </ul>
             </nav>
@@ -71,10 +60,10 @@
                         </div>
                         <script>
                             function appendData(data) {
-                                const mainContainer = document.getElementById("threads");
+                                const mainContainer = document.getElementById('threads');
 
                                 for (let i = 0; i < data.length; i++) {
-                                    const divThread = document.createElement("div");
+                                    const divThread = document.createElement('div');
 
                                     divThread.innerHTML =
                                         `<div class="thread">
@@ -83,12 +72,12 @@
                                         </div>`;
 
                                     for (let j = 0; j < data[i].commentList.length; j++) {
-                                        const divComments = document.createElement("div");
+                                        const divComments = document.createElement('div');
                                         divComments.innerHTML =
                                             `<div class="comment">
                                                 <div class="content">${data[i].commentList[j].content}</div>
                                                 <div class="user">${data[i].commentList[j].creator.loginname}</div>
-                                            </div>`;
+                                            </div>`
                                         divThread.append(divComments);
                                     }
 
@@ -104,17 +93,17 @@
                     </div>
                 </main>
             </div>
-            <div id="about" hidden>ABOUT</div>
-            <div id="contact" hidden>CONTACT</div>
+            <div id="about" hidden></div>
+            <div id="contact" hidden></div>
             <!-- USE THIS MENU -->
             <div id="sideNav" hidden>
-                <div id="sideHome" class="textBasic sideNavItem" onclick="contentSwitch(home);" >
+                <div id="sideHome" class="textBasic sideNavItem" onclick="contentSwitch('#main');" >
                     HOME
                 </div>
-                <div id="sideAbout" class="textBasic sideNavItem" onclick="contentSwitch(about);" >
+                <div id="sideAbout" class="textBasic sideNavItem" onclick="contentSwitch('#about');" >
                     ABOUT
                 </div>
-                <div id="sideContact" class="textBasic sideNavItem" onclick="contentSwitch(contact);" >
+                <div id="sideContact" class="textBasic sideNavItem" onclick="contentSwitch('#contact');" >
                     CONTACT
                 </div>
                 <!-- Login Button -->
