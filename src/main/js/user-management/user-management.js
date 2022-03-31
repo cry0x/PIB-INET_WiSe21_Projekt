@@ -22,18 +22,18 @@ class UserManagement extends React.Component {
             })
     }
 
-    deleteUser(id) {
-        const url = `${window.location.origin}/api/users/${id}`;
-        const fetchInit = {
-            method: 'DELETE',
-        };
-
-        fetch(url, fetchInit)
-            .then(res => res.json())
-            .then(res => console.log(res))
-    }
-
     renderTableData() {
+        function deleteUser(id) {
+            const url = `${window.location.origin}/api/users/${id}`;
+            const fetchInit = {
+                method: 'DELETE',
+            };
+
+            fetch(url, fetchInit)
+                .then(res => res.json())
+                .then(() => window.location.reload(true));
+        }
+
         return this.state.users.map((user, index) => {
                 return (
                     <tr key={ user.id }>
@@ -43,7 +43,7 @@ class UserManagement extends React.Component {
                         <td>{ user.lastname }</td>
                         <td>{ user.email }</td>
                         <td id="deleteUser">
-                            <button id="btnDeleteUser" onClick={() => this.deleteUser(user.id)}>DELETE</button>
+                            <button id="btnDeleteUser" onClick={() => deleteUser(user.id)}>DELETE</button>
                         </td>
                     </tr>
                 )
