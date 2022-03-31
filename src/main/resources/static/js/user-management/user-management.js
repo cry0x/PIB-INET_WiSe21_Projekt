@@ -35,7 +35,9 @@ class UserManagement extends React.Component {
         id: "deleteUser"
       }, /*#__PURE__*/React.createElement("button", {
         id: "btnDeleteUser",
-        onClick: () => this.deleteUser(user.id)
+        onClick: () => {
+          this.deleteUser(user.id);
+        }
       }, "DELETE")));
     });
   }
