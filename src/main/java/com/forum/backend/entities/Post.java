@@ -14,9 +14,10 @@ public class Post {
     @GeneratedValue
     private long id;
     private String subject;
-    private String username;
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> commentList;
+    @OneToOne
+    private User creator = new User();
 
     public List<Comment> addComment(Comment comment) {
         this.commentList.add(comment);

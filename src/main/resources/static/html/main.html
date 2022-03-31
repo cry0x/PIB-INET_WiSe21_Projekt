@@ -22,10 +22,10 @@
                         <a onclick="contentSwitch('#main');">HOME</a>
                     </li>
                     <li class="inlineList">
-                        <a onclick="contentSwitch('#about');">ABOUT</a>
+                        <a id="aboutButton" onclick="contentSwitch('#about');">ABOUT</a>
                     </li>
                     <li class="inlineList">
-                        <a onclick="contentSwitch('#contact');"> CONTACT </a>
+                        <a id="contactButton" onclick="contentSwitch('#contact');"> CONTACT </a>
                     </li>
                 </ul>
             </nav>
@@ -45,6 +45,38 @@
         <div id="content">
             <div id="main">
                 <main>
+                    <div id="postCreationDiv" class="container">
+                        <form id="postForm" onsubmit="request(event)">
+                            <!--Subject vom Beitrag-->
+                            <div class="subject">
+                                <input id="subject" class="textBasic" type="text" name="Subject" placeholder="Subject" maxlength="150" required>
+                            </div>
+                            <button type="submit" id="submitPost" class="textBasic">Submit</button>
+                        </form>
+                        <script>
+                            async function request(event) {
+                                event.preventDefault();
+
+                                const currentPost = {
+                                    subject: document.querySelector('#subject').value,
+                                    creator: await fetchCurrentUserProfile()
+                                }
+
+                                const url = `${window.location.origin}/api/posts`
+                                const body = {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(currentPost),
+                                }
+
+                                fetch(url, body)
+                                    .then(response => response.json())
+                                    .catch(error => console.error(error))
+
+                                await loadThreads()
+                            }
+                        </script>
+                    </div>
                     <div class="container">
                         <!--Display posts table-->
                         <div class="posts-table">
@@ -82,7 +114,7 @@
                                                 `<div class="thread">
                                                 <div class="question" id="${data[i].id}">${data[i].subject}</div>
                                                 <br>
-                                                <div class="user">Started by <b><a href="">${data[i].username}</a></div>
+                                                <div class="user">Started by <b><a href="">${data[i].creator.loginname}</a></div>
                                             </div>
                                             <div>
                                                 <textarea id="commentBox-${data[i].id}" class="commentBox" name="comment" placeholder="comment here ... "></textarea>
@@ -95,7 +127,7 @@
                                                 `<div class="thread">
                                                 <div class="question" id="${data[i].id}">${data[i].subject}</div>
                                                 <br>
-                                                    <div class="user">Started by <b><a href="">${data[i].username}</a></div>
+                                                    <div class="user">Started by <b><a href="">${data[i].creator.loginname}</a></div>
                                             </div>`;
                                         }
 
@@ -111,8 +143,8 @@
 
                                         mainContainer.appendChild(divThread);
 
-                                        document.getElementById(`submitComment-${data[i].id}`)
-                                            .addEventListener("click", () => createCommentForPost(data[i].id))
+                                        if (isLoggedIn)
+                                            document.getElementById(`submitComment-${data[i].id}`).addEventListener("click", () => createCommentForPost(data[i].id))
                                     }
                                 }
 
@@ -133,7 +165,6 @@
 
                                     await fetch(url, body)
                                         .then(response => response.json())
-                                        .then(json => console.log(json))
                                         .catch(error => console.error(error))
 
                                     await loadThreads()
@@ -158,8 +189,8 @@
                     </div>
                 </main>
             </div>
-            <div id="about" hidden>ABOUT</div>
-            <div id="contact" hidden>CONTACT</div>
+            <div id="about" hidden></div>
+            <div id="contact" hidden></div>
             <!-- Profile Page -->
             <div id="profile" hidden>
                 <link rel="stylesheet" href="css/profile.css" />
@@ -219,12 +250,16 @@
                     .then(response => response.json())
                     .catch(error => console.error(error));
 
+                const profileButton = document.getElementById('profileButton')
+                const postCreationDiv = document.getElementById('postCreationDiv')
+
                 if (isAdmin) {
-                    document.querySelector('#profileButton').innerHTML = 'USERS'
-                    document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#user-management'))
+                    profileButton.innerHTML = 'USERS'
+                    profileButton.addEventListener("click", () => contentSwitch('#user-management'))
+                    postCreationDiv.hidden = true
                 } else {
-                    document.querySelector('#profileButton').innerHTML = 'PROFILE'
-                    document.getElementById('profileButton').addEventListener("click", () => contentSwitch('#profile'))
+                    profileButton.innerHTML = 'PROFILE'
+                    profileButton.addEventListener("click", () => contentSwitch('#profile'))
                 }
             }
             setUiAccordingToRole()

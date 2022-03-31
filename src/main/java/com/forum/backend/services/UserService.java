@@ -40,8 +40,7 @@ public class UserService {
     @Transactional
     public void deleteUser(long userId) {
         this.commentRepository.deleteAllByCreator_Id(userId);
-//        this.postRepository.deleteAllByCreator(user);
-
+        this.postRepository.deleteAllByCreator_Id(userId);
         this.userRepository.deleteById(userId);
     }
 
