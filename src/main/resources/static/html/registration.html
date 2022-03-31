@@ -10,7 +10,7 @@
 
     <body>
         <main id="mainHolder">
-            <form id="registrationForm" onsubmit="handleTest(event)">
+            <form id="registrationForm" onsubmit="handleRegistration(event)">
                 <!-- Anrede -->
                 <div class="salutation">
                     <datalist id="salutationlist">
@@ -115,7 +115,10 @@
             </form>
         </main>
         <script>
-            async function handleTest(event) {
+            // Diese Function beinhaltet die Logik zum Erstellen eines Benutzer
+            // Die Daten werden aus den HTML-Elementen gesammelt, zu einem User-Objekt zusammengesetzt und dann der API
+            // übermittelt.
+            async function handleRegistration(event) {
                 event.preventDefault()
 
                 const form = document.getElementById('registrationForm');

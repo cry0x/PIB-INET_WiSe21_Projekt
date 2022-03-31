@@ -19,15 +19,15 @@ class UserManagement extends React.Component {
     });
   }
 
-  deleteUser(id) {
-    const url = `${window.location.origin}/api/users/${id}`;
-    const fetchInit = {
-      method: 'DELETE'
-    };
-    fetch(url, fetchInit).then(res => res.json()).then(res => console.log(res));
-  }
-
   renderTableData() {
+    function deleteUser(id) {
+      const url = `${window.location.origin}/api/users/${id}`;
+      const fetchInit = {
+        method: 'DELETE'
+      };
+      fetch(url, fetchInit).then(res => res.json()).then(() => window.location.reload(true));
+    }
+
     return this.state.users.map((user, index) => {
       return /*#__PURE__*/React.createElement("tr", {
         key: user.id
@@ -35,7 +35,7 @@ class UserManagement extends React.Component {
         id: "deleteUser"
       }, /*#__PURE__*/React.createElement("button", {
         id: "btnDeleteUser",
-        onClick: () => this.deleteUser(user.id)
+        onClick: () => deleteUser(user.id)
       }, "DELETE")));
     });
   }
