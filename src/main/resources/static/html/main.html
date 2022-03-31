@@ -79,15 +79,17 @@
                         </script>
                     </div>
                     <div class="container">
-                        <!--Display posts table-->
+                        <!--Posts Header-->
                         <div class="posts-table">
                             <div class="table-head">
                                 <div class="subjects">Subjects</div>
                                 <div class="users">Users</div>
                             </div>
+                             <!--Erzeuge Posts/Threads werden im div "threads" abgelegt.-->
                             <div class="table-row">
                                 <div id="threads"></div>
                             </div>
+                             <!--Skript zum Erzeugen und Senden eines neuen Posts an das Backend-->
                             <script>
                                 let isLoggedIn = false;
                                 // Überprüft ob der Benutzer eingeloggt ist
@@ -113,29 +115,30 @@
                                         const divThread = document.createElement("div");
 
                                         if (isLoggedIn) {
+                                            // Post-Element, falls angemeldet
                                             divThread.innerHTML =
                                                 `<div class="thread">
-                                                <div class="question" id="${data[i].id}">${data[i].subject}</div>
-                                                <br>
-                                                <div class="user">Started by <b><a href="">${data[i].creator.loginname}</a></div>
-                                            </div>
-                                            <div>
-                                                <textarea id="commentBox-${data[i].id}" class="commentBox" name="comment" placeholder="comment here ... "></textarea>
-                                                <button id="submitComment-${data[i].id}">
-                                                    Create Comment
-                                                </button>
-                                            </div>`;
-                                        } else {
-                                            divThread.innerHTML =
-                                                `<div class="thread">
-                                                <div class="question" id="${data[i].id}">${data[i].subject}</div>
-                                                <br>
+                                                    <div class="question" id="${data[i].id}">${data[i].subject}</div>
+                                                    <br>
                                                     <div class="user">Started by <b><a href="">${data[i].creator.loginname}</a></div>
-                                            </div>`;
+                                                </div>
+                                                <div>
+                                                    <textarea id="commentBox-${data[i].id}" class="commentBox" name="comment" placeholder="comment here ... "></textarea>
+                                                    <button id="submitComment-${data[i].id}">Create Comment</button>
+                                                </div>`;
+                                        } else {
+                                            // Post-Element, falls abgemeldet
+                                            divThread.innerHTML =
+                                                `<div class="thread">
+                                                    <div class="question" id="${data[i].id}">${data[i].subject}</div>
+                                                    <br>
+                                                    <div class="user">Started by <b><a href="">${data[i].creator.loginname}</a></div>
+                                                </div>`;
                                         }
-
+                                        
                                         for (let j = 0; j < data[i].commentList.length; j++) {
                                             const divComments = document.createElement("div");
+                                            // Comment-Element
                                             divComments.innerHTML =
                                                 `<div class="comment">
                                                 <div class="content">${data[i].commentList[j].content}</div>
