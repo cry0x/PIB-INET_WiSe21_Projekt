@@ -43,9 +43,7 @@ class UserManagement extends React.Component {
                         <td>{ user.lastname }</td>
                         <td>{ user.email }</td>
                         <td id="deleteUser">
-                            <button id="btnDeleteUser" onClick={() => {
-                                this.deleteUser(user.id);
-                            }}>DELETE</button>
+                            <button id="btnDeleteUser" onClick={() => this.deleteUser(user.id)}>DELETE</button>
                         </td>
                     </tr>
                 )
