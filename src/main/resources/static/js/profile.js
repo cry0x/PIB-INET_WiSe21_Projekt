@@ -1,5 +1,6 @@
 let isProfileFormDisabled = true
 
+// Hiermit wird die UI zum Ändern der Benutzerdaten dis- und enabled
 function handleUserProfileChange() {
     if (isProfileFormDisabled) {
         isProfileFormDisabled = false
@@ -19,6 +20,7 @@ function handleUserProfileChange() {
     }
 }
 
+// Setzt die UI zum Ändern der Benutzerdaten auf die Ursprungsdaten zurück
 function cancelUserProfileChange() {
     if (isProfileFormDisabled) {
         document.getElementById('userFormFieldSet').removeAttribute('disabled')
@@ -35,7 +37,7 @@ function cancelUserProfileChange() {
             'hidden'
     }
 }
-
+// Übermittelt die neuen Benutzerdaten zur API
 function putUserProfileData(newUserData) {
     const url = `${window.location.origin}/api/profile/current`
     const body = {
@@ -49,6 +51,7 @@ function putUserProfileData(newUserData) {
         .catch((error) => console.error(error))
 }
 
+// Erzeugt ein User-Objekt aus den aktuell im User-UI gesetzten Daten
 async function updateUserDataFromForm() {
     let currentUserData = {}
 
@@ -64,6 +67,7 @@ async function updateUserDataFromForm() {
     loadCurrentUserData()
 }
 
+// Fragt den aktuell eingeloggten User an
 async function fetchCurrentUserProfile() {
     const url = `${window.location.origin}/api/profile/current`
 
@@ -72,6 +76,7 @@ async function fetchCurrentUserProfile() {
         .catch(err => console.error(err))
 }
 
+// Schreibt die Daten des aktuellen Benutzers in die UI
 async function loadCurrentUserData() {
     const currentUserData = await fetchCurrentUserProfile()
 
@@ -90,4 +95,5 @@ async function loadCurrentUserData() {
     }
 }
 
+// Startet und initialisiert die UI
 loadCurrentUserData()
